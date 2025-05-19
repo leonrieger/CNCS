@@ -1,0 +1,6 @@
+*.temp
+*.db
+*.xml
+sourcecode/.vs/
+sourcecode/.binaries/
+sourcecode/.binaries-int/
