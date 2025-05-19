@@ -73,22 +73,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\include\;$(SolutionDir)DATABASE-CTRL\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\src;$(SolutionDir)include\include\;$(SolutionDir)DATABASE-CTRL\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\include\;$(SolutionDir)DATABASE-CTRL\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\src;$(SolutionDir)include\include\;$(SolutionDir)DATABASE-CTRL\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\include\;$(SolutionDir)DATABASE-CTRL\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\src;$(SolutionDir)include\include\;$(SolutionDir)DATABASE-CTRL\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\include\;$(SolutionDir)DATABASE-CTRL\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\src;$(SolutionDir)include\include\;$(SolutionDir)DATABASE-CTRL\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

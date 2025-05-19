@@ -1,22 +1,28 @@
 #pragma once
 
+#ifdef DLLEXPORT
+#define DLLMODE __declspec(dllexport)
+#else
+#define DLLMODE __declspec(dllimport)
+#endif
+
 #include <stdint.h>
 #include <string>
 #include <vector>
 #include <sqlite3.h>
-#include "pugixml/pugixml.hpp"
+#include <pugixml.hpp>
 
 using namespace std;
 using namespace pugi;
 
 namespace sqlite_database {
-	class database_file {
+	class DLLMODE database_file {
 	public:
 		//database_file();
-		__declspec(dllexport) database_file(string filename);
-		__declspec(dllexport) ~database_file();
+		 database_file(string filename);
+		//__declspec(dllexport) ~database_file();
 		//void open(string filename);
-		void __declspec(dllexport) close();
+		void close();
 		//friend class database_template;
 		friend class database;
 	private:
