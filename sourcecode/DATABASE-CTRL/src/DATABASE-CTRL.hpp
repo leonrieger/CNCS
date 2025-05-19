@@ -1,9 +1,9 @@
 #pragma once
 
 #ifdef DLLEXPORT
-#define DLLMODE __declspec(dllexport)
+#	define DLLMODE __declspec(dllexport)
 #else
-#define DLLMODE __declspec(dllimport)
+#	define DLLMODE __declspec(dllimport)
 #endif
 
 #include <stdint.h>
