@@ -49,9 +49,10 @@ template<typename ... ARGS>
 void database::create(string name, ARGS ... args) {
 	//add all db-arguments
 	string arguments = ("" + ... + args);
+	string argChain = "CREATE TABLE " + name + "(ID INT PRIMARY KEY NOT NULL, " + arguments + ");";
 
-
+	int status = sqlite3_exec()
 }
 
-//***************************************************************************************
+//**************************************************************************************
 //int main(int argc, char* argv[]) <- benutzt für argumente beim aufrufen der cmd z.b programm.exe argument1 ardument2 ...
