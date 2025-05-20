@@ -186,6 +186,10 @@
     <ClInclude Include="src\errors\errors.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\include\gitmodules\pugixml\src\pugixml.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\errors\errors.cpp" />
     <ClCompile Include="src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

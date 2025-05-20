@@ -1,3 +1,6 @@
 [submodule "sourcecode/include/gitmodules/pugixml"]
 	path = sourcecode/include/gitmodules/pugixml
 	url = https://github.com/zeux/pugixml.git
+[submodule "sourcecode/include/gitmodules/tracy"]
+	path = sourcecode/include/gitmodules/tracy
+	url = https://github.com/wolfpld/tracy.git
