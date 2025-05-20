@@ -51,7 +51,7 @@ void database::create(string name, ARGS ... args) {
 	string arguments = ("" + ... + args);
 	string argChain = "CREATE TABLE " + name + "(ID INT PRIMARY KEY NOT NULL, " + arguments + ");";
 
-	int status = sqlite3_exec()
+	//int status = sqlite3_exec();
 }
 
 //**************************************************************************************

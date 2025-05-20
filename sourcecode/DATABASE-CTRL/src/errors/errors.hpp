@@ -1,5 +1,11 @@
 #pragma once
 
+#ifdef DLLEXPORT
+#	define DLLMODE __declspec(dllexport)
+#else
+#	define DLLMODE __declspec(dllimport)
+#endif
+
 #include <stdint.h>
 #include <string>
 
@@ -16,3 +22,5 @@ private:
 	string errorMessageFormatted = "";
 };
 //https://github.com/leonrieger/CNCS/blob/main/documentation/errors/gcode-errors/e-0001.md
+
+void DLLMODE test_throw_error();

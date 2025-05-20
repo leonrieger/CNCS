@@ -6,6 +6,8 @@
 #	define DLLMODE __declspec(dllimport)
 #endif
 
+#include "errors/errors.hpp"
+
 #include <stdint.h>
 #include <string>
 #include <vector>

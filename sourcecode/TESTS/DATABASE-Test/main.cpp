@@ -18,6 +18,14 @@ int main() {
     */
 
     //cout << test(string("1"), string("2"), string("3")) << endl;
+    try {
+        test_throw_error();
+    }
+    catch (databaseError& e) {
+        // Catch and handle our custom exception
+        cout << e.what() << endl;
+    }
+
 
     char x[10];
     cin >> x;
