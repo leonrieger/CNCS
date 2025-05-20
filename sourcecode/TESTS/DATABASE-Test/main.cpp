@@ -4,12 +4,7 @@ using namespace std;
 
 #include <DATABASE-CTRL/src/DATABASE-CTRL.hpp>
 using namespace sqlite_database;
-/*
-template<typename ... ARGS>
-string test(ARGS ... args) {
-    return ("" + ... + args);
-}
-*/
+
 int main() {
     /*
     database_file db_file("test.database");
@@ -17,17 +12,20 @@ int main() {
     cout << "sucess" << endl;
     */
 
-    //cout << test(string("1"), string("2"), string("3")) << endl;
-    try {
-        test_throw_error();
-    }
-    catch (databaseError& e) {
-        // Catch and handle our custom exception
-        cout << e.what() << endl;
-    }
+
 
 
     char x[10];
     cin >> x;
     return 0;
 }
+
+/*
+try {
+    test_throw_error();
+}
+catch (databaseError& e) {
+    // Catch and handle our custom exception
+    cout << e.what() << endl;
+}
+*/

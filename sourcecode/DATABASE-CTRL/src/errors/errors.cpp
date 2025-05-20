@@ -9,7 +9,3 @@ databaseError::databaseError(uint16_t EID, string errorMessage) {
 const char* databaseError::what() const throw() {
 	return errorMessageFormatted.c_str();
 }
-
-void test_throw_error() {
-	throw databaseError(1, "I hope this works!");
-}

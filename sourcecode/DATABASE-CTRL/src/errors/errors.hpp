@@ -21,6 +21,3 @@ public:
 private:
 	string errorMessageFormatted = "";
 };
-//https://github.com/leonrieger/CNCS/blob/main/documentation/errors/gcode-errors/e-0001.md
-
-void DLLMODE test_throw_error();
