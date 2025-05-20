@@ -16,6 +16,7 @@ using namespace std;
 using namespace pugi;
 
 namespace sqlite_database {
+
 	class DLLMODE database_file {
 	public:
 		//database_file();
@@ -48,41 +49,17 @@ namespace sqlite_database {
 	private:
 		sqlite3* database_file_pointer;
 	};
+
 	//-----------------------------------------------------
-	/*
-	class __declspec(dllexport) database_template {
-	public:
-		database_template(database_file& current_database_file);
-		void charField(char name[], uint32_t max_lenght);
-		void integerField(char name[]);
-		void floatingField(char name[]);
-		void textField(char name[]);
-		void booleanField(char name[], bool defaulting_to = false);
-		void binaryField(char name[]);
-		void emailField(char name[]);
-		database save_with_open();
-		void save(string database_name);
-	private:
-		void savexml();
-		class fields {
-		public:
-			int type;
-			string name;
-			auto defaulting_to();
-			uint32_t max_lenght;
-		};
-		vector<fields> sql_data_fields;
-		string sql_data_fields_toSave;
-		sqlite3* database_file_ptr;
-	};
-	*/
+
 	struct DLLMODE database_configuration_options {
-		string charField(char name[], uint32_t max_lenght);
-		string integerField(char name[]);
-		string floatingField(char name[]);
-		string textField(char name[]);
-		string booleanField(char name[], bool defaulting_to = false);
-		string binaryField(char name[]);
-		string emailField(char name[]);
+		string charField(char name[], uint16_t max_lenght, bool null_allowed = false);
+		string integerField(char name[], bool null_allowed = false);
+		string floatingField(char name[], bool null_allowed = false);
+		string textField(char name[], bool null_allowed = false);
+		string booleanField(char name[], bool defaulting_to = false, bool null_allowed = false);
+		string binaryField(char name[], bool null_allowed = false);
+		string emailField(char name[], bool null_allowed = false);
 	} models;
+
 }

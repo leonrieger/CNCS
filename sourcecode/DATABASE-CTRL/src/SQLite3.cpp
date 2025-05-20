@@ -6,7 +6,9 @@
 #endif
 
 using namespace std;
+//needed for selecting the database
 using namespace sqlite_database;
+//needed for pugixml
 using namespace pugi;
 
 database_file::database_file(string filename) {//void open
@@ -45,6 +47,7 @@ database::database(database_file& in_database_file) {
 
 template<typename ... ARGS>
 void database::create(string name, ARGS ... args) {
+	//add all db-arguments
 	string arguments = ("" + ... + args);
 
 
