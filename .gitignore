@@ -1,6 +1,9 @@
 *.temp
 *.db
 *.xml
+#exclude path configuration
+!sourcecode/DATABASE-CTRL/config.xml
+
 sourcecode/.vs/
 sourcecode/.binaries/
 sourcecode/.binaries-int/
