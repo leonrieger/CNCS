@@ -73,26 +73,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\include;$(SolutionDir)include\gitmodules\src;$(IncludePath)</IncludePath>
-    <SourcePath>$(SolutionDir)include\gitmodules\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(SolutionDir)include\include;$(SolutionDir)include\gitmodules;$(IncludePath)</IncludePath>
+    <SourcePath>$(SolutionDir)include\gitmodules;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\include;$(SolutionDir)include\gitmodules\src;$(IncludePath)</IncludePath>
-    <SourcePath>$(SolutionDir)include\gitmodules\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(SolutionDir)include\include;$(SolutionDir)include\gitmodules;$(IncludePath)</IncludePath>
+    <SourcePath>$(SolutionDir)include\gitmodules;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\include;$(SolutionDir)include\gitmodules\src;$(IncludePath)</IncludePath>
-    <SourcePath>$(SolutionDir)include\gitmodules\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(SolutionDir)include\include;$(SolutionDir)include\gitmodules;$(IncludePath)</IncludePath>
+    <SourcePath>$(SolutionDir)include\gitmodules;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\include;$(SolutionDir)include\gitmodules\src;$(IncludePath)</IncludePath>
-    <SourcePath>$(SolutionDir)include\gitmodules\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(SolutionDir)include\include;$(SolutionDir)include\gitmodules;$(IncludePath)</IncludePath>
+    <SourcePath>$(SolutionDir)include\gitmodules;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -103,6 +103,7 @@
       <AdditionalIncludeDirectories>$(SolutionnDir)include\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <DebugInformationFormat>None</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +146,7 @@
       <AdditionalIncludeDirectories>$(SolutionnDir)include\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <DebugInformationFormat>None</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -184,12 +186,6 @@
     <ClInclude Include="src\errors\errors.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\include\gitmodules\src\pugixml.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="src\errors\errors.cpp" />
     <ClCompile Include="src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
