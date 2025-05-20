@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 #include <sqlite3.h>
-#include <pugixml.hpp>
+#include <pugixml/src/pugixml.hpp>
 
 using namespace std;
 using namespace pugi;
