@@ -19,8 +19,8 @@ namespace sqlite_database {
 	class DLLMODE database_file {
 	public:
 		//database_file();
-		 database_file(string filename);
-		//__declspec(dllexport) ~database_file();
+		database_file(string filename);
+		~database_file();
 		//void open(string filename);
 		void close();
 		//friend class database_template;
@@ -31,14 +31,20 @@ namespace sqlite_database {
 		xml_document xml_file_parsed;
 		sqlite3* database_file_pointer;
 	};
+
+
+
 	//-----------------------------------------------------
-	class __declspec(dllexport) database {// : public database_file {
+	class DLLMODE database {
 	public:
 		database(database_file& in_database_file);
-		void open(char name[]);
-		void insert();
-		void get();
-		void search();
+		//bool open(char name[]);
+		
+		template<typename ... ARGS>
+		void create(string name, ARGS ... args);
+		//void insert();
+		//void get();
+		//void search();
 	private:
 		sqlite3* database_file_pointer;
 	};
@@ -70,4 +76,13 @@ namespace sqlite_database {
 		sqlite3* database_file_ptr;
 	};
 	*/
+	struct DLLMODE database_configuration_options {
+		string charField(char name[], uint32_t max_lenght);
+		string integerField(char name[]);
+		string floatingField(char name[]);
+		string textField(char name[]);
+		string booleanField(char name[], bool defaulting_to = false);
+		string binaryField(char name[]);
+		string emailField(char name[]);
+	} models;
 }

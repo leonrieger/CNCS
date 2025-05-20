@@ -32,27 +32,22 @@ void database_file::close() {
 	sqlite3_close(database_file::database_file_pointer);
 }
 
+database_file::~database_file() {
+	delete(this);
+}
+
 //**************************************************************************************
-/*
-void database_template::save(string database_name) {
-	string sql_data_in_string_format = "CREATE TABLE "+database_name+"(";
-	char* errorMessage;
-	for (fields sql_data_field : sql_data_fields) {
-
-	}
-
-	sqlite3_exec(database_file_ptr, sql_data_in_string_format.c_str(), NULL, 0, &errorMessage);
-}
-
-database_template::database_template(database_file& current_database_file) {
-	database_file_ptr = current_database_file.database_file_pointer;
-}
-*/
-//***************************************************************************************
 
 database::database(database_file& in_database_file) {
 	//Copies the database reference
 	this->database_file_pointer = in_database_file.database_file_pointer;
+}
+
+template<typename ... ARGS>
+void database::create(string name, ARGS ... args) {
+	string arguments = ("" + ... + args);
+
+
 }
 
 //***************************************************************************************
