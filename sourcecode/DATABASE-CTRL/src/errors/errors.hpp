@@ -13,8 +13,6 @@ public:
 	const char* what() const throw();
 
 private:
-	uint16_t errorID;
-	string errorMsg;
-	string errorMessageFormatted;
+	string errorMessageFormatted = "";
 };
 //https://github.com/leonrieger/CNCS/blob/main/documentation/errors/gcode-errors/e-0001.md

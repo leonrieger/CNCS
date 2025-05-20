@@ -181,6 +181,7 @@
   <ItemGroup>
     <ClInclude Include="src\Core.hpp" />
     <ClInclude Include="src\DATABASE-CTRL.hpp" />
+    <ClInclude Include="src\errors\errors.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\include\gitmodules\src\pugixml.cpp">
@@ -189,6 +190,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\errors\errors.cpp" />
     <ClCompile Include="src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
