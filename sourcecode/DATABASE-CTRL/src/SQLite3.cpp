@@ -6,7 +6,9 @@
 #endif
 
 using namespace std;
+//needed for selecting the database
 using namespace sqlite_database;
+//needed for pugixml
 using namespace pugi;
 
 database_file::database_file(string filename) {//void open
@@ -32,28 +34,25 @@ void database_file::close() {
 	sqlite3_close(database_file::database_file_pointer);
 }
 
+database_file::~database_file() {
+	delete(this);
+}
+
 //**************************************************************************************
-/*
-void database_template::save(string database_name) {
-	string sql_data_in_string_format = "CREATE TABLE "+database_name+"(";
-	char* errorMessage;
-	for (fields sql_data_field : sql_data_fields) {
-
-	}
-
-	sqlite3_exec(database_file_ptr, sql_data_in_string_format.c_str(), NULL, 0, &errorMessage);
-}
-
-database_template::database_template(database_file& current_database_file) {
-	database_file_ptr = current_database_file.database_file_pointer;
-}
-*/
-//***************************************************************************************
 
 database::database(database_file& in_database_file) {
 	//Copies the database reference
 	this->database_file_pointer = in_database_file.database_file_pointer;
 }
 
-//***************************************************************************************
+template<typename ... ARGS>
+void database::create(string name, ARGS ... args) {
+	//add all db-arguments
+	string arguments = ("" + ... + args);
+	string argChain = "CREATE TABLE " + name + "(ID INT PRIMARY KEY NOT NULL, " + arguments + ");";
+
+	int status = sqlite3_exec()
+}
+
+//**************************************************************************************
 //int main(int argc, char* argv[]) <- benutzt für argumente beim aufrufen der cmd z.b programm.exe argument1 ardument2 ...
