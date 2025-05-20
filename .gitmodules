@@ -1,3 +1,0 @@
-[submodule "sourcecode/include/gitmodules"]
-	path = sourcecode/include/gitmodules
-	url = https://github.com/zeux/pugixml.git
