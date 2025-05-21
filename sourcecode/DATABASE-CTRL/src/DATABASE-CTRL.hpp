@@ -21,12 +21,12 @@ namespace sqlite_database {
 
     class DLLMODE database_file {
     public:
-        //database_file();
         database_file(string filename);
         ~database_file();
         //void open(string filename);
         void close();
-        //friend class database_template;
+
+        //needed to get the database_file_pointer for the database class
         friend class database;
     private:
         string db_file_name;
@@ -55,13 +55,22 @@ namespace sqlite_database {
     //-----------------------------------------------------
 
     struct DLLMODE database_configuration_options {
+        //a textfield but with limited characters
         string charField(char name[], uint16_t max_lenght, bool null_allowed = false);
+        //a field to store integers
         string integerField(char name[], bool null_allowed = false);
+        //a string to store floating point values
         string floatingField(char name[], bool null_allowed = false);
+        //a field that can store text
         string textField(char name[], bool null_allowed = false);
+        //a field to store boolean values
         string booleanField(char name[], bool defaulting_to = false, bool null_allowed = false);
+        //a field to store a binary array
         string binaryField(char name[], bool null_allowed = false);
+        //a field to store email-addresses
         string emailField(char name[], bool null_allowed = false);
+        //a field to store telephone numbers (with autocorrection)
+        string telephoneField(char name[], bool null_allowed = false);
     } models;
 
 }

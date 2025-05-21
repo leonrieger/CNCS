@@ -12,6 +12,7 @@ using namespace sqlite_database;
 using namespace pugi;
 
 database_file::database_file(string filename) {
+    //get the path where the db is stored
     xml_document configuration;
     configuration.load_file("config.xml");
     xml_node root = configuration.child("CONFIGURATION");
@@ -31,6 +32,7 @@ database_file::database_file(string filename) {
 }
 
 database_file::~database_file() {
+    sqlite3_close(database_file_pointer);
     delete(this);
 }
 
@@ -56,5 +58,3 @@ void database::create(string name, ARGS ... args) {
         throw databaseError(1021, "Database creation failed due to an SQLite3 error");
     }
 }
-
-//**************************************************************************************
