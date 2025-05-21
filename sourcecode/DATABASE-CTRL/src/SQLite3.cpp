@@ -52,7 +52,7 @@ void database::create(string name, ARGS ... args) {
     //add all db-arguments
     string arguments = ("" + ... + args);
     string argChain = "CREATE TABLE " + name + "(ID INT PRIMARY KEY NOT NULL, " + arguments + ");";
-
+    int status = 0;
     //int status = sqlite3_exec();
     if (status != SQLITE_OK) {
         throw databaseError(1021, "Database creation failed due to an SQLite3 error");
