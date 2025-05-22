@@ -1,12 +1,7 @@
 #pragma once
 
-#ifdef DLLEXPORT
-#	define DLLMODE __declspec(dllexport)
-#else
-#	define DLLMODE __declspec(dllimport)
-#endif
-
 #include "errors/errors.hpp"
+#include "Core.hpp"
 
 #include <stdint.h>
 #include <string>
@@ -54,23 +49,35 @@ namespace sqlite_database {
 
     //-----------------------------------------------------
 
-    struct DLLMODE database_configuration_options {
+    struct database_configuration_options {
         //a textfield but with limited characters
-        string charField(char name[], uint16_t max_lenght, bool null_allowed = false);
+        string DLLMODE charField(char name[], uint16_t max_lenght, bool null_allowed = false);
         //a field to store integers
-        string integerField(char name[], bool null_allowed = false);
+        string DLLMODE integerField(char name[], bool null_allowed = false);
         //a string to store floating point values
-        string floatingField(char name[], bool null_allowed = false);
+        string DLLMODE floatingField(char name[], bool null_allowed = false);
         //a field that can store text
-        string textField(char name[], bool null_allowed = false);
+        string DLLMODE textField(char name[], bool null_allowed = false);
         //a field to store boolean values
-        string booleanField(char name[], bool defaulting_to = false, bool null_allowed = false);
+        string DLLMODE booleanField(char name[], bool defaulting_to = false, bool null_allowed = false);
         //a field to store a binary array
-        string binaryField(char name[], bool null_allowed = false);
+        string DLLMODE binaryField(char name[], bool null_allowed = false);
         //a field to store email-addresses
-        string emailField(char name[], bool null_allowed = false);
+        string DLLMODE emailField(char name[], bool null_allowed = false);
         //a field to store telephone numbers (with autocorrection)
-        string telephoneField(char name[], bool null_allowed = false);
+        string DLLMODE telephoneField(char name[], bool null_allowed = false);
     } models;
 
+    class FieldTemplate {
+    public:
+        FieldTemplate(string name, bool null_allow, string defaulting);
+        string get_string();
+        uint8_t get_type();
+        bool NullAllowed();
+        auto defaultingTo();
+    private:
+        string text_for_sql = "";
+        bool null_acceptable = false;
+        string defaulting_to_value;
+    };
 }
