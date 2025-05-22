@@ -57,7 +57,9 @@ void database::create(string name, ARGS ... args) {
     if (status != SQLITE_OK) {
         throw databaseError(1021, "Database creation failed due to an SQLite3 error");
     }
-    for (FieldTemplate type : args...);
+    for (FieldTemplate type : args...) {
+        
+    }
 }
 
 //**************************************************************************************
@@ -67,5 +69,7 @@ string FieldTemplate::get_string() {
 }
 
 FieldTemplate::FieldTemplate(string name, bool null_allow, string defaulting) {
-
+    null_acceptable = null_allow;
+    defaulting_to_value = defaulting;
+    name_of_object = name;
 }

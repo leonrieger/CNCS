@@ -76,7 +76,8 @@ namespace sqlite_database {
         bool NullAllowed();
         auto defaultingTo();
     private:
-        string text_for_sql = "";
+        string name_of_object;
+        string text_for_sql;
         bool null_acceptable = false;
         string defaulting_to_value;
     };
