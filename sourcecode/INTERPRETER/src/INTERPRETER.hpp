@@ -1,8 +1,8 @@
 #pragma once
 
 #include <stdint.h>
-#include <string.h>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -66,6 +66,14 @@ namespace interpreter_system {
 
         uint32_t P;// pause in ms
 
-        uint16_t T;// tool to be selected
+        string T;// tool to be selected
+
+        string subProgramToCall;
+
+        uint16_t S;// speed
+
+        bool isI;// needed for digital input -M20 * example: N100 M20 I5 <- output nr. 5
+        bool isK;// needed for digital output -M20
+        uint8_t IO_ID;
     };
 }
