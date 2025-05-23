@@ -1,5 +1,5 @@
 #pragma once
-
+//DO NOT USE, HAS ERRORS
 #include "errors/errors.hpp"
 #include "Core.hpp"
 
