@@ -64,9 +64,9 @@ namespace interpreter_system {
 
         double F;// feed (Vorschub)
 
-        uint32_t P;// pause in ms
+        uint32_t P;// pause in ms or T for seconds
 
-        string T;// tool to be selected
+        uint32_t T;// tool to be selected --- needs tool id system
 
         string subProgramToCall;
 
@@ -75,5 +75,10 @@ namespace interpreter_system {
         bool isI;// needed for digital input -M20 * example: N100 M20 I5 <- output nr. 5
         bool isK;// needed for digital output -M20
         uint8_t IO_ID;
+        //M97 -- call in program to subprogram
+        uint16_t L;// iterations of the subprogram
+        uint32_t rowToContinue;// from where the subprogram starts --- if not exists throw error
+        //M98 -- call to subprogram on controller
+        string programName;// can also be integer || L is the iterator
     };
 }
