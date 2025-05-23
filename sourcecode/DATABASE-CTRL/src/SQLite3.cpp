@@ -50,15 +50,17 @@ database::database(database_file& in_database_file) {
 template<typename ... ARGS>
 void database::create(string name, ARGS ... args) {
     //add all db-arguments
-    string arguments = ("" + ... + args);
-    string argChain = "CREATE TABLE " + name + "(ID INT PRIMARY KEY NOT NULL, " + arguments + ");";
+    //string arguments = ("" + ... + args);
+    //string argChain = "CREATE TABLE " + name + "(ID INT PRIMARY KEY NOT NULL, " + arguments + ");";
     int status = 0;
     //int status = sqlite3_exec();
     if (status != SQLITE_OK) {
         throw databaseError(1021, "Database creation failed due to an SQLite3 error");
     }
-    for (FieldTemplate type : args...) {
-        
+    int i = 0;
+    for (FieldTemplate type : args) {
+        cout << type.get_string << endl;
+        cout << "Iteration: " << i << endl;
     }
 }
 
@@ -69,6 +71,7 @@ string FieldTemplate::get_string() {
 }
 
 FieldTemplate::FieldTemplate(string name, bool null_allow, string defaulting) {
+    text_for_sql = "Name: " + name;
     null_acceptable = null_allow;
     defaulting_to_value = defaulting;
     name_of_object = name;

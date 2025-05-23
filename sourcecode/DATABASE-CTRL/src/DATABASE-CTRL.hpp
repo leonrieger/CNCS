@@ -68,7 +68,7 @@ namespace sqlite_database {
         string DLLMODE telephoneField(char name[], bool null_allowed = false);
     } models;
 
-    class FieldTemplate {
+    class DLLMODE FieldTemplate {
     public:
         FieldTemplate(string name, bool null_allow, string defaulting);
         string get_string();
