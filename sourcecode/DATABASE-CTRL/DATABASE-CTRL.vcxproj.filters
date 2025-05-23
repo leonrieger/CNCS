@@ -32,10 +32,10 @@
     <ClCompile Include="src\SQLite3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\gitmodules\src\pugixml.cpp">
+    <ClCompile Include="src\errors\errors.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\errors\errors.cpp">
+    <ClCompile Include="..\include\gitmodules\pugixml\src\pugixml.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

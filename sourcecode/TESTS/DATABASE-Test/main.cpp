@@ -5,6 +5,8 @@ using namespace std;
 #include <DATABASE-CTRL/src/DATABASE-CTRL.hpp>
 using namespace sqlite_database;
 
+#include <tracy/public/tracy/Tracy.hpp>
+
 int main() {
     /*
     database_file db_file("test.database");

@@ -17,3 +17,9 @@
 #ifndef __cplusplus
 #	error A C++ compiler is required!
 #endif 
+
+#ifdef DLLEXPORT
+#	define DLLMODE __declspec(dllexport)
+#else
+#	define DLLMODE __declspec(dllimport)
+#endif
