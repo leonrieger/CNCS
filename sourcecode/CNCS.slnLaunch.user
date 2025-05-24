@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "Test launch",
+    "Projects": [
+      {
+        "Path": "TESTS\\TESTS.vcxproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "GUI launch",
+    "Projects": [
+      {
+        "Path": "GUI\\GUI.vcxproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
