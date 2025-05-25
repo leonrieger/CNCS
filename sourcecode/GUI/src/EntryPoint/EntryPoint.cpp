@@ -1,5 +1,7 @@
 #include "EntryPoint.hpp"
 
-namespace GUI {
+using namespace GUI;
+
+void Init() {
 
 }
