@@ -51,4 +51,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\gitmodules\imgui\misc\debuggers\imgui.natstepfilter" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="..\include\gitmodules\imgui\misc\debuggers\imgui.natvis" />
+  </ItemGroup>
 </Project>
