@@ -10,6 +10,8 @@
 #include <imgui/imstb_truetype.h>
 
 #include <imgui/backends/imgui_impl_opengl3.h>
+
+#include <imgui/misc/cpp/imgui_stdlib.h>
 /* The MIT License (MIT)
 
 Copyright (c) 2014-2025 Omar Cornut
