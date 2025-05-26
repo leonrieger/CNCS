@@ -9,3 +9,6 @@ sourcecode/.binaries/
 sourcecode/.binaries-int/
 
 sourcecode/include/gitmodules/
+
+#Thanks VS2022
+*.user
