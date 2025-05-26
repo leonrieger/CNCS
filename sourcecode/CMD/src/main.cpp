@@ -1,8 +1,25 @@
 #include <iostream>
 
-using namespace std;
+#include "ui_elements/ui_elements.hpp"
 
-int main( int argc, char* argv[] ) {
+using namespace std;
+using namespace ui_elements;
+/*
+#include <iostream>
+using namespace std;
+int main() {
+    int width = 0, height = 0;
+    get_terminal_size(width, height);
+    cout << "width=" << width << ", height=" << height << endl;
+    for (int i=0; i < width; i++) {
+        cout << "=";
+    }
+    //cin.get();
+    return 0;
+}
+*/
+//int main( int argc, char* argv[] ) {
+    /*
     if (argc >= 2) {
         cout << "Testapplication" << "\t#of Args: " << argc << endl;
         for (int i = 0; i < argc; i++) {
@@ -15,4 +32,16 @@ int main( int argc, char* argv[] ) {
 
         cin >> input;
     }
+    */
+
+//}
+
+int main() {
+    cout << "Testlauf1" << endl;
+    color_table cota;
+    progress_bar testbar1(10, cota.OKCYAN);
+    testbar1.goto_value(4);
+    testbar1.step();
+    testbar1.step();
+    testbar1.finish();
 }
