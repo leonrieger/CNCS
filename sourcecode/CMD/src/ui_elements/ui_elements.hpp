@@ -28,9 +28,8 @@ namespace ui_elements {
     public:
         progress_bar(uint32_t steps_until_finished, string color);
         void step();
-        void step_multiple(uint32_t amount);
+        void step_multiple(int64_t amount);
         void goto_value(uint32_t value);
-        void goto_percent(uint8_t percent);
         void finish();
     private:
         void refresh();

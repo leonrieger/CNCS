@@ -38,9 +38,9 @@ int main() {
 
 int main() {
     cout << "Testlauf1" << endl;
-    color_table cota;
-    progress_bar testbar1(10, cota.OKCYAN);
-    testbar1.goto_value(4);
+    color_table cotable;
+    progress_bar testbar1(10, cotable.OKCYAN);
+    testbar1.goto_value(3);
     testbar1.step();
     testbar1.step();
     testbar1.finish();

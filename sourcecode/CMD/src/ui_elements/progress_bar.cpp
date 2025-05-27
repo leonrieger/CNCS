@@ -35,8 +35,16 @@ void progress_bar::step() {
     refresh();
 }
 
-void progress_bar::step_multiple(uint32_t amount) {
-    current_steps += amount;
+void progress_bar::step_multiple(int64_t amount) {
+    if ((current_steps += amount) < 0) {
+        current_steps = 0;
+    }
+    else if ((current_steps += amount) > 0) {
+        finish();
+    }
+    else {
+        current_steps += amount;
+    }
     refresh();
 }
 
