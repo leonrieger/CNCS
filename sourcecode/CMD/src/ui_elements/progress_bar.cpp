@@ -18,7 +18,7 @@ void progress_bar::refresh() {
     int32_t actual_width = width - 9;
     int full_width = int(actual_width * ((float)current_steps / (float)all_steps));
 
-    cout << color_selected << "|";
+    cout << color_selected << "\r|";
     
     for (int i = 0; i < full_width; i++) {
         cout << "=";

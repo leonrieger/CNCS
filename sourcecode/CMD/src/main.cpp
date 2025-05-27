@@ -44,4 +44,5 @@ int main() {
     testbar1.step();
     testbar1.step();
     testbar1.finish();
+    cout << "end";
 }
