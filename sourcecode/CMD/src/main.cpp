@@ -38,11 +38,11 @@ int main() {
 
 int main() {
     cout << "Testlauf1" << endl;
-    color_table cotable;
-    progress_bar testbar1("Test1", 10, cotable.OKCYAN);
+    progress_bar testbar1("Test1", 10, colors.OKCYAN);
     testbar1.goto_value(3);
     testbar1.step();
     testbar1.step();
     testbar1.finish();
     cout << "end";
+    
 }

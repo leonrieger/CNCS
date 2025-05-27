@@ -19,6 +19,8 @@ namespace ui_elements {
         string UNDERLINE = "\033[4m";
     };
     
+    extern color_table colors;
+
     namespace common {
         float calculate_percent(uint32_t amount_of_current_steps, uint32_t amount_of_all_steps);
         void get_terminal_size(int& width, int& height);
