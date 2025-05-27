@@ -26,7 +26,7 @@ namespace ui_elements {
 
     class progress_bar {
     public:
-        progress_bar(uint32_t steps_until_finished, string color);
+        progress_bar(string name, uint32_t steps_until_finished, string color);
         void step();
         void step_multiple(int64_t amount);
         void goto_value(uint32_t value);
