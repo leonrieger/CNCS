@@ -35,7 +35,12 @@ void progress_bar::refresh() {
 
 void progress_bar::step() {
     current_steps++;
-    refresh();
+    if (current_steps > all_steps) {
+        finish();
+    }
+    else {
+        refresh();
+    }
 }
 
 void progress_bar::step_multiple(int64_t amount) {
