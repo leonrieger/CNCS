@@ -2,6 +2,6 @@
 
 namespace ui {
     namespace entrypoint {
-
+        void nothing();
     }
 }

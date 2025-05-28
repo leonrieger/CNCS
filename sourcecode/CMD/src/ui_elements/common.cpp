@@ -1,4 +1,5 @@
 #include "ui_elements.hpp"
+#include <string>
 
 using namespace ui_elements;
 
@@ -26,4 +27,19 @@ void common::get_terminal_size(int& width, int& height) {
 
 float common::calculate_percent(uint32_t amount_of_current_steps, uint32_t amount_of_all_steps) {
     return ((float)amount_of_current_steps / (float)amount_of_all_steps) * 100;
+}
+
+//--------------------------------------
+
+string common::input() {
+    string input_value = {};
+    getline(cin, input_value);
+    return input_value;
+}
+
+string common::input(string message) {
+    cout << message;
+    string input_value = {};
+    getline(cin, input_value);
+    return input_value;
 }
