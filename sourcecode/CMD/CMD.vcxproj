@@ -151,11 +151,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\EntryPoint.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ui_elements\common.cpp" />
     <ClCompile Include="src\ui_elements\progress_bar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\EntryPoint.hpp" />
+    <ClInclude Include="src\EntryPointUtil\EntryPointUtil.hpp" />
     <ClInclude Include="src\ui_elements\ui_elements.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
