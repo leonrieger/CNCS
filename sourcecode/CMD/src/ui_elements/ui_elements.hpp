@@ -18,8 +18,6 @@ namespace ui_elements {
         const string BOLD = "\033[1m";
         const string UNDERLINE = "\033[4m";
     };
-    
-    //extern color_table colors;
 
     namespace common {
         float calculate_percent(uint32_t amount_of_current_steps, uint32_t amount_of_all_steps);

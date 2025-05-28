@@ -38,9 +38,11 @@ int main() {
 //}
 
 int main() {
+    color_table colors;
+    cout << colors.FAIL;
     cout << "Input-test" << endl;
     cout << common::input() << endl;
     cout << "#2" << endl;
     cout << common::input("new Input") << endl;
-    
+    cout << colors.ENDC;
 }
