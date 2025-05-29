@@ -40,7 +40,9 @@ namespace webserver {
 
         sockaddr_in socket_information;
         SOCKET server_socket;
+        SOCKET client_socket;
         WSADATA server_wsadata;
+        int32_t server_socket_size;
     };
 }
 //uuid for systems

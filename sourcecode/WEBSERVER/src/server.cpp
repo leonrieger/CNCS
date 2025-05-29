@@ -32,7 +32,8 @@ webserver::SERVER::SERVER(webserver::IP_ADDR ip_information) {
         throw webServerError(3, string(WSAGetLastError()));
     }
     */
-    if (bind(server_socket, (sockaddr*)&socket_information, sizeof(socket_information)) == SOCKET_ERROR) {
+    server_socket_size = sizeof(socket_information);
+    if (bind(server_socket, (sockaddr*)&socket_information, server_socket_size) == SOCKET_ERROR) {
         WSACleanup();
         ostringstream oss;
         oss << WSAGetLastError(); // Convert the error code to a string
@@ -62,6 +63,13 @@ void webserver::SERVER::run() {
 
     while (!requestToStop) {
         cout << "-----Waiting for new Connection-----" << endl;
+
+        client_socket = accept(server_socket, (sockaddr*)&socket_information, &server_socket_size);
+        if (client_socket == SOCKET_ERROR) {
+            cout << "error connecting to client socket" << endl;
+            while (true);
+        }
+        char buffer[BUFFER_SIZE] = { 0 };
 
 
 
