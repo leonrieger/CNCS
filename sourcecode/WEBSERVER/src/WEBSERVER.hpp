@@ -1,5 +1,7 @@
 #pragma once
 
+#include "errors/errors.hpp"
+
 #include <stdint.h>
 #include <string>
 #include <vector>
@@ -19,7 +21,8 @@ namespace webserver {
         IP own_ip_address;
 
         sockaddr_in socket_information;
-        SOCKET socket;
+        SOCKET server_socket;
+        WSADATA wsadata;
     };
 
     class IP { //compatible with IPv4 --- IPv6 support missing

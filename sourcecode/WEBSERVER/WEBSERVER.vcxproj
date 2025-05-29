@@ -147,12 +147,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\errors\errors.cpp" />
     <ClCompile Include="src\IP.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\server.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\definitions.hpp" />
+    <ClInclude Include="src\errors\errors.hpp" />
     <ClInclude Include="src\WEBSERVER.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
