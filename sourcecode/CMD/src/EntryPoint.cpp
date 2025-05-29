@@ -8,12 +8,12 @@ void entrypoint::initExecCommand() {
 }
 
 void entrypoint::initExecEnviroment() {
-    ui_elements::progress_bar init_progress_bar("initialising", 5, ui_elements::colors.OKCYAN);
-
+    ui_elements::color_table colorado;
+    ui_elements::progress_bar init_progress_bar("initialising", 5, colorado.OKCYAN);
 
     bool requestToStop = false;
     do 
     {
-
+        //input = exit
     } while (!requestToStop);
 }

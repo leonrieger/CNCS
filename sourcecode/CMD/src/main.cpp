@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "ui_elements/ui_elements.hpp"
 
@@ -37,12 +38,11 @@ int main() {
 //}
 
 int main() {
-    cout << "Testlauf1" << endl;
-    progress_bar testbar1("Test1", 10, colors.OKCYAN);
-    testbar1.goto_value(3);
-    testbar1.step();
-    testbar1.step();
-    testbar1.finish();
-    cout << "end";
-    
+    color_table colors;
+    cout << colors.FAIL;
+    cout << "Input-test" << endl;
+    cout << common::input() << endl;
+    cout << "#2" << endl;
+    cout << common::input("new Input") << endl;
+    cout << colors.ENDC;
 }
