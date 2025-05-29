@@ -56,7 +56,7 @@ void webserver::SERVER::run() {
     inet_ntop(AF_INET, &(socket_information.sin_addr), ipstr, INET_ADDRSTRLEN);
     cout << "\n*** Listening on ADDRESS: " << ipstr << " PORT: " << ntohs(socket_information.sin_port) << " ***\n\n";
     #endif
-    const uint16_t BUFFER_SIZE = 65525;
+    const uint16_t BUFFER_SIZE = 115000;
     int32_t bytesReceived = 0;
 
     bool requestToStop = false;
@@ -67,12 +67,46 @@ void webserver::SERVER::run() {
         client_socket = accept(server_socket, (sockaddr*)&socket_information, &server_socket_size);
         if (client_socket == SOCKET_ERROR) {
             cout << "error connecting to client socket" << endl;
-            while (true);
+            cin.get();
         }
         char buffer[BUFFER_SIZE] = { 0 };
 
+        bytesReceived = recv(client_socket, buffer, BUFFER_SIZE, 0);
+        if (bytesReceived < 0) {
+            cout << "bytesReceived smaller than one" << endl;
+            cin.get();
+        }
+        cout << "***received request from client***" << endl;
+        cout << string(buffer) << endl << "**********************" << endl;
 
+        string htmlFile = "<!DOCTYPE html><html><head><title>absolute sucess</title></head><body><h1> HOME </h1><p> Hello from your Server :) </p></body></html>";
+        std::ostringstream ss;
+        ss << "HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: " << htmlFile.size() << "\n\n" << htmlFile;
+        string message = ss.str();
 
+        int bytesSent;
+        long totalBytesSent = 0;
+
+        while (totalBytesSent < message.size())
+        {
+            bytesSent = send(client_socket, message.c_str(), message.size(), 0);
+            if (bytesSent < 0)
+            {
+                break;
+            }
+            totalBytesSent += bytesSent;
+        }
+        
+        if (totalBytesSent == message.size())
+        {
+            cout << "------ Server Response sent to client ------\n\n" << endl;
+        }
+        else
+        {
+            cout << "Error sending response to client." << endl;
+        }
+
+        closesocket(client_socket);
     }
 
 }
