@@ -1,7 +1,7 @@
 #include "WEBSERVER.hpp"
-//using namespace webserver;
-
 #include "errors/errors.hpp"
+
+#include <ws2tcpip.h>
 
 //https://de.wikipedia.org/wiki/Liste_der_Portnummern
 
@@ -9,7 +9,7 @@ webserver::SERVER::SERVER(webserver::IP_ADDR ip_information) {
     own_ip_address = ip_information;
 
     socket_information.sin_family = AF_INET;
-    socket_information.sin_addr.s_addr = inet_addr(ip_information.getIP().c_str());
+    inet_pton(AF_INET, ip_information.getIP().c_str(), &socket_information.sin_addr);
     socket_information.sin_port = htons(ip_information.getPORT());
 
     if (WSAStartup(MAKEWORD(2, 2), &server_wsadata) != 0) {

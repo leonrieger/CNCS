@@ -12,20 +12,6 @@ using namespace std;
 //#include <Windows.h>
 
 namespace webserver {
-    class SERVER {
-    public:
-        SERVER(IP_ADDR ip_information);
-        ~SERVER();
-
-        //string getIP();
-    private:
-        IP_ADDR own_ip_address;
-
-        sockaddr_in socket_information;
-        SOCKET server_socket;
-        WSADATA server_wsadata;
-    };
-
     class IP_ADDR { //compatible with IPv4 --- IPv6 support missing
     public:
         IP_ADDR();
@@ -39,6 +25,20 @@ namespace webserver {
     private:
         string IP_address;
         uint16_t internal_port;//1024<port<49151!
+    };
+
+    class SERVER {
+    public:
+        SERVER(IP_ADDR ip_information);
+        ~SERVER();
+
+        //string getIP();
+    private:
+        IP_ADDR own_ip_address;
+
+        sockaddr_in socket_information;
+        SOCKET server_socket;
+        WSADATA server_wsadata;
     };
 }
 //uuid for systems
