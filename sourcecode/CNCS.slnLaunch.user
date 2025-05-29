@@ -16,5 +16,18 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "WEB-Server/Client launch",
+    "Projects": [
+      {
+        "Path": "WEBSERVER\\WEBSERVER.vcxproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "WEBCLIENT\\WEBCLIENT.vcxproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
   }
 ]
