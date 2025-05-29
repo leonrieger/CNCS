@@ -26,11 +26,13 @@ namespace webserver {
         string IP_address;
         uint16_t internal_port;//1024<port<49151!
     };
-
+//=============================================================================
     class SERVER {
     public:
         SERVER(IP_ADDR ip_information);
         ~SERVER();
+
+        void run();
 
         //string getIP();
     private:
