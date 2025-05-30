@@ -53,6 +53,10 @@ SERVER::SERVER(IP_ADDR ip_information) {
     if (bind(server_socket, (sockaddr*)&socket_information, server_socket_size) == SOCKET_ERROR) {
         throw webServerError(3, format("There occured this Binding-Error: {0}", WSAGetLastError()));
     }
+
+    if (listen(server_socket, SOMAXCONN) == SOCKET_ERROR) {
+        throw webServerError(4, "cannot listen to Port!");
+    }
 }
 
 SERVER::~SERVER() {
@@ -65,13 +69,9 @@ void SERVER::start() {
 }
 
 void SERVER::runtime_server() {
-    if (listen(server_socket, SOMAXCONN) == SOCKET_ERROR) {
-        throw webServerError(4, "cannot listen to Port!");
-    }
+    
 
     SOCKET client_socket;
-
-    while (!runtime_server_request_to_stop) {
         client_socket = accept(server_socket, (sockaddr*)&socket_information, &server_socket_size);
         //erase buffer on heap
         memset(&read_buffer, 0, DATA_BUFFER_SIZE);
@@ -94,14 +94,7 @@ void SERVER::runtime_server() {
                 }
                 totalBytesSent += bytesSent;
             }
-            write_message = "";
         }
-
-    }
-
-    if (runtime_server_request_to_stop) {
-        return;
-    }
 }
 
 uint16_t SERVER::readAvailable() {
