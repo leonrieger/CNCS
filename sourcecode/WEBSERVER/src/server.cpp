@@ -48,7 +48,7 @@ webserver::SERVER::~SERVER() {
 }
 
 void webserver::SERVER::run() {
-    if (listen(server_socket, SOMAXCONN) < 0)
+    if (listen(server_socket, SOMAXCONN) == SOCKET_ERROR)
     {
         throw webServerError(4, "cannot listen to Port!");
     }
@@ -72,8 +72,8 @@ void webserver::SERVER::run() {
             cin.get();
         }
         //char buffer[BUFFER_SIZE] = { 0 };
-        char* buffer = new char [BUFFER_SIZE]{ 0 };//new keyword//allocate on heap
-
+        char* buffer = new char [BUFFER_SIZE] { 0 };//new keyword//allocate on heap
+        
         bytesReceived = recv(client_socket, buffer, BUFFER_SIZE, 0);
         if (bytesReceived < 0) {
             cout << "bytesReceived smaller than one" << endl;

@@ -6,6 +6,7 @@
 #include <mutex>
 #include <thread>
 
+#include <cstring>
 #include <ws2tcpip.h>
 #include <format>
 
@@ -56,6 +57,37 @@ SERVER::SERVER(IP_ADDR ip_information) {
     }
 }
 
-void SERVER::start() {
+SERVER::~SERVER() {
+    closesocket(server_socket);
+    
+}
 
+void SERVER::start() {
+    webServer = thread(runtime_server);
+}
+
+void SERVER::runtime_server() {
+    if (listen(server_socket, SOMAXCONN) == SOCKET_ERROR) {
+        throw webServerError(4, "cannot listen to Port!");
+    }
+
+    SOCKET client_socket;
+
+    while (!runtime_server_request_to_stop) {
+        client_socket = accept(server_socket, (sockaddr*)&socket_information, &server_socket_size);
+        //erase buffer on heap
+        memset(&buffer, 0, DATA_BUFFER_SIZE);
+
+
+
+        while (!runtime_server_allow_continue);
+    }
+
+    if (runtime_server_request_to_stop) {
+        return;
+    }
+}
+
+uint16_t SERVER::readAvailable() {
+    return abs(bytesReceived);
 }
