@@ -27,6 +27,9 @@
     <ClCompile Include="src\server_windows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\WEBSERVER.hpp">
@@ -38,10 +41,5 @@
     <ClInclude Include="src\errors\errors.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="src\server.cpp">
-      <Filter>Source Files</Filter>
-    </Text>
   </ItemGroup>
 </Project>

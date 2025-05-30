@@ -11,6 +11,7 @@ int main() {
     
     try {
         SERVER testserver1(IP_ADDR(LOCALHOST, 8000));
+        /*
         testserver1.start();
         while (true) {
             if (testserver1.readAvailable()) {
@@ -22,6 +23,8 @@ int main() {
                 testserver1.allowContinue();
             }
         }
+        */
+        testserver1.run();
     }
     catch (webServerError& err) {
         cout << "error" << err.what() << endl;

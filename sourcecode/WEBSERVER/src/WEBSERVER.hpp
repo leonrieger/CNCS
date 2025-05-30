@@ -38,7 +38,7 @@ namespace webserver {
         SERVER(IP_ADDR ip_information);
         ~SERVER();
 
-        //void run();
+        void run(); // <-- Add this line
 
         void start();
 
@@ -54,7 +54,7 @@ namespace webserver {
 
         sockaddr_in socket_information;
         SOCKET server_socket;
-        //SOCKET client_socket;
+        SOCKET client_socket;
         WSADATA server_wsadata;
         int32_t server_socket_size;
 
