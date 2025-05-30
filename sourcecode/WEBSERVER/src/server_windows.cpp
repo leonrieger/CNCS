@@ -76,11 +76,29 @@ void SERVER::runtime_server() {
     while (!runtime_server_request_to_stop) {
         client_socket = accept(server_socket, (sockaddr*)&socket_information, &server_socket_size);
         //erase buffer on heap
-        memset(&buffer, 0, DATA_BUFFER_SIZE);
+        memset(&read_buffer, 0, DATA_BUFFER_SIZE);
 
-
+        bytesReceived = recv(client_socket, read_buffer, DATA_BUFFER_SIZE, 0);
 
         while (!runtime_server_allow_continue);
+        runtime_server_allow_continue = false;
+        bytesReceived = 0;
+
+        int64_t bytesSent;
+        int64_t totalBytesSent = 0;
+
+        if (write_message != "") {
+            while (totalBytesSent < write_message.size()) {
+                bytesSent = send(client_socket, write_message.c_str(), write_message.size(), 0);
+                if (bytesSent < 0)
+                {
+                    break;
+                }
+                totalBytesSent += bytesSent;
+            }
+            write_message = "";
+        }
+
     }
 
     if (runtime_server_request_to_stop) {
@@ -90,4 +108,16 @@ void SERVER::runtime_server() {
 
 uint16_t SERVER::readAvailable() {
     return abs(bytesReceived);
+}
+
+string SERVER::read() {
+    return string(read_buffer);
+}
+
+void SERVER::write(string data) {
+    write_message = data;
+}
+
+void SERVER::allowContinue() {
+    runtime_server_allow_continue = true;
 }

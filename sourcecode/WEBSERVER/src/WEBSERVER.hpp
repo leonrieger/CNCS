@@ -38,14 +38,16 @@ namespace webserver {
         SERVER(IP_ADDR ip_information);
         ~SERVER();
 
-        void run();
+        //void run();
 
         void start();
 
         uint16_t readAvailable();
 
-        void read();
-        void write();
+        void allowContinue();
+
+        string read();
+        void write(string data);
 
     private:
         IP_ADDR server_ip_info;
@@ -63,9 +65,9 @@ namespace webserver {
         bool runtime_server_connected = false;
         int32_t bytesReceived = 0;
         const uint32_t DATA_BUFFER_SIZE = 65535;
-        char* buffer = new char [DATA_BUFFER_SIZE] { 0 };
-        bool runtime_server_allow_continue;
+        char* read_buffer = new char [DATA_BUFFER_SIZE] { 0 };
+        bool runtime_server_allow_continue = false;
+        string write_message = "";
     };
 //==============================================================================
 }
-//uuid for systems
