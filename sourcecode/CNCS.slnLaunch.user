@@ -16,5 +16,14 @@
         "Action": "Start"
       }
     ]
+  },
+  {
+    "Name": "WEB-Server/Client launch",
+    "Projects": [
+      {
+        "Path": "WEBSERVER\\WEBSERVER.vcxproj",
+        "Action": "Start"
+      }
+    ]
   }
 ]
