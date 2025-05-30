@@ -1,48 +1,60 @@
 #include "WEBSERVER.hpp"
+#include "definitions.hpp"
 #include "errors/errors.hpp"
 
 #include <ws2tcpip.h>
+#include <iphlpapi.h>
+#include <Windns.h>
 #ifdef _DEBUG
 #include <iostream>
 #include <sstream>
 #endif
+
+#pragma comment(lib, "iphlpapi.lib")
+#pragma comment(lib, "ws2_32.lib")
 
 //https://de.wikipedia.org/wiki/Liste_der_Portnummern
 
 webserver::SERVER::SERVER(webserver::IP_ADDR ip_information) {
     own_ip_address = ip_information;
 
+    client_socket = socket(AF_INET, SOCK_STREAM, 0);
+
     socket_information.sin_family = AF_INET;
     inet_pton(AF_INET, ip_information.getIP().c_str(), &socket_information.sin_addr);
     socket_information.sin_port = htons(ip_information.getPORT());
-
+    
     if (WSAStartup(MAKEWORD(2, 2), &server_wsadata) != 0) {
         throw webServerError(1, "");
     }
-
+    
     try{
-        server_socket = socket(AF_INET, SOCK_STREAM, 0);
+        server_socket = socket(AF_INET, SOCK_STREAM, 0);//AF_INET=IPv4 || AF_INET6=IPv6
     } catch (...) {
         WSACleanup();
         throw webServerError(2, "couldn't connect to socket");
     }
-    /*
-    if (bind(server_socket, (sockaddr*)&socket_information, sizeof(socket_information) == SOCKET_ERROR)) {
-        WSACleanup();
-        throw webServerError(3, string(WSAGetLastError()));
-    }
-    */
+
+    //if (own_ip_address.getIP().c_str() != LOCALHOST) {
+
+    //}
+
     server_socket_size = sizeof(socket_information);
     if (bind(server_socket, (sockaddr*)&socket_information, server_socket_size) == SOCKET_ERROR) {
-        WSACleanup();
         ostringstream oss;
         oss << WSAGetLastError(); // Convert the error code to a string
+        WSACleanup();
         throw webServerError(3, oss.str());
     }
 }
 
 webserver::SERVER::~SERVER() {
     closesocket(server_socket);
+
+    //if (own_ip_address.getIP().c_str() != LOCALHOST) {
+
+    //}
+
     WSACleanup();
 }
 
@@ -56,7 +68,8 @@ void webserver::SERVER::run() {
     inet_ntop(AF_INET, &(socket_information.sin_addr), ipstr, INET_ADDRSTRLEN);
     cout << "\n*** Listening on ADDRESS: " << ipstr << " PORT: " << ntohs(socket_information.sin_port) << " ***\n\n";
     #endif
-    const uint16_t BUFFER_SIZE = 115000;
+
+    const uint16_t BUFFER_SIZE = 40000;
     int32_t bytesReceived = 0;
 
     bool requestToStop = false;
@@ -69,7 +82,8 @@ void webserver::SERVER::run() {
             cout << "error connecting to client socket" << endl;
             cin.get();
         }
-        char buffer[BUFFER_SIZE] = { 0 };
+        //char buffer[BUFFER_SIZE] = { 0 };
+        char* buffer = new char [BUFFER_SIZE]{ 0 };//new keyword//allocate on heap
 
         bytesReceived = recv(client_socket, buffer, BUFFER_SIZE, 0);
         if (bytesReceived < 0) {
@@ -105,7 +119,7 @@ void webserver::SERVER::run() {
         {
             cout << "Error sending response to client." << endl;
         }
-
+        delete(&buffer);
         closesocket(client_socket);
     }
 
