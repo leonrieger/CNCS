@@ -6,11 +6,6 @@ using namespace std;
 
 using namespace webserver;
 
-//#include <Windns.h>
-//#include <iphlpapi.h>
-//#include <Ws2tcpip.h>
-//#include <WinSock2.h>
-
 int main() {
     /*
     try {

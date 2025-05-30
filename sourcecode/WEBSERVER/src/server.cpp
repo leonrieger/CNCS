@@ -2,21 +2,20 @@
 #include "definitions.hpp"
 #include "errors/errors.hpp"
 
+#include <thread>
 #include <ws2tcpip.h>
 #include <iphlpapi.h>
 #include <Windns.h>
+
 #ifdef _DEBUG
 #include <iostream>
 #include <sstream>
 #endif
 
-#pragma comment(lib, "iphlpapi.lib")
-#pragma comment(lib, "ws2_32.lib")
-
 //https://de.wikipedia.org/wiki/Liste_der_Portnummern
 
 webserver::SERVER::SERVER(webserver::IP_ADDR ip_information) {
-    own_ip_address = ip_information;
+    server_ip_address = ip_information;
 
     client_socket = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -35,10 +34,6 @@ webserver::SERVER::SERVER(webserver::IP_ADDR ip_information) {
         throw webServerError(2, "couldn't connect to socket");
     }
 
-    //if (own_ip_address.getIP().c_str() != LOCALHOST) {
-
-    //}
-
     server_socket_size = sizeof(socket_information);
     if (bind(server_socket, (sockaddr*)&socket_information, server_socket_size) == SOCKET_ERROR) {
         ostringstream oss;
@@ -50,10 +45,6 @@ webserver::SERVER::SERVER(webserver::IP_ADDR ip_information) {
 
 webserver::SERVER::~SERVER() {
     closesocket(server_socket);
-
-    //if (own_ip_address.getIP().c_str() != LOCALHOST) {
-
-    //}
 
     WSACleanup();
 }
