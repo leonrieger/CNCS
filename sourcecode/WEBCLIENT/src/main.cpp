@@ -53,15 +53,18 @@ int main() {
     // Receive the response
     char buffer[1024];
     int bytesReceived;
-    while ((bytesReceived = recv(sock, buffer, sizeof(buffer) - 1, 0)) > 0) {
+    bytesReceived = recv(sock, buffer, sizeof(buffer), 0);
+    std::cout << buffer << std::endl;
+    /*
+    while (( - 1, 0)) > 0) {
         buffer[bytesReceived] = '\0';  // Null-terminate the buffer
         std::cout << buffer;
     }
-
+    
     if (bytesReceived == SOCKET_ERROR) {
         std::cerr << "Recv failed." << std::endl;
     }
-
+    */
     // Close the socket
     closesocket(sock);
 
