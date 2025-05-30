@@ -20,3 +20,11 @@ string IP_ADDR::getIP() {
 uint16_t IP_ADDR::getPORT() {
     return internal_port;
 }
+
+bool IP_ADDR::isIPv4() {
+    return type;
+}
+
+bool IP_ADDR::isIPv6() {
+    return !type;
+}

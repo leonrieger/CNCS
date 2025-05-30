@@ -4,20 +4,18 @@
 
 #include <thread>
 #include <ws2tcpip.h>
-#include <iphlpapi.h>
-#include <Windns.h>
+//#include <iphlpapi.h> //---iphlpapi.lib; inkludieren bei linker
+//#include <Windns.h>
 
 #ifdef _DEBUG
 #include <iostream>
 #include <sstream>
 #endif
 
-//https://de.wikipedia.org/wiki/Liste_der_Portnummern
-
 webserver::SERVER::SERVER(webserver::IP_ADDR ip_information) {
-    server_ip_address = ip_information;
+    server_ip_info = ip_information;
 
-    client_socket = socket(AF_INET, SOCK_STREAM, 0);
+    //client_socket = socket(AF_INET, SOCK_STREAM, 0);
 
     socket_information.sin_family = AF_INET;
     inet_pton(AF_INET, ip_information.getIP().c_str(), &socket_information.sin_addr);
