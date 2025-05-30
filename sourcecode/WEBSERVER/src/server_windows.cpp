@@ -2,10 +2,6 @@
 #include "definitions.hpp"
 #include "errors/errors.hpp"
 
-//for multithreading
-#include <mutex>
-#include <thread>
-
 #include <cstring>
 #include <ws2tcpip.h>
 #include <format>
@@ -30,27 +26,29 @@ SERVER::SERVER(IP_ADDR ip_information) {
     inet_pton(AF_INET, ip_information.getIP().c_str(), &socket_information.sin_addr);
     socket_information.sin_port = htons(server_ip_info.getPORT());
 
-    //Try to ccreate Socket
+    //Start Server
+    if (WSAStartup(MAKEWORD(2, 2), &server_wsadata) != 0) {
+        throw webServerError(1, "");
+    }
+    
+    //Try to create Socket
     try {
         if (server_ip_info.isIPv4()) {
-            server_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+            server_socket = socket(AF_INET, SOCK_STREAM, 0);//IPPROTO_TCP
         }
+        /*
         else {
-            server_socket = socket(AF_INET6, SOCK_STREAM, IPPROTO_TCP);
+            server_socket = socket(AF_INET6, SOCK_STREAM, 0);
         }
-        
+        */
     }
     catch (...) {
         throw webServerError(2, "couldn't connect to socket");
     }
 
     //Generate the size of the server_socket (for speed reasons)
-    server_socket_size = sizeof(server_socket);
+    server_socket_size = sizeof(socket_information); // FIX: use sizeof(socket_information) instead of sizeof(server_socket)
 
-    //Start Server
-    if (WSAStartup(MAKEWORD(2, 2), &server_wsadata) != 0) {
-        throw webServerError(1, "");
-    }
     //Bind Server to port
     if (bind(server_socket, (sockaddr*)&socket_information, server_socket_size) == SOCKET_ERROR) {
         throw webServerError(3, format("There occured this Binding-Error: {0}", WSAGetLastError()));
@@ -59,11 +57,11 @@ SERVER::SERVER(IP_ADDR ip_information) {
 
 SERVER::~SERVER() {
     closesocket(server_socket);
-    
+    WSACleanup();
 }
 
 void SERVER::start() {
-    webServer = thread(runtime_server);
+    runtime_server();
 }
 
 void SERVER::runtime_server() {

@@ -1,3 +1,3 @@
 #pragma once
 
-#define LOCALHOST "127.0.0.1"
+const char LOCALHOST[] = "127.0.0.1";
