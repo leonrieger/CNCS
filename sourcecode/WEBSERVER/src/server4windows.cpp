@@ -7,6 +7,10 @@ using namespace webserver;
 #include <ws2tcpip.h>
 #include <format>
 
+#ifdef _DEBUG
+#   include <iostream>
+#endif
+
 SERVER::SERVER(webserver::IP_ADDR ip_information) {
     server_ip_info = ip_information;
 
@@ -41,9 +45,29 @@ void SERVER::startup() {
     if (bind(server_socket, (sockaddr*)&socket_information, server_socket_size) == SOCKET_ERROR) {
         int32_t lastError = WSAGetLastError();
         WSACleanup();
-        throw webServerError(3, format("Error: {0} ", lastError));
+        throw webServerError(3, format("Error in 'bind': {0} ", lastError));
     }
-
-
+    if (listen(server_socket, SOMAXCONN) == SOCKET_ERROR)
+    {
+        throw webServerError(4, "cannot listen to Port!");
+    }
 }
 
+void SERVER::waitForHttpRequest() {
+    client_socket = accept(server_socket, (sockaddr*)&socket_information, &server_socket_size);
+    if (client_socket == SOCKET_ERROR) {
+        throw webServerError(5, "Could not connect to client socket");
+    }
+}
+
+string SERVER::read() {
+    bytesReceived = recv(client_socket, buffer, BUFFER_SIZE, 0);
+    if (bytesReceived < 0) {
+        throw webServerError(6, "Number of received bytes smaller than one");
+    }
+#ifdef _DEBUG
+    cout << "***received request from client***" << endl;
+    cout << string(buffer) << endl << "**********************" << endl;
+#endif
+    return string(buffer);
+}
