@@ -15,9 +15,9 @@ int main() {
         while (true) {
             try {
                 cerr << "state current: " << WSAGetLastError() << endl;
-                testserver1.waitForHttpRequest();
+                testserver1.waitForHttpRequest();//error?
                 cerr << "state current: " << WSAGetLastError() << endl;
-                cout << testserver1.read() << endl;//error
+                cout << testserver1.read().c_str() << endl;//error
                 cerr << "state current: " << WSAGetLastError() << endl;
                 string htmlFile = "<!DOCTYPE html><html><head><title>absolute sucess</title></head><body><h1> HOME </h1><p> Hello from your Server :) </p></body></html>";
                 std::ostringstream ss;
