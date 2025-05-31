@@ -11,20 +11,34 @@ int main() {
     try {
         SERVER testserver1(IP_ADDR(LOCALHOST, 8000));
         testserver1.startup();
+        cerr << "state before: " << WSAGetLastError() << endl;
         while (true) {
-            testserver1.waitForHttpRequest();
-            cout << testserver1.read() << endl;
-            string htmlFile = "<!DOCTYPE html><html><head><title>absolute sucess</title></head><body><h1> HOME </h1><p> Hello from your Server :) </p></body></html>";
-            std::ostringstream ss;
-            ss << "HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: " << htmlFile.size() << "\n\n" << htmlFile;
-            string message = ss.str();
-            testserver1.write(message);
-            testserver1.cycleFinish();
+            try {
+                cerr << "state current: " << WSAGetLastError() << endl;
+                testserver1.waitForHttpRequest();
+                cerr << "state current: " << WSAGetLastError() << endl;
+                cout << testserver1.read() << endl;//error
+                cerr << "state current: " << WSAGetLastError() << endl;
+                string htmlFile = "<!DOCTYPE html><html><head><title>absolute sucess</title></head><body><h1> HOME </h1><p> Hello from your Server :) </p></body></html>";
+                std::ostringstream ss;
+                ss << "HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: " << htmlFile.size() << "\n\n" << htmlFile;
+                string message = ss.str();
+                cerr << "state current: " << WSAGetLastError() << endl;
+                testserver1.write(message);
+                cerr << "state current: " << WSAGetLastError() << endl;
+                testserver1.cycleFinish();
+                cerr << "state inbetween " << WSAGetLastError() << endl;
+            }
+            catch (...) {
+                //cerr << err.what() << endl;
+                cerr << "inner error" << endl;
+            }
         }
     }
-    catch (webServerError& err) {
-        cout << err.what() << endl;
+    catch (...) {
+        cerr << "outer error" << endl;
     }
+    WSACleanup();
     return 0;
 }
 
