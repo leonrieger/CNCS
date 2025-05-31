@@ -64,8 +64,9 @@ void SERVER::waitForHttpRequest() {
 string SERVER::read() {
     try {
         memset(&buffer, 0x0, BUFFER_SIZE);
+        cerr << "we got far" << endl;
         bytesReceived = recv(client_socket, buffer, BUFFER_SIZE, 0);
-
+        cerr << "we got farer" << endl;
         if (bytesReceived < 0) {
             throw webServerError(6, "Number of received bytes smaller than one");
         }
