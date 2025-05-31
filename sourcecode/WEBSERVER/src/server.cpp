@@ -2,7 +2,6 @@
 #include "definitions.hpp"
 #include "errors/errors.hpp"
 
-#include <thread>
 #include <ws2tcpip.h>
 //#include <iphlpapi.h> //---iphlpapi.lib; inkludieren bei linker
 //#include <Windns.h>

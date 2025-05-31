@@ -5,7 +5,6 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
-#include <thread>
 using namespace std;
 
 #define WIN32_LEAN_AND_MEAN
@@ -38,36 +37,28 @@ namespace webserver {
         SERVER(IP_ADDR ip_information);
         ~SERVER();
 
-        void run(); // <-- Add this line
+        //void run();
 
-        void start();
+        void startup();
 
-        uint16_t readAvailable();
-
-        void allowContinue();
-
+        void waitForHttpRequest();
         string read();
         void write(string data);
+        void cycleFinish();
 
     private:
         IP_ADDR server_ip_info;
 
         sockaddr_in socket_information;
         SOCKET server_socket;
+        int32_t server_socket_size;
         SOCKET client_socket;
         WSADATA server_wsadata;
-        int32_t server_socket_size;
 
-        thread webServer;
-        void runtime_server();
-        //Variables for runtime_server:
-        bool runtime_server_request_to_stop = false;
-        bool runtime_server_connected = false;
+        
+        //char* buffer = new char [BUFFER_SIZE] { 0 };
+
         int32_t bytesReceived = 0;
-        const uint32_t DATA_BUFFER_SIZE = 65535;
-        char* read_buffer = new char [DATA_BUFFER_SIZE] { 0 };
-        bool runtime_server_allow_continue = false;
-        string write_message = "";
     };
 //==============================================================================
 }
