@@ -33,6 +33,11 @@ SERVER::SERVER(webserver::IP_ADDR ip_information) {
         WSACleanup();
         throw webServerError(2, "couldn't connect to socket");
     }
+#ifdef _DEBUG
+    char ipstr[INET_ADDRSTRLEN] = { 0 };
+    inet_ntop(AF_INET, &(socket_information.sin_addr), ipstr, INET_ADDRSTRLEN);
+    cout << "\n*** Listening on ADDRESS: " << ipstr << " PORT: " << ntohs(socket_information.sin_port) << " ***\n\n";
+#endif
 }
 
 SERVER::~SERVER() {
@@ -84,6 +89,9 @@ void SERVER::write(string data) {
         totalBytesSent += bytesSent;
     }
     if (totalBytesSent != data.size()) {
+#ifdef _DEBUG
+        cout << "send failed" << endl;
+#endif
         throw webServerError(7, "Send failed");
     }
 }
