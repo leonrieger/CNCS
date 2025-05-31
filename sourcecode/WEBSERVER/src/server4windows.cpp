@@ -61,6 +61,7 @@ void SERVER::waitForHttpRequest() {
 }
 
 string SERVER::read() {
+    memset(&buffer, 0x0, BUFFER_SIZE);
     bytesReceived = recv(client_socket, buffer, BUFFER_SIZE, 0);
     if (bytesReceived < 0) {
         throw webServerError(6, "Number of received bytes smaller than one");
@@ -70,4 +71,23 @@ string SERVER::read() {
     cout << string(buffer) << endl << "**********************" << endl;
 #endif
     return string(buffer);
+}
+
+void SERVER::write(string data) {
+    int32_t bytesSent;
+    int32_t totalBytesSent = 0;
+    while (totalBytesSent < data.size()) {
+        bytesSent = send(client_socket, data.c_str(), data.size(), 0);
+        if (bytesSent < 0) {
+            break;
+        }
+        totalBytesSent += bytesSent;
+    }
+    if (totalBytesSent != data.size()) {
+        throw webServerError(7, "Send failed");
+    }
+}
+
+void SERVER::cycleFinish() {
+    closesocket(client_socket);
 }
