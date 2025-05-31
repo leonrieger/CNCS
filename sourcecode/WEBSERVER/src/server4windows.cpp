@@ -60,11 +60,9 @@ void SERVER::waitForHttpRequest() {
         throw webServerError(5, "Could not connect to client socket");
     }
 }
-
 string SERVER::read() {
     try {
-        cerr << "called suspicios problem" << endl;
-        //memset(&buffer, 0x0, BUFFER_SIZE);//this is the bastard
+        cerr << "called suspicious problem" << endl;
         const uint16_t BUFFER_SIZE = 30000;
         char buffer[BUFFER_SIZE] = {};
         cerr << "we got far" << endl;
