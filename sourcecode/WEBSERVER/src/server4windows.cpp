@@ -56,6 +56,7 @@ void SERVER::startup() {
 
 void SERVER::waitForHttpRequest() {
     client_socket = accept(server_socket, (sockaddr*)&socket_information, &server_socket_size);
+    cerr << "we got something" << endl;
     if (client_socket == SOCKET_ERROR) {
         throw webServerError(5, "Could not connect to client socket");
     }
