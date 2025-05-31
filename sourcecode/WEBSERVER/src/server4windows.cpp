@@ -64,7 +64,9 @@ void SERVER::waitForHttpRequest() {
 string SERVER::read() {
     try {
         cerr << "called suspicios problem" << endl;
-        memset(&buffer, 0x0, BUFFER_SIZE);
+        //memset(&buffer, 0x0, BUFFER_SIZE);//this is the bastard
+        const uint16_t BUFFER_SIZE = 30000;
+        char buffer[BUFFER_SIZE] = {};
         cerr << "we got far" << endl;
         bytesReceived = recv(client_socket, buffer, BUFFER_SIZE, 0);
         cerr << "we got farer" << endl;

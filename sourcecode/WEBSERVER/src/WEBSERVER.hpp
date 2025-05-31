@@ -56,8 +56,8 @@ namespace webserver {
         SOCKET client_socket;
         WSADATA server_wsadata;
 
-        const uint16_t BUFFER_SIZE = 60000;
-        char* buffer = new char [BUFFER_SIZE] { 0 };
+        
+        //char* buffer = new char [BUFFER_SIZE] { 0 };
 
         int32_t bytesReceived = 0;
     };
