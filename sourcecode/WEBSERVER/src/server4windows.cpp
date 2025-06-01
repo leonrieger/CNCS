@@ -30,6 +30,7 @@ SERVER::SERVER(IP_ADDR ip_information) {
 
 SERVER::~SERVER() {
     closesocket(server_socket);
+    WSACleanup();
 }
 
 void SERVER::startup() const {

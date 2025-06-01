@@ -35,5 +35,8 @@
     <ClCompile Include="src\http_response.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\http_request.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

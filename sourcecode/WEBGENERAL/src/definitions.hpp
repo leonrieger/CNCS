@@ -18,3 +18,6 @@
 #define HTTP_CONTENT_TEXT_JAVASCRIPT "text/javascript"
 #define HTTP_CONTENT_TEXT_PLAIN "text/plain"
 #define HTTP_CONTENT_TEXT_XML "text/xml"
+
+#define HTTP_METHOD_GET "GET"
+#define HTTP_METHOD_POST "POST"

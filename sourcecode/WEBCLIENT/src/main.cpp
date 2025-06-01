@@ -3,8 +3,6 @@
 #include <string>
 #include <ws2tcpip.h>
 
-#pragma comment(lib, "ws2_32.lib")
-
 int main() {
     // Initialize Winsock
     WSADATA wsaData;
@@ -21,7 +19,6 @@ int main() {
         return 1;
     }
 
-    // Set up the server address (example.com, port 80)
     struct sockaddr_in server;
     server.sin_family = AF_INET;
     server.sin_port = htons(8000);

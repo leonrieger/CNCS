@@ -18,7 +18,7 @@ namespace web {
     private:
         IP_ADDR server_ip_info;
 
-        sockaddr_in socket_information;
+        sockaddr_in server_socket_information;
         SOCKET server_socket;
         int32_t server_socket_size;
         WSADATA server_wsadata;
