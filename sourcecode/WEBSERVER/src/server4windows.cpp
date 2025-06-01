@@ -7,10 +7,6 @@ using namespace webserver;
 #include <ws2tcpip.h>
 #include <format>
 
-#ifdef _DEBUG
-#   include <iostream>
-#endif
-
 SERVER::SERVER(webserver::IP_ADDR ip_information) {
     server_ip_info = ip_information;
 
@@ -32,11 +28,6 @@ SERVER::SERVER(webserver::IP_ADDR ip_information) {
     catch (...) {
         throw webServerError(2, "couldn't connect to socket");
     }
-#ifdef _DEBUG
-    char ipstr[INET_ADDRSTRLEN] = { 0 };
-    inet_ntop(AF_INET, &(socket_information.sin_addr), ipstr, INET_ADDRSTRLEN);
-    cout << "\n*** Listening on ADDRESS: " << ipstr << " PORT: " << ntohs(socket_information.sin_port) << " ***\n\n";
-#endif
 }
 
 SERVER::~SERVER() {
@@ -61,26 +52,13 @@ void SERVER::waitForHttpRequest() {
     }
 }
 string SERVER::read() {
-    try {
-        cerr << "called suspicious problem" << endl;
-        const uint16_t BUFFER_SIZE = 30000;
-        char buffer[BUFFER_SIZE] = {};
-        cerr << "we got far" << endl;
-        bytesReceived = recv(client_socket, buffer, BUFFER_SIZE, 0);
-        cerr << "we got farer" << endl;
-        if (bytesReceived < 0) {
-            throw webServerError(6, "Number of received bytes smaller than one");
-        }
-#ifdef _DEBUG
-        cout << "***received request from client***" << endl;
-        cout << string(buffer) << endl << "**********************" << endl;
-#endif
-        return string(buffer);
+    const uint16_t BUFFER_SIZE = 30000;
+    char buffer[BUFFER_SIZE] = {};
+    bytesReceived = recv(client_socket, buffer, BUFFER_SIZE, 0);
+    if (bytesReceived < 0) {
+        throw webServerError(6, "Number of received bytes smaller than one");
     }
-    catch (...) {
-        cerr << "here it is:)" << endl;
-        return "aaaa";
-    }
+    return string(buffer);   
 }
 
 void SERVER::write(string data) {
@@ -94,9 +72,6 @@ void SERVER::write(string data) {
         totalBytesSent += bytesSent;
     }
     if (totalBytesSent != data.size()) {
-#ifdef _DEBUG
-        cout << "send failed" << endl;
-#endif
         throw webServerError(7, "Send failed");
     }
 }
