@@ -1,8 +1,8 @@
-#include "WEBSERVER.hpp"
+#include "WEBGENERAL.hpp"
 #include "definitions.hpp"
 #include "errors/errors.hpp"
 
-using namespace webserver;
+using namespace web;
 
 HTTP_RESPONSE::HTTP_RESPONSE() {
     status_line = "";
