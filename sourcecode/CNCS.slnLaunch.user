@@ -23,6 +23,10 @@
       {
         "Path": "WEBSERVER\\WEBSERVER.vcxproj",
         "Action": "Start"
+      },
+      {
+        "Path": "WEBCLIENT\\WEBCLIENT.vcxproj",
+        "Action": "Start"
       }
     ]
   }

@@ -5,32 +5,24 @@
 #include <sstream>
 using namespace std;
 
-using namespace webserver;
+using namespace web;
 
 int main() {
     try {
         SERVER testserver1(IP_ADDR(LOCALHOST, 8000));
         testserver1.startup();
-        cerr << "state before: " << WSAGetLastError() << endl;
         while (true) {
             try {
-                cerr << "state current: " << WSAGetLastError() << endl;
-                testserver1.waitForHttpRequest();//error?
-                cerr << "state current: " << WSAGetLastError() << endl;
-                cout << testserver1.read().c_str() << endl;//error
-                cerr << "state current: " << WSAGetLastError() << endl;
+                testserver1.waitForHttpRequest();
+                cout << testserver1.read().c_str() << endl;
                 string htmlFile = "<!DOCTYPE html><html><head><title>absolute sucess</title></head><body><h1> HOME </h1><p> Hello from your Server :) </p></body></html>";
-                std::ostringstream ss;
-                ss << "HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: " << htmlFile.size() << "\n\n" << htmlFile;
-                string message = ss.str();
-                cerr << "state current: " << WSAGetLastError() << endl;
-                testserver1.write(message);
-                cerr << "state current: " << WSAGetLastError() << endl;
+                HTTP_RESPONSE response;
+                response.addStatusLine(HTTP1_1, HTTP_STATUS_OK, HTTP_REASON_OK);
+                response.addBody(HTTP_CONTENT_TEXT_HTML, htmlFile);
+                testserver1.write(response.build());
                 testserver1.cycleFinish();
-                cerr << "state inbetween " << WSAGetLastError() << endl;
             }
             catch (...) {
-                //cerr << err.what() << endl;
                 cerr << "inner error" << endl;
             }
         }
@@ -43,24 +35,17 @@ int main() {
 }
 
 /*
-try {
-    SERVER testserver1(IP_ADDR(LOCALHOST, 8000));
+int main() {
+    HTTP_RESPONSE response;
 
-    testserver1.start();
-    while (true) {
-        if (testserver1.readAvailable()) {
-            string htmlFile = "<!DOCTYPE html><html><head><title>absolute sucess</title></head><body><h1> HOME </h1><p> Hello from your Server :) </p></body></html>";
-            ostringstream ss;
-            ss << "HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: " << htmlFile.size() << "\n\n" << htmlFile;
-            string message = ss.str();
-            testserver1.write(message);
-            testserver1.allowContinue();
-        }
-    }
-
-    testserver1.run();
+    response.addStatusLine(HTTP1_1, HTTP_STATUS_OK, HTTP_REASON_OK);
+    response.addHeader("Header-Test", "test_sucess");
+    response.addBody(HTTP_CONTENT_TEXT_PLAIN, "djflskdöadlsjdvhffvjldkss\njoskidvhjoscljcol\nsihjdfisoasdvughfisjdodkufjrofl\nifdkxksjcdojkdjckdjckdjck");
+    cout << response.build() << endl;
 }
-catch (webServerError& err) {
-    cout << "error" << err.what() << endl;
-}
+*/
+/*
+string htmlFile = "<!DOCTYPE html><html><head><title>absolute sucess</title></head><body><h1> HOME </h1><p> Hello from your Server :) </p></body></html>";
+ostringstream ss;
+ss << "HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: " << htmlFile.size() << "\n\n" << htmlFile;
 */

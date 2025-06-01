@@ -1,7 +1,7 @@
-#include "WEBSERVER.hpp"
+#include "WEBGENERAL.hpp"
 #include "definitions.hpp"
 
-using namespace webserver;
+using namespace web;
 
 IP_ADDR::IP_ADDR() {
     IP_address = LOCALHOST;

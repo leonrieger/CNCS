@@ -1,17 +1,11 @@
 #include "WEBSERVER.hpp"
-#include "definitions.hpp"
-#include "errors/errors.hpp"
 
-using namespace webserver;
+using namespace web;
 
 #include <ws2tcpip.h>
 #include <format>
 
-#ifdef _DEBUG
-#   include <iostream>
-#endif
-
-SERVER::SERVER(webserver::IP_ADDR ip_information) {
+SERVER::SERVER(IP_ADDR ip_information) {
     server_ip_info = ip_information;
 
     client_socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -32,18 +26,14 @@ SERVER::SERVER(webserver::IP_ADDR ip_information) {
     catch (...) {
         throw webServerError(2, "couldn't connect to socket");
     }
-#ifdef _DEBUG
-    char ipstr[INET_ADDRSTRLEN] = { 0 };
-    inet_ntop(AF_INET, &(socket_information.sin_addr), ipstr, INET_ADDRSTRLEN);
-    cout << "\n*** Listening on ADDRESS: " << ipstr << " PORT: " << ntohs(socket_information.sin_port) << " ***\n\n";
-#endif
 }
 
 SERVER::~SERVER() {
     closesocket(server_socket);
+    WSACleanup();
 }
 
-void SERVER::startup() {
+void SERVER::startup() const {
     if (bind(server_socket, (sockaddr*)&socket_information, server_socket_size) == SOCKET_ERROR) {
         int32_t lastError = WSAGetLastError();
         throw webServerError(3, format("Error in 'bind': {0} ", lastError));
@@ -60,30 +50,39 @@ void SERVER::waitForHttpRequest() {
         throw webServerError(5, "Could not connect to client socket");
     }
 }
-string SERVER::read() {
-    try {
-        cerr << "called suspicious problem" << endl;
-        const uint16_t BUFFER_SIZE = 30000;
-        char buffer[BUFFER_SIZE] = {};
-        cerr << "we got far" << endl;
-        bytesReceived = recv(client_socket, buffer, BUFFER_SIZE, 0);
-        cerr << "we got farer" << endl;
-        if (bytesReceived < 0) {
+
+string SERVER::read() const {
+    const size_t BUFFER_SIZE = 30000;
+    vector<char> buffer;
+    unique_ptr<char[]> temp(new char[BUFFER_SIZE]);
+    int32_t received;
+
+    const string END_OF_HEADERS = "\r\n\r\n";
+
+    while (true) {
+        received = recv(client_socket, temp.get(), BUFFER_SIZE, 0);
+        if (received < 0) {
             throw webServerError(6, "Number of received bytes smaller than one");
         }
-#ifdef _DEBUG
-        cout << "***received request from client***" << endl;
-        cout << string(buffer) << endl << "**********************" << endl;
-#endif
-        return string(buffer);
+        if (received == 0) {
+            break;
+        }
+        buffer.insert(buffer.end(), temp.get(), temp.get() + received);
+
+        if (buffer.size() >= END_OF_HEADERS.size()) {
+            std::string buf_str(buffer.data(), buffer.size());
+            if (buf_str.find(END_OF_HEADERS) != std::string::npos) {
+                break;
+            }
+        }
+        if (received < BUFFER_SIZE) {
+            break;
+        }
     }
-    catch (...) {
-        cerr << "here it is:)" << endl;
-        return "aaaa";
-    }
+    return string(buffer.data(), buffer.size());
 }
 
-void SERVER::write(string data) {
+void SERVER::write(string data) const {
     int32_t bytesSent;
     int32_t totalBytesSent = 0;
     while (totalBytesSent < data.size()) {
@@ -94,13 +93,10 @@ void SERVER::write(string data) {
         totalBytesSent += bytesSent;
     }
     if (totalBytesSent != data.size()) {
-#ifdef _DEBUG
-        cout << "send failed" << endl;
-#endif
         throw webServerError(7, "Send failed");
     }
 }
 
-void SERVER::cycleFinish() {
+void SERVER::cycleFinish() const {
     closesocket(client_socket);
 }
