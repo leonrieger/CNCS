@@ -24,7 +24,6 @@ int main() {
                 testserver1.cycleFinish();
             }
             catch (...) {
-                //cerr << err.what() << endl;
                 cerr << "inner error" << endl;
             }
         }

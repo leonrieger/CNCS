@@ -51,14 +51,37 @@ void SERVER::waitForHttpRequest() {
         throw webServerError(5, "Could not connect to client socket");
     }
 }
-string SERVER::read() {
-    const uint16_t BUFFER_SIZE = 30000;
-    char buffer[BUFFER_SIZE] = {};
-    bytesReceived = recv(client_socket, buffer, BUFFER_SIZE, 0);
-    if (bytesReceived < 0) {
-        throw webServerError(6, "Number of received bytes smaller than one");
-    }
-    return string(buffer);   
+
+string SERVER::read() const {
+    const size_t BUFFER_SIZE = 30000;  
+    std::vector<char> buffer;  
+    std::unique_ptr<char[]> temp(new char[BUFFER_SIZE]);
+    int32_t received;  
+
+    const string END_OF_HEADERS = "\r\n\r\n";  
+
+    while (true) {  
+        received = recv(client_socket, temp.get(), BUFFER_SIZE, 0);  
+        if (received < 0) {  
+            throw webServerError(6, "Number of received bytes smaller than one");  
+        }  
+        if (received == 0) {  
+            break;  
+        }  
+        buffer.insert(buffer.end(), temp.get(), temp.get() + received);  
+
+        if (buffer.size() >= END_OF_HEADERS.size()) {  
+            std::string buf_str(buffer.data(), buffer.size());  
+            if (buf_str.find(END_OF_HEADERS) != std::string::npos) {  
+                break;  
+            }  
+        }  
+        if (received < BUFFER_SIZE) {  
+            break;  
+        }  
+    }  
+
+    return string(buffer.data(), buffer.size());  
 }
 
 void SERVER::write(string data) {

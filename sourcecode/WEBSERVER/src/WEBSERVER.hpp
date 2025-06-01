@@ -5,11 +5,11 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
+#include <memory> // Include this header for std::unique_ptr
 using namespace std;
 
 #define WIN32_LEAN_AND_MEAN
 #include <WinSock2.h>
-//#include <Windows.h>
 
 namespace webserver {
 //==============================================================================
@@ -27,22 +27,19 @@ namespace webserver {
         string getIP();
         uint16_t getPORT();
     private:
-        bool type = true;//true if IPv4
+        bool type = true; // true if IPv4
         string IP_address;
-        uint16_t internal_port;//1024<port<49151!
+        uint16_t internal_port; // 1024<port<49151!
     };
-//=============================================================================
+//==============================================================================
     class SERVER {
     public:
         SERVER(IP_ADDR ip_information);
         ~SERVER();
 
-        //void run();
-
         void startup();
-
         void waitForHttpRequest();
-        string read();
+        string read() const;
         void write(string data);
         void cycleFinish();
 
@@ -54,9 +51,6 @@ namespace webserver {
         int32_t server_socket_size;
         SOCKET client_socket;
         WSADATA server_wsadata;
-
-        
-        //char* buffer = new char [BUFFER_SIZE] { 0 };
 
         int32_t bytesReceived = 0;
     };
