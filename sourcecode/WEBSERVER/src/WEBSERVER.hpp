@@ -5,7 +5,6 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
-#include <memory> // Include this header for std::unique_ptr
 using namespace std;
 
 #define WIN32_LEAN_AND_MEAN
@@ -13,6 +12,7 @@ using namespace std;
 
 namespace webserver {
 //==============================================================================
+
     class IP_ADDR { //compatible with IPv4 --- IPv6 support missing
     public:
         IP_ADDR();
@@ -31,17 +31,32 @@ namespace webserver {
         string IP_address;
         uint16_t internal_port; // 1024<port<49151!
     };
+
+//==============================================================================
+
+    class HTTP_RESPONSE {
+    public:
+        HTTP_RESPONSE();
+        ~HTTP_RESPONSE();
+
+        string build();
+    private:
+        string status_line;
+        vector<string> headers;
+        string body;
+    };
+
 //==============================================================================
     class SERVER {
     public:
         SERVER(IP_ADDR ip_information);
         ~SERVER();
 
-        void startup();
+        void startup() const;
         void waitForHttpRequest();
         string read() const;
-        void write(string data);
-        void cycleFinish();
+        void write(string data) const;
+        void cycleFinish() const;
 
     private:
         IP_ADDR server_ip_info;
