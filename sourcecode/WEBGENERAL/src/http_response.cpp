@@ -20,13 +20,6 @@ void HTTP_RESPONSE::addHeader(string name, string content) {
 }
 
 void HTTP_RESPONSE::addBody(string type, string data) {
-    //if someone calls this function twice
-    static bool already_called = false;
-    if (already_called) {
-        throw httpError(1, "function 'addBody' already called");
-    }
-    already_called = true;
-
     addHeader("Content-Type", type);
     addHeader("Content-Length", to_string(data.size()));
 
@@ -35,7 +28,16 @@ void HTTP_RESPONSE::addBody(string type, string data) {
 
 string HTTP_RESPONSE::build() {
     string temp = status_line;
-    return "";
+    if (!(headers.empty())) {
+        for (string header : headers) {
+            temp += header;
+        }
+        temp += "\r\n";
+    }
+    if (body != "") {
+        temp += body;
+    }
+    return temp;
 }
 
 //https://www.tutorialspoint.com/http/http_responses.htm

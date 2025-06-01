@@ -6,7 +6,7 @@
 using namespace std;
 
 using namespace webserver;
-
+/*
 int main() {
     try {
         SERVER testserver1(IP_ADDR(LOCALHOST, 8000));
@@ -34,3 +34,14 @@ int main() {
     WSACleanup();
     return 0;
 }
+*/
+
+int main() {
+    HTTP_RESPONSE response;
+
+    response.addStatusLine(HTTP1_1, HTTP_STATUS_OK, HTTP_REASON_OK);
+    response.addHeader("Header-Test", "test_sucess");
+    response.addBody(HTTP_CONTENT_TEXT_PLAIN, "djflskdöadlsjdvhffvjldkss\njoskidvhjoscljcol\nsihjdfisoasdvughfisjdodkufjrofl\nifdkxksjcdojkdjckdjckdjck");
+    cout << response.build() << endl;
+}
+

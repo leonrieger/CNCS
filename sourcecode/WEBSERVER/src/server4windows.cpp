@@ -1,13 +1,11 @@
 #include "WEBSERVER.hpp"
-#include "definitions.hpp"
-#include "errors/errors.hpp"
 
-using namespace webserver;
+using namespace web;
 
 #include <ws2tcpip.h>
 #include <format>
 
-SERVER::SERVER(webserver::IP_ADDR ip_information) {
+SERVER::SERVER(IP_ADDR ip_information) {
     server_ip_info = ip_information;
 
     client_socket = socket(AF_INET, SOCK_STREAM, 0);

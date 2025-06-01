@@ -1,8 +1,8 @@
 #pragma once
 
-const char LOCALHOST[] = "127.0.0.1";
+#define LOCALHOST "127.0.0.1"
 
-//for HTTP_RESPONSE class:
+
 #define HTTP_STATUS_OK 200
 #define HTTP_STATUS_NOT_FOUND 404
 #define HTTP_REASON_OK "OK"
