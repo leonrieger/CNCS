@@ -24,12 +24,11 @@ int main() {
     // Set up the server address (example.com, port 80)
     struct sockaddr_in server;
     server.sin_family = AF_INET;
-    server.sin_port = htons(8000);  // HTTP port
-    //server.sin_addr.s_addr = inet_addr("127.0.0.1");  // IP address of example.com
+    server.sin_port = htons(8000);
     inet_pton(AF_INET, "127.0.0.1", &server.sin_addr);
 
     // Connect to the server
-    if (connect(sock, (struct sockaddr*)&server, sizeof(server)) == SOCKET_ERROR) {
+    if (connect(sock, (sockaddr*)&server, sizeof(server)) == SOCKET_ERROR) {
         std::cerr << "Connection failed." << std::endl;
         closesocket(sock);
         WSACleanup();

@@ -44,4 +44,22 @@ namespace web {
         vector<string> headers;
         string body;
     };
+
+    //===================================================================================
+
+    class HTTP_REQUEST {
+    public:
+        HTTP_REQUEST();
+        ~HTTP_REQUEST();
+
+        void addStatusLine(string method, string path, string http_version);
+        void addHeader(string name, string content);
+        void addBody(string type, string data);
+
+        string build();
+    private:
+        string status_line;
+        vector<string> headers;
+        string body;
+    };
 }

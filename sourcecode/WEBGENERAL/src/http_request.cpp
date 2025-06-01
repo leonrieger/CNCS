@@ -4,29 +4,29 @@
 
 using namespace web;
 
-HTTP_RESPONSE::HTTP_RESPONSE() {
+HTTP_REQUEST::HTTP_REQUEST() {
     status_line = "";
     body = "";
 }
 
-HTTP_RESPONSE::~HTTP_RESPONSE() {}
+HTTP_REQUEST::~HTTP_REQUEST() {}
 
-void HTTP_RESPONSE::addStatusLine(string http_version, uint16_t status_code, string reason) {
-    status_line = http_version + " " + to_string(status_code) + " " + reason + "\r\n";
+void HTTP_REQUEST::addStatusLine(string method, string path, string http_version) {
+    status_line = method + " " + path + " " + http_version + "\r\n";
 }
 
-void HTTP_RESPONSE::addHeader(string name, string content) {
+void HTTP_REQUEST::addHeader(string name, string content) {
     headers.push_back(name + ": " + content + "\r\n");
 }
 
-void HTTP_RESPONSE::addBody(string type, string data) {
+void HTTP_REQUEST::addBody(string type, string data) {
     addHeader("Content-Type", type);
     addHeader("Content-Length", to_string(data.size()));
 
     body = data + "\r\n";
 }
 
-string HTTP_RESPONSE::build() {
+string HTTP_REQUEST::build() {
     string temp = status_line;
     if (!(headers.empty())) {
         for (string header : headers) {
