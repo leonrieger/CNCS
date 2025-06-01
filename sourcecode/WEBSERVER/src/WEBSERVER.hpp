@@ -39,6 +39,10 @@ namespace webserver {
         HTTP_RESPONSE();
         ~HTTP_RESPONSE();
 
+        void addStatusLine(string http_version, uint16_t status_code, string reason);
+        void addHeader(string name, string content);
+        void addBody(string data);
+
         string build();
     private:
         string status_line;
