@@ -41,7 +41,7 @@ namespace webserver {
 
         void addStatusLine(string http_version, uint16_t status_code, string reason);
         void addHeader(string name, string content);
-        void addBody(string data);
+        void addBody(string type, string data);
 
         string build();
     private:

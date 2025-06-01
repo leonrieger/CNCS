@@ -4,7 +4,10 @@
 
 using namespace webserver;
 
-HTTP_RESPONSE::HTTP_RESPONSE() {}
+HTTP_RESPONSE::HTTP_RESPONSE() {
+    status_line = "";
+    body = "";
+}
 
 HTTP_RESPONSE::~HTTP_RESPONSE() {}
 
@@ -16,7 +19,17 @@ void HTTP_RESPONSE::addHeader(string name, string content) {
     headers.push_back(name + ": " + content + "\r\n");
 }
 
-void HTTP_RESPONSE::addBody(string data) {
+void HTTP_RESPONSE::addBody(string type, string data) {
+    //if someone calls this function twice
+    static bool already_called = false;
+    if (already_called) {
+        throw httpError(1, "function 'addBody' already called");
+    }
+    already_called = true;
+
+    addHeader("Content-Type", type);
+    addHeader("Content-Length", to_string(data.size()));
+
     body = data + "\r\n";
 }
 

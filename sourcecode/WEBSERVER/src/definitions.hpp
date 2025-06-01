@@ -12,4 +12,9 @@ const char LOCALHOST[] = "127.0.0.1";
 #define HEADER_CONTENT_TYPE "Content-Type"
 #define HEADER_CONTENT_TYPE_HTML "text/html"
 
-#define HEADER_CONTENT_LENGHT "Content-Length"
+#define HTTP_CONTENT_TEXT_CSS "text/css"
+#define HTTP_CONTENT_TEXT_CSV "text/csv"
+#define HTTP_CONTENT_TEXT_HTML "text/html"
+#define HTTP_CONTENT_TEXT_JAVASCRIPT "text/javascript"
+#define HTTP_CONTENT_TEXT_PLAIN "text/plain"
+#define HTTP_CONTENT_TEXT_XML "text/xml"
