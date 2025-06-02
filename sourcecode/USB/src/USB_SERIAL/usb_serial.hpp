@@ -4,10 +4,28 @@
 #include <string>
 using namespace std;
 
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+
 namespace usb {
+    class USB_SERIAL_CONFIG {
+    public:
+        USB_SERIAL_CONFIG(string comPort);
+        ~USB_SERIAL_CONFIG();
+
+        friend class USB_SERIAL;
+    private:
+        uint32_t baudrate;
+        string comPORT;
+        uint8_t bytesize;
+        uint8_t stopbits;
+        uint8_t parity;
+        uint32_t DTRflowControl;
+    };
+
     class USB_SERIAL {
     public:
-        USB_SERIAL();
+        USB_SERIAL(USB_SERIAL_CONFIG configuration);
         ~USB_SERIAL();
 
         uint16_t available();
@@ -16,14 +34,7 @@ namespace usb {
 
         string readStringUntil(char endCharacter);
     private:
-    };
-
-    class USB_SERIAL_CONFIG {
-    public:
-        USB_SERIAL_CONFIG(string comPort, uint32_t baudrate);
-        ~USB_SERIAL_CONFIG();
-
-        friend class USB_SERIAL;
-    private:
+        HANDLE COMporthandle;
+        DCB SerialBusConfig;
     };
 }
