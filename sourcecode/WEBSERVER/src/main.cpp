@@ -1,5 +1,5 @@
-#include "WEBSERVER.hpp"
-#include "definitions.hpp"
+#include <webserver.hpp>
+#include <definitions.hpp>
 
 #include <iostream>
 #include <sstream>

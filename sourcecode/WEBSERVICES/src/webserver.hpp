@@ -1,6 +1,6 @@
 #pragma once
 
-#include <WEBGENERAL.hpp>
+#include "webstandartfunctions.hpp"
 
 #include <string>
 using namespace std;
