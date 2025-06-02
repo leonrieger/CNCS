@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5b66b78d-562b-4b0d-9cc8-b31942d86fbf}</ProjectGuid>
-    <RootNamespace>WEBGENERAL</RootNamespace>
+    <ProjectGuid>{4a3577e9-3387-406e-a098-7e4a46fecd0e}</ProjectGuid>
+    <RootNamespace>WEBSERVICES</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -147,15 +147,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\definitions.hpp" />
-    <ClInclude Include="src\errors\errors.hpp" />
-    <ClInclude Include="src\WEBGENERAL.hpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\errors\errors.cpp" />
+    <ClCompile Include="src\IP.cpp" />
+    <ClCompile Include="src\windows\client4windows.cpp" />
     <ClCompile Include="src\http_request.cpp" />
     <ClCompile Include="src\http_response.cpp" />
-    <ClCompile Include="src\IP.cpp" />
+    <ClCompile Include="src\windows\server4windows.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\definitions.hpp" />
+    <ClInclude Include="src\errors\errors.hpp" />
+    <ClInclude Include="src\webclient.hpp" />
+    <ClInclude Include="src\webstandartfunctions.hpp" />
+    <ClInclude Include="src\webserver.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <WEBGENERAL.hpp>
+#include "webstandartfunctions.hpp"
 
 #define WIN32_LEAN_AND_MEAN
 #include <WinSock2.h>

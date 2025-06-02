@@ -1,4 +1,4 @@
-#include "WEBGENERAL.hpp"
+#include "webstandartfunctions.hpp"
 #include "definitions.hpp"
 
 using namespace web;

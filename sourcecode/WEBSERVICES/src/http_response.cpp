@@ -1,32 +1,32 @@
-#include "WEBGENERAL.hpp"
+#include "webstandartfunctions.hpp"
 #include "definitions.hpp"
 #include "errors/errors.hpp"
 
 using namespace web;
 
-HTTP_REQUEST::HTTP_REQUEST() {
+HTTP_RESPONSE::HTTP_RESPONSE() {
     status_line = "";
     body = "";
 }
 
-HTTP_REQUEST::~HTTP_REQUEST() {}
+HTTP_RESPONSE::~HTTP_RESPONSE() {}
 
-void HTTP_REQUEST::addStatusLine(string method, string path, string http_version) {
-    status_line = method + " " + path + " " + http_version + "\r\n";
+void HTTP_RESPONSE::addStatusLine(string http_version, uint16_t status_code, string reason) {
+    status_line = http_version + " " + to_string(status_code) + " " + reason + "\r\n";
 }
 
-void HTTP_REQUEST::addHeader(string name, string content) {
+void HTTP_RESPONSE::addHeader(string name, string content) {
     headers.push_back(name + ": " + content + "\r\n");
 }
 
-void HTTP_REQUEST::addBody(string type, string data) {
+void HTTP_RESPONSE::addBody(string type, string data) {
     addHeader("Content-Type", type);
     addHeader("Content-Length", to_string(data.size()));
 
     body = data + "\r\n";
 }
 
-string HTTP_REQUEST::build() {
+string HTTP_RESPONSE::build() {
     string temp = status_line;
     if (!(headers.empty())) {
         for (string header : headers) {
