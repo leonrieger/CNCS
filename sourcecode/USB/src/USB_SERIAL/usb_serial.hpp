@@ -18,5 +18,10 @@ namespace usb {
     private:
     };
 
-
+    class USB_SERIAL_CONFIG {
+    public:
+        USB_SERIAL_CONFIG(string comPort, uint32_t baudrate);
+        ~USB_SERIAL_CONFIG();
+    private:
+    };
 }
