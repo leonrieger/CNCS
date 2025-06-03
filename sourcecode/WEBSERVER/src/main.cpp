@@ -9,7 +9,7 @@ using namespace web;
 
 int main() {
     try {
-        SERVER testserver1(IP_ADDR(LOCALHOST, 8000));
+        SERVER testserver1(IP_ADDR("10.118.192.4", 8000));
         testserver1.startup();
         while (true) {
             try {
