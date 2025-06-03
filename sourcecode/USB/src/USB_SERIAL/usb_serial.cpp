@@ -32,6 +32,10 @@ USB_SERIAL::USB_SERIAL() {
     SerialBusCtrl = DCB();
 }
 
+USB_SERIAL::~USB_SERIAL() {
+    CloseHandle(COMporthandle);
+}
+
 int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
     serialconfig = configuration;
 
@@ -59,5 +63,11 @@ int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
     SerialBusCtrl.Parity = serialconfig.parity;
     SerialBusCtrl.fDtrControl = serialconfig.DTRflowControl;
 
+    if (!(SetCommState(COMporthandle, &SerialBusCtrl))) {
+        throw usbSerialError(2, "Could not set CommState");
+    }
 
+    PurgeComm(COMporthandle, PURGE_RXCLEAR | PURGE_TXCLEAR);
+
+    return 0;
 }
