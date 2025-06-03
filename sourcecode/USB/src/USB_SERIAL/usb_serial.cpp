@@ -1,6 +1,6 @@
 #include "usb_serial.hpp"
+#include "../errors/errors.hpp"
 using namespace usb;
-
 
 USB_SERIAL_CONFIG::USB_SERIAL_CONFIG() {
     comPORT = "COM0";
@@ -44,4 +44,14 @@ int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
                                 NULL);
 
     uint32_t ConnectionError = GetLastError();
+
+    if (ConnectionError != 0) {
+        return ConnectionError;
+    }
+
+    if (!(GetCommState(COMporthandle, &SerialBusCtrl))) {
+        throw usbSerialError(1, "Could not get CommState");
+    }
+
+
 }
