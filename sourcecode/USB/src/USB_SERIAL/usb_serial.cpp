@@ -35,7 +35,7 @@ USB_SERIAL::USB_SERIAL() {
 int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
     serialconfig = configuration;
 
-    COMporthandle = CreateFileA(static_cast<LPCSTR>(configuration.comPORT.c_str()),
+    COMporthandle = CreateFileA(static_cast<LPCSTR>(serialconfig.comPORT.c_str()),
                                 GENERIC_READ | GENERIC_WRITE,
                                 NULL,
                                 NULL,
@@ -52,6 +52,12 @@ int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
     if (!(GetCommState(COMporthandle, &SerialBusCtrl))) {
         throw usbSerialError(1, "Could not get CommState");
     }
+
+    SerialBusCtrl.BaudRate = serialconfig.baudrate;
+    SerialBusCtrl.ByteSize = serialconfig.bytesize;
+    SerialBusCtrl.StopBits = serialconfig.stopbits;
+    SerialBusCtrl.Parity = serialconfig.parity;
+    SerialBusCtrl.fDtrControl = serialconfig.DTRflowControl;
 
 
 }
