@@ -10,6 +10,7 @@ using namespace std;
 namespace usb {
     class USB_SERIAL_CONFIG {
     public:
+        USB_SERIAL_CONFIG();
         USB_SERIAL_CONFIG(string comPort);
         ~USB_SERIAL_CONFIG();
 
@@ -25,8 +26,10 @@ namespace usb {
 
     class USB_SERIAL {
     public:
-        USB_SERIAL(USB_SERIAL_CONFIG configuration);
+        USB_SERIAL();
         ~USB_SERIAL();
+
+        int16_t connect(USB_SERIAL_CONFIG configuration);
 
         uint16_t available();
         inline char read();
@@ -34,7 +37,8 @@ namespace usb {
 
         string readStringUntil(char endCharacter);
     private:
+        USB_SERIAL_CONFIG serialconfig;
         HANDLE COMporthandle;
-        DCB SerialBusConfig;
+        DCB SerialBusCtrl;
     };
 }
