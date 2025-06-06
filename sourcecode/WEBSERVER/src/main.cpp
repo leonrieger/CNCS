@@ -15,7 +15,7 @@ int main() {
             try {
                 testserver1.waitForHttpRequest();
                 cout << testserver1.read().c_str() << endl;
-                string htmlFile = "<!DOCTYPE html><html><head><title>absolute sucess</title></head><body><h1> HOME </h1><p> Hello from your Server :) </p></body></html>";
+                string htmlFile = "<!DOCTYPE html><html><head><title>sucess</title></head><body><h1> HOME </h1><p> Hello World </p></body></html>";
                 HTTP_RESPONSE response;
                 response.addStatusLine(HTTP1_1, HTTP_STATUS_OK, HTTP_REASON_OK);
                 response.addBody(HTTP_CONTENT_TEXT_HTML, htmlFile);
