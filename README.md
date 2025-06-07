@@ -7,7 +7,7 @@
 >
 > The first official release will be version 1.0.0\
 > Any use of prior versions **will not and can not** work\
-> v1.0.0 will also add hardware components fully compatible with the CNCS software located in this repository
+> v1.0.0 will also add hardware components fully compatible with CNCS software located in this repository
 
 <br>
 
@@ -16,7 +16,7 @@
 
 <br>
 
-<h1>Table of contents</h1>
+<h2>Table of contents</h2>
 <h4>
 
 - [temp-title](#temp-title)
