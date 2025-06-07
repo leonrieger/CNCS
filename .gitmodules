@@ -4,7 +4,3 @@
 [submodule "sourcecode/include/gitmodules/tracy"]
 	path = sourcecode/include/gitmodules/tracy
 	url = https://github.com/wolfpld/tracy.git
-[submodule "sourcecode/include/gitmodules/imgui"]
-	path = sourcecode/include/gitmodules/imgui
-	url = https://github.com/ocornut/imgui.git
-	branch = docking
