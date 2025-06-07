@@ -11,7 +11,7 @@ sourcecode/.binaries-int/
 sourcecode/.bin/
 sourcecode/.bin-int/
 
-sourcecode/include/gitmodules/
+#sourcecode/include/gitmodules/
 
 #Thanks VS2022
 *.user
