@@ -19,18 +19,17 @@
 <h2>Table of contents</h2>
 <h4>
 
-- [temp-title](#temp-title)
-  - [temp-title1](#temp-title1)
-    - [temp-title3](#temp-title3)
-- [temp-title4](#temp-title4)
+- [Contribute](#contribute)
+- [License](#license)
 
 </h4>
 <br>
 
+# Contribute
+All contributions are welcome!\
+this program has a very (very) long way to go before beeing ready for the first release - any help would be appreciated
+for further information read [CONTRIBUTING.md](.github/CONTRIBUTING.md)
 
-
-
-# temp-title
-## temp-title1
-### temp-title3
-# temp-title4
+# License
+CNCS is licensed under the GNU GPL v2\
+(see [License](License.md) for further details)
