@@ -1,11 +1,3 @@
-//#include "EntryPoint/EntryPoint.hpp"
-#include "GUI.hpp"
+#include <wxWidgets/include/wx/wx.h>
 
-int main() {
-    bool requestToStop = false;
-    ImGui::CreateContext();
-    ImGui_ImplOpenGL3_Init();
-    do {
-
-    } while (!requestToStop);
-}
+wxIMPLEMENT_APP();
