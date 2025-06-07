@@ -1,7 +1,7 @@
 <h1 align="center">CNCS</h1>
 <h3 align="center">a free of charge universal CNC control and management ecosystem<h3>
 
-> [!WARNING]
+> [!WARNING]  
 > CNCS is currently **NOT** a working program!\
 > It is currently in an early development state.
 >
@@ -11,6 +11,6 @@
 
 <br>
 
-> [!NOTE]
+> [!NOTE]  
 > The hardware components/schematics are located in the [CNCS-controller repository](https://github.com/leonrieger/CNCS-controller)
 
