@@ -1,5 +1,4 @@
-CNCS is provided under:
-
+CNCS is provided under:\
     [GNU General Public License Version 2](.github/LICENSES/gplv2.txt)
 
 Available secondary licenses are:
