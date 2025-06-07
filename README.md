@@ -2,7 +2,7 @@
 <h3 align="center">a free of charge universal CNC control and management ecosystem</h3>
 
 > [!WARNING]  
-> CNCS is currently **NOT** a working program!\
+> CNCS is currently **NOT** a working application!\
 > It is currently in an early development state.
 >
 > The first official release will be version 1.0.0\
@@ -14,3 +14,23 @@
 > [!NOTE]  
 > The hardware components/schematics are located in the [CNCS-controller repository](https://github.com/leonrieger/CNCS-controller)
 
+<br>
+
+<h1>Table of contents</h1>
+<h4>
+
+- [temp-title](#temp-title)
+  - [temp-title1](#temp-title1)
+    - [temp-title3](#temp-title3)
+- [temp-title4](#temp-title4)
+
+</h4>
+<br>
+
+
+
+
+# temp-title
+## temp-title1
+### temp-title3
+# temp-title4
