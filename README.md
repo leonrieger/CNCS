@@ -1,7 +1,7 @@
 <h1 align="center">CNCS</h1>
 <h3 align="center">a free, universal CNC control and management system </h3>
 
-> [!WARNING]  
+> [!WARNING]
 > CNCS is currently **NOT** a working application!\
 > It is currently in an early development state.
 >
@@ -11,7 +11,7 @@
 
 <br>
 
-> [!NOTE]  
+> [!NOTE]
 > The hardware components/schematics are located in the [CNCS-controller](https://github.com/leonrieger/CNCS-controller) repository
 
 <br>
@@ -27,7 +27,7 @@
 <br>
 
 # Capabilities/functions
-    (there may occur frequent changes)
+    (there may occur frequent changes to this part of the document)
 * 6 axis control of CNC - machines
 * python as scripting language
 * controllers configurable with LAN/USB
