@@ -19,11 +19,18 @@
 <h2>Table of contents</h2>
 <h4>
 
+- [Capabilities/functions](#capabilitiesfunctions)
 - [Contributing](#contributing)
 - [License](#license)
 
 </h4>
 <br>
+
+# Capabilities/functions
+    (there may occur frequent changes)
+* 6 axis control of CNC - machines
+* python as scripting language
+* 
 
 # Contributing
 All contributions are welcome!\
