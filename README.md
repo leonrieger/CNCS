@@ -12,7 +12,7 @@
 <br>
 
 > [!NOTE]  
-> The hardware components/schematics are located in the [CNCS-controller repository](https://github.com/leonrieger/CNCS-controller)
+> The hardware components/schematics are located in the [CNCS-controller](https://github.com/leonrieger/CNCS-controller) repository
 
 <br>
 
@@ -30,7 +30,10 @@
     (there may occur frequent changes)
 * 6 axis control of CNC - machines
 * python as scripting language
-* 
+* controllers configurable with LAN/USB
+* Gcode - simulation
+* Mcode - simulation
+* unintendet collision detection and emergency stop
 
 # Contributing
 All contributions are welcome!\
