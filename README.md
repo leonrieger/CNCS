@@ -34,6 +34,8 @@
 * Gcode - simulation
 * Mcode - simulation
 * unintendet collision detection and emergency stop
+* storage of tools in database
+* control multiple CNC - machines with one PC simultaniously
 
 # Contributing
 All contributions are welcome!\
