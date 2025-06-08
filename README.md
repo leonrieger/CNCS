@@ -1,7 +1,7 @@
 <h1 align="center">CNCS</h1>
 <h3 align="center">a free, universal CNC control and management system </h3>
 
-> [!WARNING]
+> [!CAUTION]
 > CNCS is currently **NOT** a working application!\
 > It is currently in an early development state.
 >
