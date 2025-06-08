@@ -36,6 +36,7 @@
 * unintendet collision detection and emergency stop
 * storage of tools in database
 * control multiple CNC - machines with one PC simultaniously over a LAN connection
+* multiple control interfaces controlling one CNC
 
 # Contributing
 All contributions are welcome!\
