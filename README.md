@@ -20,6 +20,7 @@
 <h4>
 
 - [Capabilities/functions](#capabilitiesfunctions)
+- [Reporting issues](#reporting-issues)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -38,9 +39,12 @@
 * control multiple CNC - machines with one PC simultaniously over a LAN connection
 * multiple control interfaces controlling one CNC
 
+# Reporting issues
+if you would like to report an issue, please follow the [Code of Conduct](.github/CODE_OF_CONDUCT.md) and use the appropriate issue-template
+
 # Contributing
 All contributions are welcome!\
-this program has a very (very) long way to go before beeing ready for the first release - any help would be appreciated
+this program has a very (very) long way to go before being ready for the first release - any help would be appreciated
 for further information read [CONTRIBUTING.md](.github/CONTRIBUTING.md)
 
 # License
