@@ -1,5 +1,5 @@
 <h1 align="center">CNCS</h1>
-<h3 align="center">a free, universal CNC control and management system </h3>
+<h3 align="center">a free, universal CNC control and management system</h3>
 
 > [!CAUTION]
 > CNCS is currently **NOT** a working application!\
@@ -34,9 +34,9 @@
 * controllers configurable with LAN/USB
 * Gcode - simulation
 * Mcode - simulation
-* unintendet collision detection and emergency stop
+* unintended collision detection and emergency stop
 * storage of tools in database
-* control multiple CNC - machines with one PC simultaniously over a LAN connection
+* control multiple CNC - machines with one PC simultaneously over a LAN connection
 * multiple control interfaces controlling one CNC
 
 # Reporting issues
