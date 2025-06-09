@@ -12,4 +12,5 @@
 * the server implementation
 * an easy programming and flashing utility for programming microprocessors
 * auto calibration
+* **migrate to CMake**
 * to be continued...
