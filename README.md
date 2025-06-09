@@ -1,5 +1,5 @@
 <h1 align="center">CNCS</h1>
-<h3 align="center">a free of charge universal CNC control and management ecosystem</h3>
+<h3 align="center">a free, universal CNC control and management system</h3>
 
 > [!WARNING]  
 > CNCS is currently **NOT** a working application!\
@@ -19,11 +19,28 @@
 <h2>Table of contents</h2>
 <h4>
 
+- [Capabilities/functions](#capabilitiesfunctions)
+- [Reporting issues](#reporting-issues)
 - [Contributing](#contributing)
 - [License](#license)
 
 </h4>
 <br>
+
+# Capabilities/functions
+    (there may occur frequent changes to this part of the document)
+* 6 axis control of CNC - machines
+* python as scripting language
+* controllers configurable with LAN/USB
+* Gcode - simulation
+* Mcode - simulation
+* unintended collision detection and emergency stop
+* storage of tools in database
+* control multiple CNC - machines with one PC simultaneously over a LAN connection
+* multiple control interfaces controlling one CNC
+
+# Reporting issues
+if you would like to report an issue, please follow the [Code of Conduct](.github/CODE_OF_CONDUCT.md) and use the appropriate issue-template
 
 # Contributing
 All contributions are welcome!\
