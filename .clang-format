@@ -4,5 +4,7 @@ IndentWidth: 4
 Language: Cpp
 DerivePointerAlignment: false
 PointerAlignment: Left
-AlignAfterOpenBracket: BAS_Align
-
+AlignAfterOpenBracket: Align
+AccessModifierOffset: -4
+AlignArrayOfStructures: Left
+AlignOperands: BreakBeforeBinaryOperators
