@@ -19,7 +19,7 @@ USB_SERIAL_CONFIG::USB_SERIAL_CONFIG(string comPort) {
     bytesize = 8;
     stopbits = ONESTOPBIT;
     parity = NOPARITY;
-    DTRflowControl = DTR_CONTROL_ENABLE;
+    DTRflowControl = DTR_CONTROL_DISABLE;// DTR_CONTROL_ENABLE
 }
 
 USB_SERIAL_CONFIG::~USB_SERIAL_CONFIG() {}
@@ -46,7 +46,7 @@ int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
                                 OPEN_EXISTING,
                                 FILE_ATTRIBUTE_NORMAL,
                                 NULL);
-
+    
     uint32_t ConnectionError = GetLastError();
 
     if (ConnectionError != 0) {
@@ -70,4 +70,8 @@ int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
     PurgeComm(COMporthandle, PURGE_RXCLEAR | PURGE_TXCLEAR);
 
     return 0;
+}
+
+string read() {
+
 }
