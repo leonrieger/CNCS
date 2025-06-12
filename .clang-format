@@ -24,4 +24,5 @@ BraceWrapping:
     BeforeElse: false
     BeforeLambdaBody: false
     BeforeWhile: false
+    SplitEmptyFunction: false
     
