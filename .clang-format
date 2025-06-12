@@ -20,4 +20,5 @@ BraceWrapping:
     AfterStruct: false
     AfterUnion: false
     AfterExternBlock: false
+    BeforeCatch: false
     
