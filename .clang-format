@@ -8,3 +8,5 @@ AlignAfterOpenBracket: Align
 AccessModifierOffset: -4
 AlignArrayOfStructures: Left
 AlignOperands: BreakBeforeBinaryOperators
+
+
