@@ -22,4 +22,5 @@ BraceWrapping:
     AfterExternBlock: false
     BeforeCatch: false
     BeforeElse: false
+    BeforeLambdaBody: false
     
