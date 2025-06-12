@@ -16,4 +16,8 @@ BraceWrapping:
     AfterControlStatement: Never
     AfterEnum: false
     AfterFunction: false
+    AfterNamespace: false
+    AfterStruct: false
+    AfterUnion: false
+    AfterExternBlock: false
     
