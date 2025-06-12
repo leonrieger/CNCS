@@ -9,4 +9,8 @@ AccessModifierOffset: -4
 AlignArrayOfStructures: Left
 AlignOperands: BreakBeforeBinaryOperators
 
-
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterCaseLabel: false
+    AfterClass: false
+    
