@@ -25,4 +25,5 @@ BraceWrapping:
     BeforeLambdaBody: false
     BeforeWhile: false
     SplitEmptyFunction: false
+    SplitEmptyRecord: false
     
