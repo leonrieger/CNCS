@@ -23,4 +23,5 @@ BraceWrapping:
     BeforeCatch: false
     BeforeElse: false
     BeforeLambdaBody: false
+    BeforeWhile: false
     
