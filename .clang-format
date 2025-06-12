@@ -14,5 +14,6 @@ BraceWrapping:
     AfterCaseLabel: false
     AfterClass: false
     AfterControlStatement: Never
-    bool AfterEnum: false
+    AfterEnum: false
+    AfterFunction: false
     
