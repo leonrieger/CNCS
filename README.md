@@ -4,7 +4,6 @@
 > [!CAUTION]
 > CNCS is currently **NOT** a working application!\
 > It is in an early development state.
-> It is currently in an early development state.
 >
 > The first official release will be version 1.0.0\
 > Any use of prior versions ***will not and can not*** work\
