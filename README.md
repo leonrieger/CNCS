@@ -36,7 +36,7 @@
 * Mcode - simulation
 * unintended collision detection and emergency stop
 * storage of tools in database
-* control multiple CNC - machines with one PC simultaniously over a LAN connection
+* control multiple CNC-machines with one PC simultaneously over a LAN connection
 * multiple control interfaces controlling one CNC
 
 # Reporting issues
