@@ -50,3 +50,5 @@ for further information read [CONTRIBUTING.md](.github/CONTRIBUTING.md)
 # License
 CNCS is licensed under the GNU GPL v2\
 (see [License](License.md) for further details)
+
+<!--making git errors-->

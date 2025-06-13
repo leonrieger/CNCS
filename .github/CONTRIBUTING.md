@@ -27,3 +27,5 @@ if yout want to help CNCS but don't know how, you could [implement the features 
 ## Code of Conduct
 
 See our code of conduct >[here](CODE_OF_CONDUCT.md)<
+
+<!--making git errors-->

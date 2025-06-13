@@ -14,3 +14,5 @@
 * auto calibration
 * **CMake integration**
 * to be continued...
+
+<!--making git errors-->
