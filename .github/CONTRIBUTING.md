@@ -22,7 +22,7 @@ Thank you for your interest in contributing! Please follow these guidelines to h
 - Wait for a review and please respond to feedback.
 
 ## Basic Ideas
-if yout want to help CNCS but don't know how, you could [implement the features we would like to integrate in the future](FEATURES_TO_BE_ADDED.md)
+if you want to help CNCS but don't know how, you could [implement the features we would like to integrate in the future](FEATURES_TO_BE_ADDED.md)
 
 ## Code of Conduct
 
