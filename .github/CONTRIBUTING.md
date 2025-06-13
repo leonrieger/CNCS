@@ -6,7 +6,7 @@ Thank you for your interest in contributing! Please follow these guidelines to h
 
 1. **Create a new branch** for your changes.
 2. **Describe your changes** clearly in your pull request (PR).
-3. **Write clear, concise commit messages** and adhere to our [coding standarts](STYLEGUIDE.md).
+3. **Write clear, concise commit messages** and adhere to our [coding standards](STYLEGUIDE.md).
 4. **Test your code** before submitting.
 5. **Follow the coding style** used in the repository.
 
