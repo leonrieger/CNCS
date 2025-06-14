@@ -31,17 +31,15 @@ namespace usb {
 
         int16_t connect(USB_SERIAL_CONFIG configuration);
 
-        uint16_t available();
         string read();
         void write(string text);
 
-        string readStringUntil(char endCharacter);
     private:
         USB_SERIAL_CONFIG serialconfig;
 
         HANDLE COMporthandle;
         DCB SerialBusCtrl;
-        COMSTAT status;
-        DWORD error;
+        //COMSTAT status;
+        //DWORD error;
     };
 }
