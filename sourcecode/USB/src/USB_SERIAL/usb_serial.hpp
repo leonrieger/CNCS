@@ -15,6 +15,7 @@ namespace usb {
         ~USB_SERIAL_CONFIG();
 
         friend class USB_SERIAL;
+
     private:
         uint32_t baudrate;
         string comPORT;
@@ -31,15 +32,15 @@ namespace usb {
 
         int16_t connect(USB_SERIAL_CONFIG configuration);
 
-        string read();
-        uint16_t write(string text);
+        inline char read();
+        void write(string data);
 
     private:
         USB_SERIAL_CONFIG serialconfig;
 
         HANDLE COMporthandle;
         DCB SerialBusCtrl;
-        //COMSTAT status;
-        //DWORD error;
+        // COMSTAT status;
+        // DWORD error;
     };
-}
+} // namespace usb

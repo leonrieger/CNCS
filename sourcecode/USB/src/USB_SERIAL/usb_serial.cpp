@@ -19,7 +19,7 @@ USB_SERIAL_CONFIG::USB_SERIAL_CONFIG(string comPort) {
     bytesize = 8;
     stopbits = ONESTOPBIT;
     parity = NOPARITY;
-    DTRflowControl = DTR_CONTROL_DISABLE;// DTR_CONTROL_ENABLE
+    DTRflowControl = DTR_CONTROL_DISABLE; // DTR_CONTROL_ENABLE
 }
 
 USB_SERIAL_CONFIG::~USB_SERIAL_CONFIG() {}
@@ -32,21 +32,16 @@ USB_SERIAL::USB_SERIAL() {
     SerialBusCtrl = DCB();
 }
 
-USB_SERIAL::~USB_SERIAL() {
-    CloseHandle(COMporthandle);
-}
+USB_SERIAL::~USB_SERIAL() { CloseHandle(COMporthandle); }
 
 int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
     serialconfig = configuration;
 
-    COMporthandle = CreateFileA(static_cast<LPCSTR>(serialconfig.comPORT.c_str()),
-                                GENERIC_READ | GENERIC_WRITE,
-                                NULL,
-                                NULL,
-                                OPEN_EXISTING,
-                                FILE_ATTRIBUTE_NORMAL,
-                                NULL);
-    
+    COMporthandle =
+        CreateFileA(static_cast<LPCSTR>(serialconfig.comPORT.c_str()),
+                    GENERIC_READ | GENERIC_WRITE, NULL, NULL, OPEN_EXISTING,
+                    FILE_ATTRIBUTE_NORMAL, NULL);
+
     uint32_t ConnectionError = GetLastError();
 
     if (ConnectionError != 0) {
@@ -72,10 +67,16 @@ int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
     return 0;
 }
 
-string read() {
-
+inline char USB_SERIAL::read() {
+    static char tempchar = 0;
+    static DWORD noOfBytesRead = 0;
+    if (ReadFile(COMporthandle, &tempchar, 1, &noOfBytesRead, 0)) {
+        return tempchar;
+    }
+    return -1;
 }
 
-uint16_t write(string text) {
-
+void USB_SERIAL::write(string text) {
+    WriteFile();
+    char temp = 0;
 }

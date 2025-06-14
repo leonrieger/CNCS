@@ -7,7 +7,8 @@
 using namespace std;
 
 vector<uint8_t> SelectComPort() {
-    //checks 255 COM-Ports if they have connections --- returns a vector with numbers - for example 3 means "COM3"
+    // checks 255 COM-Ports if they have connections --- returns a vector with
+    // numbers - for example 3 means "COM3"
     char lpTargetPath[500];
     vector<uint8_t> available_ports;
 
