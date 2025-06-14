@@ -75,3 +75,7 @@ int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
 string read() {
 
 }
+
+uint16_t write(string text) {
+
+}

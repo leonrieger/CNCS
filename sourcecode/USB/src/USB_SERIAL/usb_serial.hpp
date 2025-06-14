@@ -32,7 +32,7 @@ namespace usb {
         int16_t connect(USB_SERIAL_CONFIG configuration);
 
         string read();
-        void write(string text);
+        uint16_t write(string text);
 
     private:
         USB_SERIAL_CONFIG serialconfig;
