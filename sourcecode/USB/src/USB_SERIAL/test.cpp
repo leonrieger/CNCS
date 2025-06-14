@@ -6,7 +6,9 @@
 
 using namespace std;
 
-vector<uint8_t> SelectComPort() {
+#include "usb_serial.hpp"
+
+vector<uint8_t> availAbleComPorts() {
     // checks 255 COM-Ports if they have connections --- returns a vector with
     // numbers - for example 3 means "COM3"
     char lpTargetPath[500];
@@ -24,8 +26,6 @@ vector<uint8_t> SelectComPort() {
 }
 
 int main() {
-    for (uint8_t port : SelectComPort()) {
-        cout << "COM" << to_string(port) << endl;
-    }
+    
     return 0;
 }
