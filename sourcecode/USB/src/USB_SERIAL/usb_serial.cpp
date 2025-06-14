@@ -67,7 +67,7 @@ int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
     return 0;
 }
 
-inline char USB_SERIAL::read() {
+inline char USB_SERIAL::read() const {
     static char tempchar = 0;
     static DWORD noOfBytesRead = 0;
     if (ReadFile(COMporthandle, &tempchar, 1, &noOfBytesRead, 0)) {
@@ -76,7 +76,7 @@ inline char USB_SERIAL::read() {
     return -1;
 }
 
-void USB_SERIAL::write(string text) {
-    WriteFile();
-    char temp = 0;
+void USB_SERIAL::write(string data) const {
+    DWORD noOfBytesWritten = 0;
+    WriteFile(COMporthandle, data.c_str(), data.length(), &noOfBytesWritten, 0);
 }

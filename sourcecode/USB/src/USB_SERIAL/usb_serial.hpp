@@ -32,8 +32,8 @@ namespace usb {
 
         int16_t connect(USB_SERIAL_CONFIG configuration);
 
-        inline char read();
-        void write(string data);
+        inline char read() const;
+        void write(string data) const;
 
     private:
         USB_SERIAL_CONFIG serialconfig;
