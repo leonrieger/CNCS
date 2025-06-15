@@ -1,0 +1,86 @@
+﻿  errors.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\format(42): warning STL4038: The contents of <format> are available only with C++20 or later.
+C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,52): error C2039: 'format': is not a member of 'std'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\string(23,1):
+      see declaration of 'std'
+  
+C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,52): error C3861: 'format': identifier not found
+C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,98): error C2677: binary '+': no global operator found which takes type 'std::string' (or there is no acceptable conversion)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(1984,50):
+      could be 'std::reverse_iterator<_BidIt> std::operator +(reverse_iterator<_BidIt>::difference_type,const std::reverse_iterator<_BidIt> &) noexcept(<expr>)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::reverse_iterator<_BidIt> std::operator +(reverse_iterator<_BidIt>::difference_type,const std::reverse_iterator<_BidIt> &) noexcept(<expr>)': could not deduce template argument for 'const std::reverse_iterator<_BidIt> &' from 'std::string'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(4535,46):
+      or       'std::move_iterator<_Iter> std::operator +(move_iterator<_Iter>::difference_type,const std::move_iterator<_Iter> &) noexcept(<expr>)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::move_iterator<_Iter> std::operator +(move_iterator<_Iter>::difference_type,const std::move_iterator<_Iter> &) noexcept(<expr>)': could not deduce template argument for 'const std::move_iterator<_Iter> &' from 'std::string'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3147,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const std::basic_string<_Elem,_Traits,_Alloc> &,const std::basic_string<_Elem,_Traits,_Alloc> &)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const std::basic_string<_Elem,_Traits,_Alloc> &,const std::basic_string<_Elem,_Traits,_Alloc> &)': could not deduce template argument for 'const std::basic_string<_Elem,_Traits,_Alloc> &' from '<error type>'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3159,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const _Elem *const ,const std::basic_string<_Elem,_Traits,_Alloc> &)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const _Elem *const ,const std::basic_string<_Elem,_Traits,_Alloc> &)': could not deduce template argument for 'const _Elem *const ' from '<error type>'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3172,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const _Elem,const std::basic_string<_Elem,_Traits,_Alloc> &)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const _Elem,const std::basic_string<_Elem,_Traits,_Alloc> &)': template parameter '_Elem' is ambiguous
+              C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+              could be 'char'
+              C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+              or       '<error type>'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const _Elem,const std::basic_string<_Elem,_Traits,_Alloc> &)': could not deduce template argument for 'const std::basic_string<_Elem,_Traits,_Alloc> &' from 'std::string'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3183,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const std::basic_string<_Elem,_Traits,_Alloc> &,const _Elem *const )'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const std::basic_string<_Elem,_Traits,_Alloc> &,const _Elem *const )': could not deduce template argument for 'const std::basic_string<_Elem,_Traits,_Alloc> &' from '<error type>'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3196,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const std::basic_string<_Elem,_Traits,_Alloc> &,const _Elem)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const std::basic_string<_Elem,_Traits,_Alloc> &,const _Elem)': could not deduce template argument for 'const std::basic_string<_Elem,_Traits,_Alloc> &' from '<error type>'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3207,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const std::basic_string<_Elem,_Traits,_Alloc> &,std::basic_string<_Elem,_Traits,_Alloc> &&)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const std::basic_string<_Elem,_Traits,_Alloc> &,std::basic_string<_Elem,_Traits,_Alloc> &&)': could not deduce template argument for 'const std::basic_string<_Elem,_Traits,_Alloc> &' from '<error type>'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3213,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(std::basic_string<_Elem,_Traits,_Alloc> &&,const std::basic_string<_Elem,_Traits,_Alloc> &)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(std::basic_string<_Elem,_Traits,_Alloc> &&,const std::basic_string<_Elem,_Traits,_Alloc> &)': could not deduce template argument for 'std::basic_string<_Elem,_Traits,_Alloc> &&' from '<error type>'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3219,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(std::basic_string<_Elem,_Traits,_Alloc> &&,std::basic_string<_Elem,_Traits,_Alloc> &&)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(std::basic_string<_Elem,_Traits,_Alloc> &&,std::basic_string<_Elem,_Traits,_Alloc> &&)': could not deduce template argument for 'std::basic_string<_Elem,_Traits,_Alloc> &&' from '<error type>'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3232,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const _Elem *const ,std::basic_string<_Elem,_Traits,_Alloc> &&)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const _Elem *const ,std::basic_string<_Elem,_Traits,_Alloc> &&)': could not deduce template argument for 'const _Elem *const ' from '<error type>'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3238,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const _Elem,std::basic_string<_Elem,_Traits,_Alloc> &&)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const _Elem,std::basic_string<_Elem,_Traits,_Alloc> &&)': template parameter '_Elem' is ambiguous
+              C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+              could be 'char'
+              C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+              or       '<error type>'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(const _Elem,std::basic_string<_Elem,_Traits,_Alloc> &&)': could not deduce template argument for 'std::basic_string<_Elem,_Traits,_Alloc> &&' from 'std::string'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3244,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(std::basic_string<_Elem,_Traits,_Alloc> &&,const _Elem *const )'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(std::basic_string<_Elem,_Traits,_Alloc> &&,const _Elem *const )': could not deduce template argument for 'std::basic_string<_Elem,_Traits,_Alloc> &&' from '<error type>'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(3250,62):
+      or       'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(std::basic_string<_Elem,_Traits,_Alloc> &&,const _Elem)'
+          C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\errors\errors.cpp(6,58):
+          'std::basic_string<_Elem,_Traits,_Alloc> std::operator +(std::basic_string<_Elem,_Traits,_Alloc> &&,const _Elem)': could not deduce template argument for 'std::basic_string<_Elem,_Traits,_Alloc> &&' from '<error type>'
+  
+  serial.cpp
+C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\win32\serial\serial.hpp(19,13): error C2535: 'CNCS::serial::SERIAL_CONFIG::SERIAL_CONFIG(void)': member function already defined or declared
+  (compiling source file 'src/win32/serial/serial.cpp')
+      C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\win32\serial\serial.hpp(17,13):
+      see declaration of 'CNCS::serial::SERIAL_CONFIG::SERIAL_CONFIG'
+  
+C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\win32\serial\serial.cpp(40,31): error C2600: 'CNCS::serial::SERIAL_CONFIG::~SERIAL_CONFIG': cannot define a compiler-generated special member function (must be declared in the class first)
+C:\dev\CNCS-ecosystem\CNCS\sourcecode\SERIAL\src\win32\serial\serial.cpp(102,55): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
+  Generating Code...
