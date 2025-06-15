@@ -9,7 +9,7 @@ int main() {
     conn.connect(config);
 
     while (1) {
-        std::cerr << conn.read();
         conn.write("Test sucess\n");
+        std::cout << conn.readStringUntil('\n', 2000);
     }
 }
