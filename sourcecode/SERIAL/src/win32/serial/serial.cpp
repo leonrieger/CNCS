@@ -48,7 +48,7 @@ CNCS::serial::SERIAL_CONNECTION::SERIAL_CONNECTION() {
 
 CNCS::serial::SERIAL_CONNECTION::~SERIAL_CONNECTION() { CloseHandle(COMporthandle); }
 
-int16_t CNCS::serial::SERIAL_CONNECTION::connect(SERIAL_CONFIG &configuration) {
+int16_t CNCS::serial::SERIAL_CONNECTION::connect(CNCS::serial::SERIAL_CONFIG &configuration) {
     if (alreadyConnected) {
         CloseHandle(COMporthandle);
         alreadyConnected = false;

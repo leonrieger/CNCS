@@ -34,7 +34,7 @@ namespace CNCS {
             SERIAL_CONNECTION();
             ~SERIAL_CONNECTION();
 
-            int16_t connect(SERIAL_CONFIG &configuration);
+            int16_t connect(CNCS::serial::SERIAL_CONFIG &configuration);
 
             inline char read() const;
             void write(std::string data) const;
