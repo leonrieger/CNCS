@@ -24,8 +24,3 @@ vector<uint8_t> availAbleComPorts() {
     }
     return available_ports;
 }
-
-int main() {
-    
-    return 0;
-}

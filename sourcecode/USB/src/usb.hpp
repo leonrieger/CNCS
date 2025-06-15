@@ -1,4 +1,5 @@
 #pragma once
-#include "USB_SERIAL/usb_serial.hpp"
 
-
+#ifdef _WIN32 //Windows
+#   include "win32/usb_serial/usb_serial.hpp"
+#endif
