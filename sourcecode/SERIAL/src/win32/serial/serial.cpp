@@ -1,5 +1,7 @@
 #include "serial.hpp"
 
+#include <ctime>
+
 std::vector<uint8_t> CNCS::serial::getAvailableComPorts() {
     // checks 255 COM-Ports if they have connections --- returns a vector with
     // numbers - for example 3 means "COM3"
@@ -108,4 +110,18 @@ bool CNCS::serial::SERIAL_CONNECTION::write(std::string data) const {
     DWORD noOfBytesWritten = 0;
     return WriteFile(COMporthandle, data.c_str(),
                      static_cast<DWORD>(data.length()), &noOfBytesWritten, 0);
+}
+
+std::string CNCS::serial::SERIAL_CONNECTION::readStringUntil(char endchar, uint32_t timeout_in_ms) {
+    std::string tempstr = "";
+    uint32_t timeouttime = clock() + timeout_in_ms;
+    char tempvar;
+    while (true) {
+        tempvar = read();
+        if ((tempvar == endchar) || (clock() >= timeouttime)) {
+            break;
+        }
+        tempstr += tempvar;
+    }
+    return tempstr;
 }

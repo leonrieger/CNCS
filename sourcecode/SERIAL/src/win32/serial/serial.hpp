@@ -38,6 +38,7 @@ namespace CNCS {
 
             char read() const;
             bool write(std::string data) const;
+            std::string readStringUntil(char endchar, uint32_t timeout_in_ms);
 
         private:
             HANDLE COMporthandle;
