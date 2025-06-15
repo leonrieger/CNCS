@@ -46,7 +46,11 @@ CNCS::serial::SERIAL_CONNECTION::SERIAL_CONNECTION() {
     alreadyConnected = false;
 }
 
-CNCS::serial::SERIAL_CONNECTION::~SERIAL_CONNECTION() { CloseHandle(COMporthandle); }
+CNCS::serial::SERIAL_CONNECTION::~SERIAL_CONNECTION() {
+    if (alreadyConnected) {
+        CloseHandle(COMporthandle);
+    }
+}
 
 int16_t CNCS::serial::SERIAL_CONNECTION::connect(CNCS::serial::SERIAL_CONFIG &configuration) {
     if (alreadyConnected) {
@@ -89,6 +93,9 @@ int16_t CNCS::serial::SERIAL_CONNECTION::connect(CNCS::serial::SERIAL_CONFIG &co
 }
 
 char CNCS::serial::SERIAL_CONNECTION::read() const {
+    if (COMporthandle == nullptr || COMporthandle == INVALID_HANDLE_VALUE) {
+        return 0;
+    }
     char tempchar = 0;
     DWORD noOfBytesRead = 0;
     if (ReadFile(COMporthandle, &tempchar, 1, &noOfBytesRead, 0)) {
