@@ -148,8 +148,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\errors\errors.cpp" />
-    <ClCompile Include="src\USB_SERIAL\test.cpp" />
-    <ClCompile Include="src\USB_SERIAL\usb_serial.cpp">
+    <ClCompile Include="src\win32\usb_serial\test.cpp" />
+    <ClCompile Include="src\win32\usb_serial\usb_serial.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -159,7 +159,7 @@
   <ItemGroup>
     <ClInclude Include="src\errors\errors.hpp" />
     <ClInclude Include="src\usb.hpp" />
-    <ClInclude Include="src\USB_SERIAL\usb_serial.hpp">
+    <ClInclude Include="src\win32\usb_serial\usb_serial.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

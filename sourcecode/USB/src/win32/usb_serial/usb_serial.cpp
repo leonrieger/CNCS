@@ -1,5 +1,5 @@
 #include "usb_serial.hpp"
-#include "../errors/errors.hpp"
+#include "../../errors/errors.hpp"
 using namespace usb;
 
 USB_SERIAL_CONFIG::USB_SERIAL_CONFIG() {
@@ -26,15 +26,15 @@ USB_SERIAL_CONFIG::~USB_SERIAL_CONFIG() {}
 
 //========================================================================
 
-USB_SERIAL::USB_SERIAL() {
+USB_SERIAL_CONN::USB_SERIAL_CONN() {
     serialconfig = USB_SERIAL_CONFIG();
     COMporthandle = HANDLE();
     SerialBusCtrl = DCB();
 }
 
-USB_SERIAL::~USB_SERIAL() { CloseHandle(COMporthandle); }
+USB_SERIAL_CONN::~USB_SERIAL_CONN() { CloseHandle(COMporthandle); }
 
-int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
+int16_t USB_SERIAL_CONN::connect(USB_SERIAL_CONFIG &configuration) {
     serialconfig = configuration;
 
     COMporthandle =
@@ -67,7 +67,7 @@ int16_t USB_SERIAL::connect(USB_SERIAL_CONFIG configuration) {
     return 0;
 }
 
-inline char USB_SERIAL::read() const {
+inline char USB_SERIAL_CONN::read() const {
     static char tempchar = 0;
     static DWORD noOfBytesRead = 0;
     if (ReadFile(COMporthandle, &tempchar, 1, &noOfBytesRead, 0)) {
@@ -76,7 +76,7 @@ inline char USB_SERIAL::read() const {
     return -1;
 }
 
-void USB_SERIAL::write(string data) const {
+void USB_SERIAL_CONN::write(string data) const {
     DWORD noOfBytesWritten = 0;
     WriteFile(COMporthandle, data.c_str(), data.length(), &noOfBytesWritten, 0);
 }

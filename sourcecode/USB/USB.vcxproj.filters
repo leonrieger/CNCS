@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\USB_SERIAL\usb_serial.cpp">
+    <ClCompile Include="src\win32\usb_serial\usb_serial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\errors\errors.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\USB_SERIAL\test.cpp">
+    <ClCompile Include="src\win32\usb_serial\test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\USB_SERIAL\usb_serial.hpp">
+    <ClInclude Include="src\win32\usb_serial\usb_serial.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\usb.hpp">
