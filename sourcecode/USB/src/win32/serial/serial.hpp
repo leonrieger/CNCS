@@ -39,7 +39,7 @@ namespace CNCS {
 
         private:
             HANDLE COMporthandle;
-            DCB SerialBusCtrl;
+            bool alreadyConnected;
         };
     }
 }

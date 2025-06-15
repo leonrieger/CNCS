@@ -1,15 +1,17 @@
 #pragma once
 
-#include <stdint.h>
 #include <string>
 #include <exception>
 
-using namespace std;
+namespace CNCS {
+    namespace errors {
+        class serialError : public std::exception {
+        public:
+            serialError(uint16_t EID, std::string errorMessage);
+            const char* what() const throw();
 
-class usbSerialError : public exception {
-public:
-    usbSerialError(uint16_t EID, string errorMessage);
-    const char* what() const throw();
-private:
-    string errorMessageFormatted = "";
-};
+        private:
+            std::string errorMessageFormatted;
+        };
+    }
+}

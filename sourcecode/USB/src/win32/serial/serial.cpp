@@ -28,7 +28,7 @@ CNCS::serial::SERIAL_CONFIG::SERIAL_CONFIG() {
     DTRflowControl = DTR_CONTROL_ENABLE;
 }
 
-CNCS::serial::SERIAL_CONFIG::SERIAL_CONFIG(string comPort) {
+CNCS::serial::SERIAL_CONFIG::SERIAL_CONFIG(std::string comPort) {
     comPORT = comPort;
 
     baudrate = CBR_115200;
@@ -43,15 +43,17 @@ CNCS::serial::SERIAL_CONFIG::~SERIAL_CONFIG() {}
 //========================================================================
 
 CNCS::serial::SERIAL_CONNECTION::SERIAL_CONNECTION() {
-    serialconfig = SERIAL_CONFIG();
     COMporthandle = HANDLE();
-    SerialBusCtrl = DCB();
+    alreadyConnected = true;
 }
 
 CNCS::serial::SERIAL_CONNECTION::~SERIAL_CONNECTION() { CloseHandle(COMporthandle); }
 
 int16_t CNCS::serial::SERIAL_CONNECTION::connect(SERIAL_CONFIG &configuration) {
-    //serialconfig = configuration;
+    if (alreadyConnected) {
+        CloseHandle(COMporthandle);
+        alreadyConnected = false;
+    }
 
     COMporthandle =
         CreateFileA(static_cast<LPCSTR>(configuration.comPORT.c_str()),
@@ -64,27 +66,31 @@ int16_t CNCS::serial::SERIAL_CONNECTION::connect(SERIAL_CONFIG &configuration) {
         return ConnectionError;
     }
 
+    DCB SerialBusCtrl;
+
     if (!(GetCommState(COMporthandle, &SerialBusCtrl))) {
-        throw usbSerialError(1, "Could not get CommState");
+        throw CNCS::errors::serialError(1, "Could not get CommState");
     }
 
-    SerialBusCtrl.BaudRate = serialconfig.baudrate;
-    SerialBusCtrl.ByteSize = serialconfig.bytesize;
-    SerialBusCtrl.StopBits = serialconfig.stopbits;
-    SerialBusCtrl.Parity = serialconfig.parity;
-    SerialBusCtrl.fDtrControl = serialconfig.DTRflowControl;
+    SerialBusCtrl.BaudRate = configuration.baudrate;
+    SerialBusCtrl.ByteSize = configuration.bytesize;
+    SerialBusCtrl.StopBits = configuration.stopbits;
+    SerialBusCtrl.Parity = configuration.parity;
+    SerialBusCtrl.fDtrControl = configuration.DTRflowControl;
 
     if (!(SetCommState(COMporthandle, &SerialBusCtrl))) {
-        throw usbSerialError(2, "Could not set CommState");
+        throw CNCS::errors::serialError(2, "Could not set CommState");
     }
 
     PurgeComm(COMporthandle, PURGE_RXCLEAR | PURGE_TXCLEAR);
 
+    alreadyConnected = true;
+
     return 0;
 }
 
-inline char USB_SERIAL_CONN::read() const {
-    static char tempchar = 0;
+inline char CNCS::serial::SERIAL_CONNECTION::read() const {
+    char tempchar = 0;
     static DWORD noOfBytesRead = 0;
     if (ReadFile(COMporthandle, &tempchar, 1, &noOfBytesRead, 0)) {
         return tempchar;
@@ -92,7 +98,7 @@ inline char USB_SERIAL_CONN::read() const {
     return -1;
 }
 
-void USB_SERIAL_CONN::write(string data) const {
+void CNCS::serial::SERIAL_CONNECTION::write(std::string data) const {
     DWORD noOfBytesWritten = 0;
     WriteFile(COMporthandle, data.c_str(), data.length(), &noOfBytesWritten, 0);
 }
