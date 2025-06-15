@@ -30,7 +30,7 @@ CNCS::serial::SERIAL_CONFIG::SERIAL_CONFIG() {
 CNCS::serial::SERIAL_CONFIG::SERIAL_CONFIG(std::string comPort) {
     comPORT = comPort;
 
-    baudrate = CBR_115200;
+    baudrate = 921600;
     bytesize = 8;
     stopbits = ONESTOPBIT;
     parity = NOPARITY;
@@ -88,16 +88,16 @@ int16_t CNCS::serial::SERIAL_CONNECTION::connect(CNCS::serial::SERIAL_CONFIG &co
     return 0;
 }
 
-inline char CNCS::serial::SERIAL_CONNECTION::read() const {
+char CNCS::serial::SERIAL_CONNECTION::read() const {
     char tempchar = 0;
     static DWORD noOfBytesRead = 0;
     if (ReadFile(COMporthandle, &tempchar, 1, &noOfBytesRead, 0)) {
         return tempchar;
     }
-    return -1;
+    return 0;
 }
 
 void CNCS::serial::SERIAL_CONNECTION::write(std::string data) const {
     DWORD noOfBytesWritten = 0;
-    WriteFile(COMporthandle, data.c_str(), data.length(), &noOfBytesWritten, 0);
+    WriteFile(COMporthandle, data.c_str(), static_cast<DWORD>(data.length()), &noOfBytesWritten, 0);
 }

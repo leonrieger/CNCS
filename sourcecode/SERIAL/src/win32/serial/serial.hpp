@@ -16,7 +16,7 @@ namespace CNCS {
         public:
             SERIAL_CONFIG();
             SERIAL_CONFIG(std::string comPort);
-            SERIAL_CONFIG();
+            ~SERIAL_CONFIG();
 
             friend class SERIAL_CONNECTION;
 
@@ -36,7 +36,7 @@ namespace CNCS {
 
             int16_t connect(CNCS::serial::SERIAL_CONFIG &configuration);
 
-            inline char read() const;
+            char read() const;
             void write(std::string data) const;
 
         private:

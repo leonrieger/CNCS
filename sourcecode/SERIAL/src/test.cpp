@@ -9,6 +9,6 @@ int main() {
     conn.connect(config);
 
     while (1) {
-        std::cout << conn.read();
+        std::cerr << conn.read();
     }
 }
