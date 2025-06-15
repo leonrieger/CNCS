@@ -43,7 +43,7 @@ CNCS::serial::SERIAL_CONFIG::~SERIAL_CONFIG() {}
 
 CNCS::serial::SERIAL_CONNECTION::SERIAL_CONNECTION() {
     COMporthandle = HANDLE();
-    alreadyConnected = true;
+    alreadyConnected = false;
 }
 
 CNCS::serial::SERIAL_CONNECTION::~SERIAL_CONNECTION() { CloseHandle(COMporthandle); }
@@ -90,14 +90,15 @@ int16_t CNCS::serial::SERIAL_CONNECTION::connect(CNCS::serial::SERIAL_CONFIG &co
 
 char CNCS::serial::SERIAL_CONNECTION::read() const {
     char tempchar = 0;
-    static DWORD noOfBytesRead = 0;
+    DWORD noOfBytesRead = 0;
     if (ReadFile(COMporthandle, &tempchar, 1, &noOfBytesRead, 0)) {
         return tempchar;
     }
     return 0;
 }
 
-void CNCS::serial::SERIAL_CONNECTION::write(std::string data) const {
+bool CNCS::serial::SERIAL_CONNECTION::write(std::string data) const {
     DWORD noOfBytesWritten = 0;
-    WriteFile(COMporthandle, data.c_str(), static_cast<DWORD>(data.length()), &noOfBytesWritten, 0);
+    return WriteFile(COMporthandle, data.c_str(),
+                     static_cast<DWORD>(data.length()), &noOfBytesWritten, 0);
 }

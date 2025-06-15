@@ -37,7 +37,7 @@ namespace CNCS {
             int16_t connect(CNCS::serial::SERIAL_CONFIG &configuration);
 
             char read() const;
-            void write(std::string data) const;
+            bool write(std::string data) const;
 
         private:
             HANDLE COMporthandle;
