@@ -129,6 +129,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\errors\errors.hpp" />
+    <ClInclude Include="src\serial.hpp" />
+    <ClInclude Include="src\win32\serial\serial.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\errors\errors.cpp" />
+    <ClCompile Include="src\win32\serial\serial.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

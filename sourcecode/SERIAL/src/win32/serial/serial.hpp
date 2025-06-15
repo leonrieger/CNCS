@@ -6,6 +6,8 @@
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 
+#include "../../errors/errors.hpp"
+
 namespace CNCS {
     namespace serial {
         std::vector<uint8_t> getAvailableComPorts();

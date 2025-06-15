@@ -1,5 +1,4 @@
 #include "serial.hpp"
-#include "../../errors/errors.hpp"
 
 std::vector<uint8_t> CNCS::serial::getAvailableComPorts() {
     // checks 255 COM-Ports if they have connections --- returns a vector with
