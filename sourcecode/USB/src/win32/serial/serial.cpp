@@ -1,8 +1,24 @@
-#include "usb_serial.hpp"
+#include "serial.hpp"
 #include "../../errors/errors.hpp"
-using namespace usb;
 
-USB_SERIAL_CONFIG::USB_SERIAL_CONFIG() {
+std::vector<uint8_t> CNCS::serial::getAvailableComPorts() {
+    // checks 255 COM-Ports if they have connections --- returns a vector with
+    // numbers - for example 3 means "COM3"
+    char lpTargetPath[500];
+    std::vector<uint8_t> available_ports;
+
+    for (int i = 0; i < 255; i++) {
+        std::string str = "COM" + std::to_string(i);
+        DWORD test = QueryDosDeviceA(str.c_str(), lpTargetPath, 500);
+
+        if (test != 0) {
+            available_ports.push_back(i);
+        }
+    }
+    return available_ports;
+}
+
+CNCS::serial::SERIAL_CONFIG::SERIAL_CONFIG() {
     comPORT = "COM0";
 
     baudrate = CBR_115200;
@@ -12,7 +28,7 @@ USB_SERIAL_CONFIG::USB_SERIAL_CONFIG() {
     DTRflowControl = DTR_CONTROL_ENABLE;
 }
 
-USB_SERIAL_CONFIG::USB_SERIAL_CONFIG(string comPort) {
+CNCS::serial::SERIAL_CONFIG::SERIAL_CONFIG(string comPort) {
     comPORT = comPort;
 
     baudrate = CBR_115200;
@@ -22,23 +38,23 @@ USB_SERIAL_CONFIG::USB_SERIAL_CONFIG(string comPort) {
     DTRflowControl = DTR_CONTROL_DISABLE; // DTR_CONTROL_ENABLE
 }
 
-USB_SERIAL_CONFIG::~USB_SERIAL_CONFIG() {}
+CNCS::serial::SERIAL_CONFIG::~SERIAL_CONFIG() {}
 
 //========================================================================
 
-USB_SERIAL_CONN::USB_SERIAL_CONN() {
-    serialconfig = USB_SERIAL_CONFIG();
+CNCS::serial::SERIAL_CONNECTION::SERIAL_CONNECTION() {
+    serialconfig = SERIAL_CONFIG();
     COMporthandle = HANDLE();
     SerialBusCtrl = DCB();
 }
 
-USB_SERIAL_CONN::~USB_SERIAL_CONN() { CloseHandle(COMporthandle); }
+CNCS::serial::SERIAL_CONNECTION::~SERIAL_CONNECTION() { CloseHandle(COMporthandle); }
 
-int16_t USB_SERIAL_CONN::connect(USB_SERIAL_CONFIG &configuration) {
-    serialconfig = configuration;
+int16_t CNCS::serial::SERIAL_CONNECTION::connect(SERIAL_CONFIG &configuration) {
+    //serialconfig = configuration;
 
     COMporthandle =
-        CreateFileA(static_cast<LPCSTR>(serialconfig.comPORT.c_str()),
+        CreateFileA(static_cast<LPCSTR>(configuration.comPORT.c_str()),
                     GENERIC_READ | GENERIC_WRITE, NULL, NULL, OPEN_EXISTING,
                     FILE_ATTRIBUTE_NORMAL, NULL);
 
