@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="src\Core.hpp" />
     <ClInclude Include="src\INTERPRETER.hpp" />
+    <ClInclude Include="src\new\interpreter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\gcode_interpreter.cpp" />
