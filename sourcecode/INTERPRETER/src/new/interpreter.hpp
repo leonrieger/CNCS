@@ -4,7 +4,7 @@
 
 namespace CNCS {
     namespace interpreter {
-        union current_status {};
+        union current_interpreter_status {};
 
         struct interpreter_configuration {};
 
