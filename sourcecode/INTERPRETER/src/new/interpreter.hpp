@@ -4,7 +4,16 @@
 
 namespace CNCS {
     namespace interpreter {
-        union current_interpreter_status {};
+        enum currentWorkingPlane {
+            XY = 1,
+            YZ = 2,
+            XZ = 3,
+        };
+
+        union current_interpreter_status {
+            bool current_unit_system;//false for metric / true for imperial
+            int8_t currentplane;// baseed on 'currentWorkingPlane'
+        };
 
         struct interpreter_configuration {};
 
@@ -19,6 +28,6 @@ namespace CNCS {
             double C = 0;
         };
 
-        interpreter_result line_interpreter(current_status& status, std::string& line);
-    } // namespace interpreter
-} // namespace CNCS
+        interpreter_result line_interpreter(current_interpreter_status& status, std::string& line);
+    }
+}
