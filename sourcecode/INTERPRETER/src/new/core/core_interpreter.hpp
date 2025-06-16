@@ -2,35 +2,35 @@
 
 #include <string>
 
-namespace CNCS {
-    namespace interpreter {
-        union current_interpreter_status {
-            bool current_unit_system; // false for metric / true for imperial
-            int8_t currentplane;      // baseed on 'currentWorkingPlane'
-            bool measurementMode;     // false absolut, true inkremental
-            uint64_t prevLineNumber;  // the previous line number
-        };
+namespace CNCS::interpreter {
+    enum currentWorkingPlane {
+        DEFAULT = 0,
+        XY = 1,
+        YZ = 2,
+        XZ = 3,
+    };
 
-        struct interpreter_configuration {};
+    union current_interpreter_status {
+        bool current_unit_system; // false for metric / true for imperial
+        int8_t currentplane;      // based on 'currentWorkingPlane'
+        bool measurementMode;     // false absolut, true incremental
+        uint64_t prevLineNumber;  // the previous line number
+    };
 
-        struct interpreter_result {
-            double X = 0;
-            double Y = 0;
-            double Z = 0;
+    struct interpreter_configuration {};
 
-            double A = 0;
-            double B = 0;
-            double C = 0;
-        };
+    struct interpreter_result {
+        double X = 0;
+        double Y = 0;
+        double Z = 0;
 
-        interpreter_result line_interpreter(current_interpreter_status& status,
-                                            std::string& line);
+        double A = 0;
+        double B = 0;
+        double C = 0;
 
-        enum currentWorkingPlane {
-            DEFAULT = 0,
-            XY = 1,
-            YZ = 2,
-            XZ = 3,
-        };
-    } // namespace interpreter
-} // namespace CNCS
+        int8_t workingPlane;
+    };
+
+    interpreter_result line_interpreter(current_interpreter_status& status,
+                                        std::string& line);
+} // namespace CNCS::interpreter

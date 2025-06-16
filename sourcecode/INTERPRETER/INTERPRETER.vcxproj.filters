@@ -21,7 +21,16 @@
     <ClInclude Include="src\Core.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\new\interpreter.h">
+    <ClInclude Include="src\new\interpreter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\new\core\core_interpreter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\new\machine\general_tool_id_system.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\new\machine\general_machine_id_system.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
