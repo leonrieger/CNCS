@@ -5,6 +5,7 @@
 namespace CNCS {
     namespace interpreter {
         enum currentWorkingPlane {
+            DEFAULT = 0,
             XY = 1,
             YZ = 2,
             XZ = 3,
@@ -13,6 +14,7 @@ namespace CNCS {
         union current_interpreter_status {
             bool current_unit_system;//false for metric / true for imperial
             int8_t currentplane;// baseed on 'currentWorkingPlane'
+            bool measurementMode;// false absolut, true inkremental
         };
 
         struct interpreter_configuration {};
