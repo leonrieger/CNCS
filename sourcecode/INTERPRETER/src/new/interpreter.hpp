@@ -8,7 +8,7 @@ namespace CNCS {
             bool current_unit_system; // false for metric / true for imperial
             int8_t currentplane;      // baseed on 'currentWorkingPlane'
             bool measurementMode;     // false absolut, true inkremental
-            uint64_t prevLineNumber;  // the previos line number
+            uint64_t prevLineNumber;  // the previous line number
         };
 
         struct interpreter_configuration {};
