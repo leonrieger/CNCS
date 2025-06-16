@@ -112,9 +112,9 @@ bool CNCS::serial::SERIAL_CONNECTION::write(std::string data) const {
                      static_cast<DWORD>(data.length()), &noOfBytesWritten, 0);
 }
 
-std::string CNCS::serial::SERIAL_CONNECTION::readStringUntil(char endchar, uint32_t timeout_in_ms) {
+std::string CNCS::serial::SERIAL_CONNECTION::readStringUntil(char endchar, int32_t timeout_in_ms) {
     std::string tempstr = "";
-    uint32_t timeouttime = clock() + timeout_in_ms;
+    int32_t timeouttime = clock() + timeout_in_ms;
     char tempvar;
     while (true) {
         tempvar = read();
