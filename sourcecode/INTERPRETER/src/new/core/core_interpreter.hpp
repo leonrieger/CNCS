@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 namespace CNCS::interpreter {
     enum currentWorkingPlane {
@@ -23,14 +24,15 @@ namespace CNCS::interpreter {
         uint16_t no_of_commands_executed = 0;
     };
 
-    struct line_interpreter_result {
+    struct interpreted_commands {
+        //units in mm
         double X = 0.0;
         double Y = 0.0;
         double Z = 0.0;
 
-        //float A = 0.0f;
-        //float B = 0.0f;
-        //float C = 0.0f;
+        // float A = 0.0f;
+        // float B = 0.0f;
+        // float C = 0.0f;
 
         uint16_t S = 0; // Spindle speed
 
@@ -40,5 +42,6 @@ namespace CNCS::interpreter {
     };
 
     void line_interpreter(current_interpreter_status& currentstate,
-                          std::string& line_to_interpret, line_interpreter_result& result);
+                          std::string& line_to_interpret,
+                          std::vector<interpreted_commands>& cnc_program_commands);
 } // namespace CNCS::interpreter
