@@ -21,16 +21,14 @@ namespace CNCS::interpreter {
     struct interpreter_configuration {};
 
     struct interpreter_result {
-        double X = 0;
-        double Y = 0;
-        double Z = 0;
+        double X = 0.0;
+        double Y = 0.0;
+        double Z = 0.0;
 
-        double A = 0;
-        double B = 0;
-        double C = 0;
-
-        int8_t workingPlane;
+        float A = 0.0f;
+        float B = 0.0f;
+        float C = 0.0f;
     };
 
-    interpreter_result line_interpreter(std::string& line);
+    interpreter_result line_interpreter(current_interpreter_status& currentstate, std::string& line);
 } // namespace CNCS::interpreter
