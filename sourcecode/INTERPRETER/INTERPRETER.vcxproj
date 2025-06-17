@@ -29,6 +29,7 @@
   <ItemGroup>
     <ClCompile Include="src\gcode_interpreter.cpp" />
     <ClCompile Include="src\mcode_interpreter.cpp" />
+    <ClCompile Include="src\new\core\gcode_file_interpreter.cpp" />
     <ClCompile Include="src\universal_interpreter.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
