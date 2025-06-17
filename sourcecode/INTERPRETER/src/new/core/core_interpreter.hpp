@@ -10,12 +10,13 @@ namespace CNCS::interpreter {
         XZ = 3,
     };
 
-    union current_interpreter_status {
+    struct current_interpreter_status {
         bool current_unit_system; // false for metric / true for imperial
-        int8_t currentplane;      // based on 'currentWorkingPlane'
+        //int8_t currentplane;      // based on 'currentWorkingPlane'
+        currentWorkingPlane currentPlane;
         bool measurementMode;     // false absolut, true incremental
         uint64_t prevLineNumber;  // the previous line number
-    };
+    }; // namespace current_interpreter_status
 
     struct interpreter_configuration {};
 
@@ -31,6 +32,5 @@ namespace CNCS::interpreter {
         int8_t workingPlane;
     };
 
-    interpreter_result line_interpreter(current_interpreter_status& status,
-                                        std::string& line);
+    interpreter_result line_interpreter(std::string& line);
 } // namespace CNCS::interpreter
