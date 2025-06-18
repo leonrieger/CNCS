@@ -25,20 +25,7 @@ namespace CNCS::interpreter {
         uint16_t no_of_commands_executed = 0;
     };
 
-    struct interpreted_commands {
-        // units in mm
-        double X = 0.0;
-        double Y = 0.0;
-        double Z = 0.0;
-
-        uint16_t S = 0; // Spindle speed
-
-        currentWorkingPlane plane = DEFAULT;
-
-        std::string comment = "";
-    };
-
     void gcode_line_interpreter(current_interpreter_status& currentstate,
-                                std::string file_content,
+                                std::string line_content,
                                 pugi::xml_node& root_gcode_node);
 } // namespace CNCS::interpreter

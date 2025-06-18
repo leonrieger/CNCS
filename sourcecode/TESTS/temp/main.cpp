@@ -7,14 +7,10 @@ std::vector<std::string> extractAllBracketContents(std::string& input) {
     std::vector<std::string> extractedContents;
     size_t openPos, closePos;
 
-    while ((openPos = input.find('(')) != std::string::npos &&
-           (closePos = input.find(')', openPos)) != std::string::npos) {
-
-        std::string extracted =
-            input.substr(openPos + 1, closePos - openPos - 1);
+    while ((openPos = input.find('(')) != std::string::npos && (closePos = input.find(')', openPos)) != std::string::npos) {
+        std::string extracted = input.substr(openPos + 1, closePos - openPos - 1);
         extractedContents.push_back(extracted);
-        input.erase(openPos,
-                    closePos - openPos + 1); // Remove the bracketed section
+        input.erase(openPos, closePos - openPos + 1); // Remove the bracketed section
     }
 
     return extractedContents;
