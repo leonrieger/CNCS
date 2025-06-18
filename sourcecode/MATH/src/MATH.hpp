@@ -6,7 +6,7 @@
 #	define DLLMODE __declspec(dllimport)
 #endif
 
-namespace unit_conversions {
+namespace math::unit_conversions {
     double DLLMODE inch_to_mm(int inches_to_be_converted);
     double DLLMODE inch_to_mm(double inches_to_be_converted);
 }

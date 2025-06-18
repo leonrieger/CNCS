@@ -10,8 +10,9 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     */
-
-    CNCS::filesys::getNumberOfLines
+    fstream file("test.txt");
+    cout << CNCS::filesys::getNumberOfLines(file) << std::endl;
+    file.close();
 
     return 0;
 }
