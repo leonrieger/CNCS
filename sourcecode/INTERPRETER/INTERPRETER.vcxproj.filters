@@ -33,6 +33,9 @@
     <ClInclude Include="src\new\machine\general_machine_id_system.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\new\core\file_handler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\mcode_interpreter.cpp">
@@ -44,10 +47,13 @@
     <ClCompile Include="src\universal_interpreter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\new\core\gcode_file_interpreter.cpp">
+    <ClCompile Include="src\new\core\gcode_line_interpreter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\include\gitmodules\pugixml\src\pugixml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\new\core\file_handler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
