@@ -2,6 +2,8 @@
 
 #include <string>
 #include <vector>
+#include <pugiconfig.hpp>
+#include <pugixml.hpp>
 
 namespace CNCS::interpreter {
     enum currentWorkingPlane {
@@ -41,7 +43,7 @@ namespace CNCS::interpreter {
         std::string comment = "";
     };
 
-    void gcode_file_interpreter(current_interpreter_status& currentstate,
+    void gcode_line_interpreter(current_interpreter_status& currentstate,
                           std::string& file_content,
                           std::vector<interpreted_commands>& cnc_program_commands);
 } // namespace CNCS::interpreter
