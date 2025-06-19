@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -71,23 +71,23 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
     <IncludePath>$(SolutionDir)include\gitmodules\pugixml\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
     <IncludePath>$(SolutionDir)include\gitmodules\pugixml\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
     <IncludePath>$(SolutionDir)include\gitmodules\pugixml\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
     <IncludePath>$(SolutionDir)include\gitmodules\pugixml\src;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="src\interpreter\settings.hpp" />
     <ClInclude Include="src\OS.hpp" />
+    <ClInclude Include="src\OS\win32\username.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\include\gitmodules\pugixml\src\pugixml.cpp">
@@ -163,6 +164,8 @@
     </ClCompile>
     <ClCompile Include="src\interpreter\load_settings.cpp" />
     <ClCompile Include="src\interpreter\save_settings.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\OS\win32\username.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

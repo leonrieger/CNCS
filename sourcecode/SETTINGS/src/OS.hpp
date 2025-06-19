@@ -4,7 +4,8 @@
 // clang-format off
 #if defined(_WIN32)
 #   define GLOBAL_SETTINGS_PATH std::string("")
-#   define USER_SETTINGS_PATH(username) std::string("C:\\Users\\"+username+"\\AppData\\Local\\CNCS\\")
+#   define USER_SETTINGS_PATH std::string("C:\\Users\\" + CNCS::settings::os::getCurrentUserName() + "\\AppData\\Local\\CNCS\\")
+#   include "OS/win32/username.hpp"
 #elif defined(__linux__)
 
 #endif
