@@ -18,14 +18,11 @@ namespace CNCS::interpreter {
         currentWorkingPlane currentPlane;
         bool measurementMode;    // false absolut, true incremental
         uint64_t prevLineNumber; // the previous line number
-    }; // namespace current_interpreter_status
-
-    struct number_of_commands_on_one_line {
-        uint16_t no_of_commands = 0;
-        uint16_t no_of_commands_executed = 0;
     };
 
-    void gcode_line_parser(current_interpreter_status& currentstate,
+    void gcode_file_parser();
+
+    bool gcode_line_parser(current_interpreter_status& currentstate,
                            std::string line_content,
                            pugi::xml_node& root_gcode_node);
 } // namespace CNCS::interpreter
