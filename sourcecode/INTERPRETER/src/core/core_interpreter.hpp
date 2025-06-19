@@ -25,7 +25,9 @@ namespace CNCS::interpreter {
         uint16_t no_of_commands_executed = 0;
     };
 
-    void gcode_line_interpreter(current_interpreter_status& currentstate,
-                                std::string line_content,
-                                pugi::xml_node& root_gcode_node);
+    void gcode_line_parser(current_interpreter_status& currentstate,
+                           std::string line_content,
+                           pugi::xml_node& root_gcode_node);
 } // namespace CNCS::interpreter
+
+// unparse
