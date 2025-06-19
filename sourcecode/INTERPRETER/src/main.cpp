@@ -14,9 +14,9 @@ int main(int argc, char* argv[]) {
     fstream file("test.txt");
     cout << CNCS::filesys::getNumberOfLines(file) << std::endl;
     file.close();*/
-    CNCS::settings::interpreter::USER_ENVIRONMENT_SETTINGS setting_test;
+    static CNCS::settings::interpreter::USER_ENVIRONMENT_SETTINGS setting_test;
     CNCS::settings::interpreter::load_settings(setting_test);
     cout << setting_test.allow_lowercase_characters_in_comments << std::endl;
-    cout << CNCS::settings::interpreter::test() << std::endl;
+
     return 0;
 }

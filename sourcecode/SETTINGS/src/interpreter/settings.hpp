@@ -18,6 +18,4 @@ namespace CNCS::settings::interpreter {
 
     bool save_settings(USER_ENVIRONMENT_SETTINGS& settings);
     bool save_settings(SYSTEM_ENVIRONMENT_SETTINGS& settings);
-
-    std::string test();
 }
