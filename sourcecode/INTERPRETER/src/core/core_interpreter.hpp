@@ -18,9 +18,10 @@ namespace CNCS::interpreter {
         currentWorkingPlane currentPlane;
         bool measurementMode;    // false absolut, true incremental
         uint64_t prevLineNumber; // the previous line number
+        uint64_t prevCommandID = 0;
     };
 
-    void gcode_file_parser();
+    void gcode_file_parser(std::string& path_to_file_to_be_parsed);
 
     bool gcode_line_parser(current_interpreter_status& currentstate,
                            std::string line_content,
