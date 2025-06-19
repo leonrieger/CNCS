@@ -5,6 +5,12 @@
 #include <pugiconfig.hpp>
 #include <pugixml.hpp>
 
+// definition for ease of creating properties
+#define SETTINGS_CONDITION_BOOLEAN(condition_name)                             \
+    std::string(interpreter_settings.child(condition_name)                     \
+                    .attribute("value")                                        \
+                    .value()) == "true"
+
 bool CNCS::settings::interpreter::load_settings(
     USER_ENVIRONMENT_SETTINGS& settings) {
     // load file
@@ -17,8 +23,7 @@ bool CNCS::settings::interpreter::load_settings(
 
     // lowercase characters in comments
     settings.allow_lowercase_characters_in_comments =
-        std::string(interpreter_settings.child("allow_lowercase_characters_in_comments")
-            .child_value()) == "true";
+        SETTINGS_CONDITION_BOOLEAN("allow_lowercase_characters_in_comments");
 
     return 0;
 }
