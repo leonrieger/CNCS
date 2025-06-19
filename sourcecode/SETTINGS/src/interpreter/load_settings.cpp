@@ -1,6 +1,7 @@
 #include "../OS.hpp" // for operating system specific properties
 #include "settings.hpp"
-//#include 
+#include <pugiconfig.hpp>
+#include <pugixml.hpp>
 
 bool CNCS::settings::interpreter::load_settings(
     USER_ENVIRONMENT_SETTINGS& settings) {
