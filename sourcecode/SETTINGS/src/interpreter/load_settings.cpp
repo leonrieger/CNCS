@@ -21,9 +21,13 @@ bool CNCS::settings::interpreter::load_settings(
     pugi::xml_node interpreter_settings =
         settings_file.child("settings").child("interpreter");
 
-    // lowercase characters in comments
     settings.allow_lowercase_characters_in_comments =
         SETTINGS_CONDITION_BOOLEAN("allow_lowercase_characters_in_comments");
+    settings.force_line_numbers_declared_with_N =
+        SETTINGS_CONDITION_BOOLEAN("force_line_numbers_declared_with_N");
+    settings.force_percent_symbol_as_file_begin_and_end =
+        SETTINGS_CONDITION_BOOLEAN(
+            "force_percent_symbol_as_file_begin_and_end");
 
     return 0;
 }

@@ -36,9 +36,6 @@
     <ClInclude Include="src\machine\general_tool_id_system.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\config\config.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\include\gitmodules\pugixml\src\pugixml.cpp">
@@ -54,9 +51,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\config\generate_config.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

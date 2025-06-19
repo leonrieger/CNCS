@@ -4,9 +4,9 @@
 
 int32_t CNCS::filesys::getNumberOfLines(std::fstream& filehandle) {
     int32_t number_of_lines = 0;
-    std::string last_line;
+    std::string current_line;
 
-    while (std::getline(filehandle, last_line)) {
+    while (std::getline(filehandle, current_line)) {
         number_of_lines++;
     }
 
