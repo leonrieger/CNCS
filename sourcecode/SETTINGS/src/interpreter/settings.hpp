@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 namespace CNCS::settings::interpreter {
     struct USER_ENVIRONMENT_SETTINGS {
         bool allow_lowercase_characters_in_comments;
@@ -16,4 +18,6 @@ namespace CNCS::settings::interpreter {
 
     bool save_settings(USER_ENVIRONMENT_SETTINGS& settings);
     bool save_settings(SYSTEM_ENVIRONMENT_SETTINGS& settings);
+
+    std::string test();
 }
