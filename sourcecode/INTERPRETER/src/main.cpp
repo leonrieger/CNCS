@@ -4,6 +4,7 @@
 #include <interpreter/settings.hpp>
 #include <iostream>
 #include <pugixml.hpp>
+#include <algorithm>
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -29,12 +30,15 @@ int main(int argc, char* argv[]) {
 
     doc.save(cout);
     */
-
+    /*
     std::vector<std::string> testv;
 
     CNCS::interpreter::internal_functions::splitbyWhitespace("uewifjk ewiofjewn fioewfn wefioewh f ewifhwe fewf e   fw iofn ewf we  fiwef we f weoi", testv);
 
-
-
+    for (std::string str : testv) {
+        std::replace(str.begin(), str.end(), " ", "0");
+        cout << str << std::endl;
+    }
+    */
     return 0;
 }
