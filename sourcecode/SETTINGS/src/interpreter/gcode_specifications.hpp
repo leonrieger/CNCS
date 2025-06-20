@@ -3,7 +3,7 @@
 #include <regex>
 
 //gcode standart regular expression
-#define GCODE_STANDART_REGEX std::regex(R"(^[A-Z][+-]?\d+(\.\d+)?$)")
+#define GCODE_STANDARD_REGEX std::regex(R"(^[A-Z][+-]?\d+(\.\d+)?$)")
 // all supported gcode g-commands
 #define GCODE_SUPPORTED_G_COMMANDS {0, 1, 2, 3}
 // all supported gcode m-commands

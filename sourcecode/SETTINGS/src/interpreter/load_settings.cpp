@@ -29,7 +29,7 @@ bool CNCS::settings::interpreter::load_settings(
         SETTINGS_CONDITION_BOOLEAN(
             "force_percent_symbol_as_file_begin_and_end");
 
-    return 0;
+    return 1;
 }
 
 // bool CNCS::settings::interpreter::load_settings(
