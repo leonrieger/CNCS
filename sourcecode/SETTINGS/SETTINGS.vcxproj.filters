@@ -24,6 +24,9 @@
     <ClInclude Include="src\OS\win32\username.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\interpreter\gcode_specifications.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\interpreter\load_settings.cpp">

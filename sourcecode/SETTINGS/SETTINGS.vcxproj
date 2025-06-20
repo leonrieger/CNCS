@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\interpreter\gcode_specifications.hpp" />
     <ClInclude Include="src\interpreter\settings.hpp" />
     <ClInclude Include="src\OS.hpp" />
     <ClInclude Include="src\OS\win32\username.hpp" />

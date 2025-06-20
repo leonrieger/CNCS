@@ -1,10 +1,10 @@
 // for test purposes only
-#include "interpreter.hpp"
 #include "core/core_interpreter_functions/core_interpreter_functions.hpp"
+#include "interpreter.hpp"
+#include <algorithm>
 #include <interpreter/settings.hpp>
 #include <iostream>
 #include <pugixml.hpp>
-#include <algorithm>
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -33,12 +33,24 @@ int main(int argc, char* argv[]) {
     /*
     std::vector<std::string> testv;
 
-    CNCS::interpreter::internal_functions::splitbyWhitespace("uewifjk ewiofjewn fioewfn wefioewh f ewifhwe fewf e   fw iofn ewf we  fiwef we f weoi", testv);
+    CNCS::interpreter::internal_functions::splitbyWhitespace("uewifjk ewiofjewn
+    fioewfn wefioewh f ewifhwe fewf e   fw iofn ewf we  fiwef we f weoi",
+    testv);
 
     for (std::string str : testv) {
         std::replace(str.begin(), str.end(), " ", "0");
         cout << str << std::endl;
     }
     */
+    // clang-format off
+    cout << CNCS::interpreter::internal_functions::isValidFormatting("G10") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidFormatting("M-10") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidFormatting("X10.0") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidFormatting("J10") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidFormatting("a10") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidFormatting("10") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidFormatting("100.001") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidFormatting("SS10") << endl;
+    // clang-format on
     return 0;
 }
