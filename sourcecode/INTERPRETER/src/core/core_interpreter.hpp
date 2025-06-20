@@ -15,6 +15,8 @@ namespace CNCS::interpreter {
     struct current_interpreter_status {
         bool current_unit_system =
             false; // false for metric / true for imperial
+        bool programstartsymbol_exists_already = false;
+        bool programstopsymbol_exists_already = false;
         currentWorkingPlane currentPlane = NONE;
         bool measurementMode = false; // false absolute, true incremental
         uint64_t prevLineNumber = 0;  // the previous line number

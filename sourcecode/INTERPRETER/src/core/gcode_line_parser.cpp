@@ -1,10 +1,22 @@
 #include "core_interpreter.hpp"
 #include "core_interpreter_functions/core_interpreter_functions.hpp"
+#include <interpreter/settings.hpp>
 
 bool CNCS::interpreter::gcode_line_parser(
     current_interpreter_status& currentstate, std::string line_content,
     pugi::xml_node& root_gcode_node) {
     //------------------------------
+
+    if (line_content[0] == '%') {
+        if (!currentstate.programstartsymbol_exists_already) {
+            currentstate.programstartsymbol_exists_already = true;
+        } else if (!currentstate.programstopsymbol_exists_already) {
+            currentstate.programstopsymbol_exists_already = true;
+        }
+    }
+
+
+
     pugi::xml_node current_command_node = root_gcode_node.append_child("EXEC");
     currentstate.prevCommandID++;
     current_command_node.append_attribute("ID").set_value(
@@ -30,8 +42,6 @@ bool CNCS::interpreter::gcode_line_parser(
             commandExists++;
         }
     }
-
-
 
     return 0;
 }
