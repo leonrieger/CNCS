@@ -1,5 +1,7 @@
 #include "core_interpreter_functions.hpp"
 
+#include <sstream>
+
 void CNCS::interpreter::internal_functions::extractComments(
     std::string& command, std::vector<std::string>& comments) {
     size_t startposition, stopposition;
@@ -13,3 +15,5 @@ void CNCS::interpreter::internal_functions::extractComments(
         command.erase(startposition, stopposition - startposition + 1);
     }
 }
+
+

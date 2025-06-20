@@ -11,7 +11,7 @@ bool CNCS::interpreter::gcode_line_parser(
 
     if (line_content[0] == ';') {
         std::string msg = line_content.substr(1);
-        current_command_node.append_child("MSG").text().set(msg);
+        current_command_node.append_child("EXCLUDED").text().set(msg);
         return 1;
     }
 
