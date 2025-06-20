@@ -32,4 +32,14 @@ bool CNCS::interpreter::internal_functions::isValidFormatting(
     return std::regex_match(string_to_be_validated, GCODE_STANDART_REGEX);
 }
 
+bool CNCS::interpreter::internal_functions::isValidCommand(
+    std::string& gcode_command) {
+    char cmd_family = gcode_command[0];
+    int16_t cmd_specification = std::to_integer(gcode_command.substr(1));
 
+    switch (cmd_type) {
+    case 'G':
+    case 'M':
+    case 'S':
+    }
+}
