@@ -16,4 +16,12 @@ void CNCS::interpreter::internal_functions::extractComments(
     }
 }
 
+void CNCS::interpreter::internal_functions::splitbyWhitespace(
+    std::string input_string, std::vector<std::string>& output_vector) {
+    std::istringstream iss(input_string);
+    std::string token;
 
+    while (iss >> token) {
+        output_vector.push_back(token);
+    }
+}
