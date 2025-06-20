@@ -36,10 +36,27 @@ bool CNCS::interpreter::internal_functions::isValidCommand(
     std::string& gcode_command) {
     char cmd_family = gcode_command[0];
     int16_t cmd_code = static_cast<int16_t>(std::stoi(gcode_command.substr(1)));
+    bool isValid = false;
 
     switch (cmd_family) {
     case 'G':
+        for (int16_t validation_value : GCODE_SUPPORTED_G_COMMANDS) {
+            if (cmd_code == validation_value) {
+                isValid = true;
+                break;
+            }
+        }
+        break;
     case 'M':
+        for (int16_t validation_value : GCODE_SUPPORTED_M_COMMANDS) {
+            if (cmd_code == validation_value) {
+                isValid = true;
+                break;
+            }
+        }
+        break;
     case 'S':
+        isValid = true;
+        break;
     }
 }
