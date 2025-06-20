@@ -2,9 +2,10 @@
 #include "core_interpreter_functions/core_interpreter_functions.hpp"
 #include <interpreter/settings.hpp>
 
-bool CNCS::interpreter::gcode_line_parser(
-    current_interpreter_status& currentstate, std::string line_content,
-    pugi::xml_node& root_gcode_node) {
+int8_t
+CNCS::interpreter::gcode_line_parser(current_interpreter_status& currentstate,
+                                     std::string line_content,
+                                     pugi::xml_node& root_gcode_node) {
     //------------------------------
 
     if (line_content[0] == '%') {
@@ -13,9 +14,20 @@ bool CNCS::interpreter::gcode_line_parser(
         } else if (!currentstate.programstopsymbol_exists_already) {
             currentstate.programstopsymbol_exists_already = true;
         }
+        return 1;
     }
 
+    CNCS::settings::interpreter::USER_ENVIRONMENT_SETTINGS user_settings;
+    if (!CNCS::settings::interpreter::load_settings(user_settings)) {
+        return -1;
+    }
 
+    if (user_settings.force_percent_symbol_as_file_begin_and_end) {
+        if (!currentstate.programstartsymbol_exists_already ||
+            currentstate.programstopsymbol_exists_already) {
+            return 2;
+        }
+    }
 
     pugi::xml_node current_command_node = root_gcode_node.append_child("EXEC");
     currentstate.prevCommandID++;

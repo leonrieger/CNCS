@@ -25,7 +25,7 @@ namespace CNCS::interpreter {
 
     void gcode_file_parser(std::string& path_to_file_to_be_parsed);
 
-    bool gcode_line_parser(current_interpreter_status& currentstate,
+    int8_t gcode_line_parser(current_interpreter_status& currentstate,
                            std::string line_content,
                            pugi::xml_node& root_gcode_node);
 } // namespace CNCS::interpreter
