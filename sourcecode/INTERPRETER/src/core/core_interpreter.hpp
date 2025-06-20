@@ -6,7 +6,7 @@
 
 namespace CNCS::interpreter {
     enum currentWorkingPlane {
-        DEFAULT = 0,
+        NONE = 0,
         XY = 1,
         YZ = 2,
         XZ = 3,
@@ -15,9 +15,9 @@ namespace CNCS::interpreter {
     struct current_interpreter_status {
         bool current_unit_system =
             false; // false for metric / true for imperial
-        currentWorkingPlane currentPlane;
-        bool measurementMode;    // false absolut, true incremental
-        uint64_t prevLineNumber; // the previous line number
+        currentWorkingPlane currentPlane = NONE;
+        bool measurementMode = false;    // false absolute, true incremental
+        uint64_t prevLineNumber = 0; // the previous line number
         uint64_t prevCommandID = 0;
     };
 

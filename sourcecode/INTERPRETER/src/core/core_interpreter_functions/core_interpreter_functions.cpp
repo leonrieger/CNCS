@@ -1,4 +1,5 @@
 #include "core_interpreter_functions.hpp"
+#include <interpreter/gcode_specifications.hpp>
 
 #include <sstream>
 
@@ -24,4 +25,9 @@ void CNCS::interpreter::internal_functions::splitbyWhitespace(
     while (iss >> token) {
         output_vector.push_back(token);
     }
+}
+
+bool CNCS::interpreter::internal_functions::isValidFormatting(
+    std::string string_to_be_validated) {
+
 }
