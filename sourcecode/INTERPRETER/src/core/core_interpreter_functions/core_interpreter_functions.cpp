@@ -33,7 +33,7 @@ bool CNCS::interpreter::internal_functions::isValidFormatting(
 }
 
 bool CNCS::interpreter::internal_functions::isValidCommand(
-    std::string& gcode_command) {
+    std::string gcode_command) {
     char cmd_family = gcode_command[0];
     int16_t cmd_code = static_cast<int16_t>(std::stoi(gcode_command.substr(1)));
     bool isValid = false;
@@ -59,4 +59,6 @@ bool CNCS::interpreter::internal_functions::isValidCommand(
         isValid = true;
         break;
     }
+
+    return isValid;
 }

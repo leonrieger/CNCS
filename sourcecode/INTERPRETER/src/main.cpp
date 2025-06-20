@@ -6,7 +6,7 @@
 #include <iostream>
 #include <pugixml.hpp>
 using namespace std;
-
+// clang-format off
 int main(int argc, char* argv[]) {
     /*
     fstream file("test.txt");
@@ -30,7 +30,15 @@ int main(int argc, char* argv[]) {
 
     doc.save(cout);
     */
-    
+    cout << CNCS::interpreter::internal_functions::isValidCommand("G00") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidCommand("G1") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidCommand("M01") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidCommand("M2") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidCommand("S10000") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidCommand("G57") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidCommand("G0000003") << endl;
+    cout << CNCS::interpreter::internal_functions::isValidCommand("G07") << endl;
 
     return 0;
 }
+// clang-format on
