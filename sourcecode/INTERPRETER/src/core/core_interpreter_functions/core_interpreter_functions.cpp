@@ -31,3 +31,5 @@ bool CNCS::interpreter::internal_functions::isValidFormatting(
     std::string string_to_be_validated) {
     return std::regex_match(string_to_be_validated, GCODE_STANDART_REGEX);
 }
+
+

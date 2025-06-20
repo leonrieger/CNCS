@@ -1,4 +1,5 @@
 #include "core_interpreter.hpp"
+#include "core_interpreter_functions/core_interpreter_functions.hpp"
 
 bool CNCS::interpreter::gcode_line_parser(
     current_interpreter_status& currentstate, std::string line_content,
@@ -14,6 +15,16 @@ bool CNCS::interpreter::gcode_line_parser(
         current_command_node.append_child("EXCLUDED").text().set(msg);
         return 1;
     }
+
+    std::vector<std::string> comments, command_parts;
+
+    CNCS::interpreter::internal_functions::extractComments(line_content,
+                                                           comments);
+
+    CNCS::interpreter::internal_functions::splitbyWhitespace(line_content,
+                                                             command_parts);
+
+
 
     return 0;
 }

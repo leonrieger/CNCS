@@ -14,8 +14,8 @@ namespace CNCS::settings::interpreter {
     };
 
     bool load_settings(USER_ENVIRONMENT_SETTINGS& settings);
-    bool load_settings(SYSTEM_ENVIRONMENT_SETTINGS& settings);
+    //bool load_settings(SYSTEM_ENVIRONMENT_SETTINGS& settings);
 
-    bool save_settings(USER_ENVIRONMENT_SETTINGS& settings);
-    bool save_settings(SYSTEM_ENVIRONMENT_SETTINGS& settings);
+    //bool save_settings(USER_ENVIRONMENT_SETTINGS& settings);
+    //bool save_settings(SYSTEM_ENVIRONMENT_SETTINGS& settings);
 }
