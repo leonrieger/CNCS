@@ -24,6 +24,13 @@ bool CNCS::interpreter::gcode_line_parser(
     CNCS::interpreter::internal_functions::splitbyWhitespace(line_content,
                                                              command_parts);
 
+    int16_t commandExists = 0;
+    for (std::string com : command_parts) {
+        if (CNCS::interpreter::internal_functions::isValidCommand(com)) {
+            commandExists++;
+        }
+    }
+
 
 
     return 0;

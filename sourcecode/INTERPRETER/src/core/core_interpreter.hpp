@@ -16,8 +16,8 @@ namespace CNCS::interpreter {
         bool current_unit_system =
             false; // false for metric / true for imperial
         currentWorkingPlane currentPlane = NONE;
-        bool measurementMode = false;    // false absolute, true incremental
-        uint64_t prevLineNumber = 0; // the previous line number
+        bool measurementMode = false; // false absolute, true incremental
+        uint64_t prevLineNumber = 0;  // the previous line number
         uint64_t prevCommandID = 0;
     };
 
