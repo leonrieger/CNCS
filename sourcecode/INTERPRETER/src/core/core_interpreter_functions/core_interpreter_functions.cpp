@@ -35,9 +35,9 @@ bool CNCS::interpreter::internal_functions::isValidFormatting(
 bool CNCS::interpreter::internal_functions::isValidCommand(
     std::string& gcode_command) {
     char cmd_family = gcode_command[0];
-    int16_t cmd_specification = std::to_integer(gcode_command.substr(1));
+    int16_t cmd_code = static_cast<int16_t>(std::stoi(gcode_command.substr(1)));
 
-    switch (cmd_type) {
+    switch (cmd_family) {
     case 'G':
     case 'M':
     case 'S':
