@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\MATH.hpp">
+    <ClInclude Include="src\math.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
