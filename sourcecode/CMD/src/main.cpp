@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <CLI/CLI.hpp>
 
 #include "ui_elements/ui_elements.hpp"
 
