@@ -14,6 +14,6 @@ namespace CNCS::math {
 
     namespace percentages {
         template <typename T>
-        float calculate_percent(T current_value, T full_value);
+        float DLLMODE calculate_percent(T current_value, T full_value);
     }
 }
