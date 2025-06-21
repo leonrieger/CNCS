@@ -24,7 +24,7 @@ namespace CNCS::interpreter {
         uint64_t prevCommandID = 0;
     };
 
-    void gcode_file_parser(std::string& path_to_file_to_be_parsed);
+    //void gcode_file_parser(std::string absolute_path_to_file);
 
     int8_t
     gcode_line_parser(INTERPRETER_STATUS& currentstate,

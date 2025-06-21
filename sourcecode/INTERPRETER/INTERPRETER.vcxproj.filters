@@ -39,6 +39,9 @@
     <ClInclude Include="src\core\errors\errors.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\include\gitmodules\pugixml\src\pugixml.cpp">
@@ -57,6 +60,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\core\errors\errors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\gcode_file_parser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
