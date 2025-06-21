@@ -19,7 +19,7 @@ namespace CNCS::cmd {
     namespace general {
         float calculate_percent(uint32_t amount_of_current_steps,
                                 uint32_t amount_of_all_steps);
-        void get_terminal_size(int& width, int& height);
+        void get_terminal_size(int16_t& width, int16_t& height);
     } // namespace general
 
     namespace ui_elements {

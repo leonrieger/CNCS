@@ -21,10 +21,7 @@
     <ClCompile Include="src\ui_elements\progress_bar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ui_elements\common.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\EntryPoint.cpp">
+    <ClCompile Include="src\ui_elements\general.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,10 +29,7 @@
     <ClInclude Include="src\ui_elements\ui_elements.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\EntryPoint.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\EntryPointUtil\EntryPointUtil.hpp">
+    <ClInclude Include="src\ui_elements\definitions.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
