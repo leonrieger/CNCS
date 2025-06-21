@@ -1,15 +1,14 @@
 #include "ui_elements.hpp"
-using namespace ui_elements;
 
 #include <format>
-using namespace std;
+#include <iostream>
 
-progress_bar::progress_bar(string name, uint32_t steps_until_finished, const string color) {
-    color_selected = color;
+CNCS::cmd::ui_elements::progress_bar::progress_bar(std::string name, uint32_t steps_until_finished, const std::string color) {
+    const std::string color_selected = color;
     all_steps = steps_until_finished;
     current_steps = 0;
     if (sizeof(name) > 0) {
-        cout << "*** " << name << " ***" << endl;
+        std::cout << "*** " << name << " ***" << std::endl;
     }
     refresh();
 }

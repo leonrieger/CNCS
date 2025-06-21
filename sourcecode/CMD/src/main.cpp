@@ -10,6 +10,8 @@ int main(int argc, char* argv[]) {
 
     std::string filename = "default";
     app.add_option("-f,--file", filename, "A help string");
+    app.add_option("-t,--test", filename,
+                   "a general test of the functionality");
 
     CLI11_PARSE(app, argc, argv);
     return 0;
