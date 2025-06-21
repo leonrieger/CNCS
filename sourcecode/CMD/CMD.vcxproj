@@ -74,25 +74,25 @@
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>cncs</TargetName>
-    <IncludePath>$(SolutionDir)include\gitmodules\CLI11\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)MATH\src;$(SolutionDir)include\gitmodules\CLI11\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>cncs</TargetName>
-    <IncludePath>$(SolutionDir)include\gitmodules\CLI11\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)MATH\src;$(SolutionDir)include\gitmodules\CLI11\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>cncs</TargetName>
-    <IncludePath>$(SolutionDir)include\gitmodules\CLI11\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)MATH\src;$(SolutionDir)include\gitmodules\CLI11\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>cncs</TargetName>
-    <IncludePath>$(SolutionDir)include\gitmodules\CLI11\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)MATH\src;$(SolutionDir)include\gitmodules\CLI11\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
