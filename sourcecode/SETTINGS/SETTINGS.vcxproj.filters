@@ -27,6 +27,9 @@
     <ClInclude Include="src\interpreter\gcode_specifications.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\interpreter\load_settings.cpp">
