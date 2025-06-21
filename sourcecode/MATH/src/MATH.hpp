@@ -1,4 +1,5 @@
 #pragma once
+#include <stdint.h>
 
 #ifdef DLLEXPORT
 #define DLLMODE __declspec(dllexport)
@@ -13,7 +14,6 @@ namespace CNCS::math {
     }
 
     namespace percentages {
-        template <typename T>
-        float DLLMODE calculate_percent(T current_value, T full_value);
+        float DLLMODE calculate_percent(int64_t current_value, int64_t full_value);
     }
 }
