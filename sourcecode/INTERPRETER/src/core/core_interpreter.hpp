@@ -1,9 +1,10 @@
 #pragma once
 
+#include "../Core.hpp"
+#include <interpreter/settings.hpp>
 #include <pugixml.hpp>
 #include <string>
 #include <vector>
-#include <interpreter/settings.hpp>
 
 namespace CNCS::interpreter {
     enum currentWorkingPlane {
@@ -13,7 +14,7 @@ namespace CNCS::interpreter {
         XZ = 3,
     };
 
-    struct INTERPRETER_STATUS {
+    struct DLLMODE INTERPRETER_STATUS {
         bool current_unit_system =
             false; // false for metric / true for imperial
         bool programstartsymbol_exists_already = false;
@@ -24,14 +25,13 @@ namespace CNCS::interpreter {
         uint64_t prevCommandID = 0;
     };
 
-    //void gcode_file_parser(std::string absolute_path_to_file);
+    // void gcode_file_parser(std::string absolute_path_to_file);
 
-    int8_t
-    gcode_line_parser(INTERPRETER_STATUS& currentstate,
-                      CNCS::settings::interpreter::USER_ENVIRONMENT_SETTINGS
-                          user_env_settings,
-                      std::string line_content,
-                      pugi::xml_node& root_gcode_node);
+    int8_t DLLMODE gcode_line_parser(
+        INTERPRETER_STATUS& currentstate,
+        CNCS::settings::interpreter::USER_ENVIRONMENT_SETTINGS
+            user_env_settings,
+        std::string line_content, pugi::xml_node& root_gcode_node);
 } // namespace CNCS::interpreter
 
 // unparse
