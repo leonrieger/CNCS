@@ -3,8 +3,6 @@
 
 #include "ui_elements/ui_elements.hpp"
 
-using namespace std;
-using namespace ui_elements;
 /*
 #include <iostream>
 using namespace std;

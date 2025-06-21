@@ -1,10 +1,9 @@
 #pragma once
-#include <iostream>
-#include <string>
 #include <stdint.h>
+#include <string>
 
-namespace ui_elements {
-    struct color_table {
+namespace CNCS::cmd {
+    static struct color_table {
         const std::string NONE = "";
         const std::string HEADER = "\033[95m";
         const std::string OKBLUE = "\033[94m";
@@ -17,25 +16,30 @@ namespace ui_elements {
         const std::string UNDERLINE = "\033[4m";
     };
 
-    namespace common {
-        float calculate_percent(uint32_t amount_of_current_steps, uint32_t amount_of_all_steps);
+    namespace general {
+        float calculate_percent(uint32_t amount_of_current_steps,
+                                uint32_t amount_of_all_steps);
         void get_terminal_size(int& width, int& height);
+    } // namespace general
+
+    namespace ui_elements {
+        class progress_bar {
+        public:
+            progress_bar(std::string name, uint32_t steps_until_finished,
+                         std::string color);
+            void step();
+            void step_multiple(int64_t amount);
+            void goto_value(uint32_t value);
+            void finish();
+
+        private:
+            void refresh();
+            uint32_t all_steps = 0;
+            uint32_t current_steps = 0;
+            std::string color_selected;
+        };
 
         std::string input();
         std::string input(std::string message);
-    }
-
-    class progress_bar {
-    public:
-        progress_bar(string name, uint32_t steps_until_finished, string color);
-        void step();
-        void step_multiple(int64_t amount);
-        void goto_value(uint32_t value);
-        void finish();
-    private:
-        void refresh();
-        uint32_t all_steps = 0;
-        uint32_t current_steps = 0;
-        string color_selected;
-    };
-}
+    } // namespace ui_elements
+} // namespace CNCS::cmd

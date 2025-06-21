@@ -1,7 +1,6 @@
 #include "ui_elements.hpp"
 #include <string>
-
-using namespace ui_elements;
+#include <iostream>
 
 #if defined(_WIN32)
 #define WIN32_LEAN_AND_MEAN
@@ -11,7 +10,7 @@ using namespace ui_elements;
 #include <sys/ioctl.h>
 #endif
 
-void common::get_terminal_size(int& width, int& height) {
+void CNCS::cmd::general::get_terminal_size(int& width, int& height) {
     #if defined(_WIN32) || defined(_WIN64)
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
@@ -25,21 +24,21 @@ void common::get_terminal_size(int& width, int& height) {
     #endif
 }
 
-float common::calculate_percent(uint32_t amount_of_current_steps, uint32_t amount_of_all_steps) {
+float CNCS::cmd::general::calculate_percent(uint32_t amount_of_current_steps, uint32_t amount_of_all_steps) {
     return ((float)amount_of_current_steps / (float)amount_of_all_steps) * 100;
 }
 
 //--------------------------------------
 
-string common::input() {
-    string input_value = {};
-    getline(cin, input_value);
+std::string CNCS::cmd::ui_elements::input() {
+    std::string input_value = {};
+    std::getline(std::cin, input_value);
     return input_value;
 }
 
-string common::input(string message) {
-    cout << message;
-    string input_value = {};
-    getline(cin, input_value);
+std::string CNCS::cmd::ui_elements::input(std::string message) {
+    std::cout << message;
+    std::string input_value = {};
+    std::getline(std::cin, input_value);
     return input_value;
 }
