@@ -2,6 +2,7 @@
 
 #include <format>
 #include <iostream>
+#include <math.hpp>
 
 CNCS::cmd::ui_elements::progress_bar::progress_bar(std::string name, uint32_t steps_until_finished, const std::string color) {
     const std::string color_selected = color;
@@ -23,13 +24,14 @@ void CNCS::cmd::ui_elements::progress_bar::refresh() {
     std::cout << color_selected << "\r|";
     
     for (int i = 0; i < full_width; i++) {
-        cout << "=";
+        std::cout << "=";
     }
     for (int i = 0; i < (actual_width - full_width); i++) {
-        cout << "-";
+        std::cout << "-";
     }
-    float percent = common::calculate_percent(current_steps, all_steps);
-    cout << "|\033[0m " << format("{0:5.01f}%", percent);
+    float percent =
+        CNCS::math::percentages::calculate_percent(current_steps, all_steps);
+    std::cout << "|\033[0m " << std::format("{0:5.01f}%", percent);
 }
 
 void CNCS::cmd::ui_elements::progress_bar::step() {
