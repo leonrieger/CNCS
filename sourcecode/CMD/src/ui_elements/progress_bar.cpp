@@ -13,14 +13,14 @@ CNCS::cmd::ui_elements::progress_bar::progress_bar(std::string name, uint32_t st
     refresh();
 }
 
-void progress_bar::refresh() {
-    int32_t width, height;
-    common::get_terminal_size(width, height);
+void CNCS::cmd::ui_elements::progress_bar::refresh() {
+    int16_t width, height;
+    CNCS::cmd::general::get_terminal_size(width, height);
 
     int32_t actual_width = width - 9;
     int full_width = int(actual_width * ((float)current_steps / (float)all_steps));
 
-    cout << color_selected << "\r|";
+    std::cout << color_selected << "\r|";
     
     for (int i = 0; i < full_width; i++) {
         cout << "=";
@@ -32,7 +32,7 @@ void progress_bar::refresh() {
     cout << "|\033[0m " << format("{0:5.01f}%", percent);
 }
 
-void progress_bar::step() {
+void CNCS::cmd::ui_elements::progress_bar::step() {
     current_steps++;
     if (current_steps > all_steps) {
         finish();
@@ -42,7 +42,7 @@ void progress_bar::step() {
     }
 }
 
-void progress_bar::step_multiple(int64_t amount) {
+void CNCS::cmd::ui_elements::progress_bar::step_multiple(int64_t amount) {
     if ((current_steps += amount) < 0) {
         current_steps = 0;
     }
@@ -55,13 +55,13 @@ void progress_bar::step_multiple(int64_t amount) {
     refresh();
 }
 
-void progress_bar::goto_value(uint32_t value) {
+void CNCS::cmd::ui_elements::progress_bar::goto_value(uint32_t value) {
     current_steps = value;
     refresh();
 }
 
-void progress_bar::finish() {
+void CNCS::cmd::ui_elements::progress_bar::finish() {
     current_steps = all_steps;
     refresh();
-    cout << endl;
+    std::cout << std::endl;
 }
