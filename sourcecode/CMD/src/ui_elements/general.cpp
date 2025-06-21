@@ -1,3 +1,4 @@
+#include "definitions.hpp"
 #include "ui_elements.hpp"
 #include <string>
 
@@ -23,7 +24,4 @@ void CNCS::cmd::general::get_terminal_size(int16_t& width, int16_t& height) {
 #endif
 }
 
-float CNCS::cmd::general::calculate_percent(uint32_t amount_of_current_steps,
-                                            uint32_t amount_of_all_steps) {
-    return ((float)amount_of_current_steps / (float)amount_of_all_steps) * 100;
-}
+void CNCS::cmd::general::clear_terminal() { system(CONSOLE_CLEAR_COMMAND); }

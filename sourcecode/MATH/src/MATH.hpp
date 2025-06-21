@@ -6,8 +6,6 @@
 #define DLLMODE __declspec(dllimport)
 #endif
 
-template <typename T>;
-
 namespace CNCS::math {
     namespace unit_conversions {
         double DLLMODE inch_to_mm(int inches_to_be_converted);
@@ -15,6 +13,7 @@ namespace CNCS::math {
     }
 
     namespace percentages {
-
+        template <typename T>
+        float calculate_percent(T current_value, T full_value);
     }
 }
