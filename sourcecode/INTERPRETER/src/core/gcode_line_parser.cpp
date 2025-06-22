@@ -2,7 +2,7 @@
 #include "core_interpreter_functions/core_interpreter_functions.hpp"
 #include <interpreter/settings.hpp>
 
-int8_t CNCS::interpreter::gcode_line_parser(
+int8_t INTERPRETER_DLLMODE CNCS::interpreter::gcode_line_parser(
     INTERPRETER_STATUS& currentstate,
     CNCS::settings::interpreter::USER_ENVIRONMENT_SETTINGS user_env_settings,
     std::string line_content, pugi::xml_node& root_gcode_node) {

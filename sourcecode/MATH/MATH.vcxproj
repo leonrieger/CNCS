@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core.hpp" />
     <ClInclude Include="src\math.hpp" />
   </ItemGroup>
   <ItemGroup>
