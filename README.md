@@ -12,7 +12,7 @@
 <br>
 
 > [!NOTE]
-> The hardware components/schematics are located in the [CNCS-controller](https://github.com/leonrieger/CNCS-controller) repository
+> The hardware components/schematics are located in the [CNCS-controller](<!--https://github.com/leonrieger/CNCS-controller-->) repository
 
 <br>
 
