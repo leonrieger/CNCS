@@ -150,6 +150,7 @@
     <ClInclude Include="src\math.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\percentages.cpp" />
     <ClCompile Include="src\unit_conversion.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

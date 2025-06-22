@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Core.hpp"
+#include <interpreter/settings.hpp>
 #include <pugixml.hpp>
 #include <string>
 #include <vector>
@@ -12,7 +14,7 @@ namespace CNCS::interpreter {
         XZ = 3,
     };
 
-    struct current_interpreter_status {
+    struct DLLMODE INTERPRETER_STATUS {
         bool current_unit_system =
             false; // false for metric / true for imperial
         bool programstartsymbol_exists_already = false;
@@ -23,11 +25,13 @@ namespace CNCS::interpreter {
         uint64_t prevCommandID = 0;
     };
 
-    void gcode_file_parser(std::string& path_to_file_to_be_parsed);
+    // void gcode_file_parser(std::string absolute_path_to_file);
 
-    int8_t gcode_line_parser(current_interpreter_status& currentstate,
-                           std::string line_content,
-                           pugi::xml_node& root_gcode_node);
+    int8_t DLLMODE gcode_line_parser(
+        INTERPRETER_STATUS& currentstate,
+        CNCS::settings::interpreter::USER_ENVIRONMENT_SETTINGS
+            user_env_settings,
+        std::string line_content, pugi::xml_node& root_gcode_node);
 } // namespace CNCS::interpreter
 
 // unparse
