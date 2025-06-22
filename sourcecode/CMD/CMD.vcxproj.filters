@@ -27,6 +27,9 @@
     <ClCompile Include="src\ui_elements\inputs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\main2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ui_elements\ui_elements.hpp">
