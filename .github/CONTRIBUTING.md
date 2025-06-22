@@ -4,7 +4,7 @@ Thank you for your interest in contributing! Please follow these guidelines to h
 
 ## How to Contribute
 
-1. **Create a new branch** for your changes.
+1. **Ask if you can fix an issue** (if for the problem you're having no issue exists, please create one)
 2. **Describe your changes** clearly in your pull request (PR).
 3. **Write clear, concise commit messages** and adhere to our [coding standards](STYLEGUIDE.md).
 4. **Test your code** before submitting.
@@ -22,6 +22,7 @@ Thank you for your interest in contributing! Please follow these guidelines to h
 - Wait for a review and please respond to feedback.
 
 ## Basic Ideas
+
 if you want to help CNCS but don't know how, you could [implement the features we would like to integrate in the future](FEATURES_TO_BE_ADDED.md)
 
 ## Code of Conduct
