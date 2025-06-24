@@ -82,20 +82,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\lib\vc_x64_dll\mswud;$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\lib\vc_x64_dll\mswud;$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\lib\vc_x64_dll\mswud;$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\lib\vc_x64_dll\mswud;$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
