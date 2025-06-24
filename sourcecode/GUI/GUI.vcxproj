@@ -19,7 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\main2.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -74,24 +80,24 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\gitmodules;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)include\gitmodules;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)include\gitmodules;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)include\gitmodules;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <OutDir>$(SolutionDir).binaries\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir).binaries-int\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(SolutionDir)include\gitmodules\wxWidgets\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
