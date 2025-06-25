@@ -4,10 +4,6 @@
 [submodule "sourcecode/include/gitmodules/tracy"]
 	path = sourcecode/include/gitmodules/tracy
 	url = https://github.com/wolfpld/tracy.git
-[submodule "sourcecode/include/gitmodules/wxWidgets"]
-	path = sourcecode/include/gitmodules/wxWidgets
-	url = https://github.com/wxWidgets/wxWidgets.git
-	branch = 3.3-release
 [submodule "sourcecode/include/gitmodules/CLI11"]
 	path = sourcecode/include/gitmodules/CLI11
 	url = https://github.com/CLIUtils/CLI11.git
