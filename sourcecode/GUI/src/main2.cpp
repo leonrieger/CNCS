@@ -1,3 +1,6 @@
+#ifndef WXUSINGDLL
+#   define WXUSINGDLL
+#endif
 #include <wx/wx.h>
 
 class MyApp : public wxApp {
