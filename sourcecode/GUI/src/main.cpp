@@ -1,10 +1,10 @@
 #include <wx/wxprec.h>
 
 #ifndef WX_PRECOMP
-#include <wx/wx.h>
+#   include <wx/wx.h>
 #endif
 
-class MyApp : public wxApp {
+class mainApplication : public wxApp {
 public:
     virtual bool OnInit();
 };
@@ -21,9 +21,9 @@ private:
 
 enum { ID_Hello = 1 };
 
-wxIMPLEMENT_APP(MyApp);
+wxIMPLEMENT_APP(mainApplication);
 
-bool MyApp::OnInit() {
+bool mainApplication::OnInit() {
     MyFrame* frame = new MyFrame();
     frame->Show(true);
     return true;
