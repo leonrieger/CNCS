@@ -21,4 +21,4 @@ namespace web {
         SOCKET server_socket;
         int32_t bytesReceived = 0;
     };
-}
+} // namespace web
