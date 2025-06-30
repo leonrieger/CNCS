@@ -23,17 +23,13 @@ namespace CNCS::database {
     //---------------------------------
     class DATABASE_TABLE {
     public:
-        DATABASE_TABLE(DATABASE_FILE& database, DATABASE_TABLE_CONSTRUCTOR& db_table_constructor);
+        template <typename... Args>
+        DATABASE_TABLE(DATABASE_FILE& database, std::string name, Args... args);
 
     private:
         sqlite3* db_file_pointer = nullptr;
         int8_t* is_db_connected = nullptr;
         std::vector<fields::FIELD> table_properties = {};
         pugi::xml_document* database_information = nullptr;
-    };
-    //---------------------------------
-    class DATABASE_TABLE_CONSTRUCTOR {
-    public:
-    private:
     };
 } // namespace CNCS::database
