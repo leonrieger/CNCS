@@ -20,7 +20,7 @@ namespace CNCS::database {
     class DATABASE_TABLE {
     public:
         template <typename... Args>
-        DATABASE_TABLE(DATABASE_FILE& database, std::string table_name, Args... args);
+        DATABASE_TABLE(DATABASE_FILE& database, std::string table_name, Args&... args);
 
     private:
         sqlite3* db_file_pointer = nullptr;
