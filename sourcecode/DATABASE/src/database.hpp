@@ -12,6 +12,8 @@ namespace CNCS::database {
         bool connect(const std::string db_name);
         ~DATABASE_FILE();
 
+        void _test();
+
         friend class DATABASE_TABLE;
 
     private:
@@ -22,7 +24,7 @@ namespace CNCS::database {
     //---------------------------------
     class DATABASE_TABLE {
     public:
-        void operator=(const DATABASE_FILE& db_file);
+        void operator=(DATABASE_FILE& db_file);
 
     private:
         sqlite3* db_file_pointer = nullptr;
