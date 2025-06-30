@@ -36,12 +36,21 @@
     <ClCompile Include="src\test2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\fields\integerField\integerField.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\database.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\errors\errors.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fields\field_template.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fields\integerField\integerField.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
