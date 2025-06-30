@@ -3,6 +3,7 @@
 #include <pugixml.hpp>
 #include <sqlite3.h>
 #include <string>
+#include <vector>
 
 namespace CNCS::database {
     class DATABASE_FILE {
@@ -11,8 +12,6 @@ namespace CNCS::database {
                     const std::string database_name);
         bool connect(const std::string db_name);
         ~DATABASE_FILE();
-
-        void _test();
 
         friend class DATABASE_TABLE;
 
@@ -24,11 +23,17 @@ namespace CNCS::database {
     //---------------------------------
     class DATABASE_TABLE {
     public:
-        void operator=(DATABASE_FILE& db_file);
+        DATABASE_TABLE(DATABASE_FILE& database, DATABASE_TABLE_CONSTRUCTOR& db_table_constructor);
 
     private:
         sqlite3* db_file_pointer = nullptr;
         int8_t* is_db_connected = nullptr;
+        std::vector<fields::FIELD> table_properties = {};
         pugi::xml_document* database_information = nullptr;
+    };
+    //---------------------------------
+    class DATABASE_TABLE_CONSTRUCTOR {
+    public:
+    private:
     };
 } // namespace CNCS::database
