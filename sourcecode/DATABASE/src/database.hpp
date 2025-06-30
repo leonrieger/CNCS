@@ -1,4 +1,5 @@
 #pragma once
+#include "fields/fields.hpp"
 #include <pugixml.hpp>
 #include <sqlite3.h>
 #include <string>
