@@ -4,7 +4,6 @@
 #include <sqlite3.h>
 #include <string>
 
-// the database currently uses SQLite 3
 namespace CNCS::database {
     class DATABASE_FILE {
     public:
