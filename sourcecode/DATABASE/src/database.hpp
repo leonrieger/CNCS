@@ -26,5 +26,6 @@ namespace CNCS::database {
         sqlite3* db_file_pointer = nullptr;
         int8_t* is_db_connected = nullptr;
         std::vector<fields::FIELD> table_properties = {};
+        std::string db_table_name = "";
     };
 } // namespace CNCS::database
