@@ -8,5 +8,5 @@ CNCS::database::fields::integerField::integerField(std::string name) {
 }
 
 std::string CNCS::database::fields::integerField::convert_to_sql() {
-
+    return "";
 }

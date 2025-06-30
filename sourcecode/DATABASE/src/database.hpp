@@ -14,7 +14,7 @@ namespace CNCS::database {
 
     private:
         sqlite3* db_file_pointer = nullptr;
-        int8_t connected = false;
+        int8_t connected = 0;
     };
     //---------------------------------
     class DATABASE_TABLE {

@@ -53,5 +53,8 @@
     <ClInclude Include="src\fields\integerField\integerField.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\fields\fields.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
