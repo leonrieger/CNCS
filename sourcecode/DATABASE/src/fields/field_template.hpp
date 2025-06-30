@@ -6,11 +6,13 @@
 namespace CNCS::database::fields {
     class FIELD {
     public:
-        virtual std::string convert_to_sql();
-        template <typename T> T interpret_sql_response(std::string input_text);
+        virtual std::string convert_to_sql() { return ""; };
+        template <typename T> T interpret_sql_response(std::string input_text) {
+            return "";
+        };
 
     private:
-        std::map<std::string, std::any> properties;
-        virtual bool validate_response();
+        std::map<std::string, std::string> properties;
+        virtual bool validate_response() { return true; };
     };
 } // namespace CNCS::database::fields
