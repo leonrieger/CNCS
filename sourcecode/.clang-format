@@ -8,6 +8,7 @@ AlignAfterOpenBracket: Align
 AccessModifierOffset: -4
 AlignArrayOfStructures: Left
 NamespaceIndentation: All
+IndentPPDirectives: AfterHash
 
 BreakBeforeBraces: Custom
 BraceWrapping:

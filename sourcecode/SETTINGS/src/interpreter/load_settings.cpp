@@ -11,7 +11,7 @@
                     .attribute("value")                                        \
                     .value()) == "true"
 
-bool DLLMODE CNCS::settings::interpreter::load_settings(
+bool SETTINGS_DLLMODE CNCS::settings::interpreter::load_settings(
     USER_ENVIRONMENT_SETTINGS& settings) noexcept {
     // load file
     pugi::xml_document settings_file;

@@ -5,7 +5,7 @@
 #include "ui_elements/ui_elements.hpp"
 
 int main(int argc, char* argv[]) {
-    CLI::App app{"App description"};
+    CLI::App app("App description");
     argv = app.ensure_utf8(argv);
 
     std::string filename = "default";
