@@ -1,4 +1,5 @@
 #include "integerField.hpp"
+#include <format>
 
 CNCS::database::fields::integerField::integerField(const std::string name)
     : field_name(name) {}
@@ -9,5 +10,5 @@ CNCS::database::fields::integerField::copy() const {
 }
 
 std::string CNCS::database::fields::integerField::convert_to_sql() const {
-
+    return std::format("");
 }
