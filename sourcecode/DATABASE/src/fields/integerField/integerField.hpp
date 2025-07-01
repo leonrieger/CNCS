@@ -2,12 +2,15 @@
 #include "../field_template.hpp"
 
 namespace CNCS::database::fields {
-    class integerField : FIELD {
+    class integerField : public FIELD {
     public:
         integerField(std::string name);
-        std::string convert_to_sql();
-        int64_t interpret_sql_response(std::string input_text);
+
+        std::string convert_to_sql() const override;
+
+        std::unique_ptr<FIELD> copy() const override;
+
     private:
-        std::map<std::string, std::string> properties;
+        const std::string field_name;
     };
-} // namespace CNCS::database::fields
+}
