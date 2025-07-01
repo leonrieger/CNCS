@@ -20,12 +20,13 @@ namespace CNCS::database {
     class DATABASE_TABLE {
     public:
         template <typename... Args>
-        DATABASE_TABLE(DATABASE_FILE& database, std::string table_name, const Args&... args);
+        DATABASE_TABLE(DATABASE_FILE& database, std::string table_name,
+                       const Args&... args);
 
     private:
         sqlite3* db_file_pointer = nullptr;
         int8_t* is_db_connected = nullptr;
-        std::vector<fields::FIELD> table_properties = {};
+        std::vector<std::unique_ptr<fields::FIELD>> list_of_fields = {};
         std::string db_table_name = "";
     };
 } // namespace CNCS::database

@@ -5,6 +5,11 @@ template <typename... Args>
 CNCS::database::DATABASE_TABLE::DATABASE_TABLE(DATABASE_FILE& database,
                                                std::string table_name,
                                                const Args&... args) {
+
+    static_assert(
+        (std::is_base_of<fields::FIELD, args>::value && ...),
+        "DATABASE_TABLE init error: not all classes are derived from FIELD!");
+
     // handling the database stuff
     db_file_pointer = database.db_file_pointer;
     is_db_connected = &database.connected;
@@ -14,13 +19,11 @@ CNCS::database::DATABASE_TABLE::DATABASE_TABLE(DATABASE_FILE& database,
                                       table_name +
                                       "(id INTEGER PRIMARY KEY AUTOINCREMENT";
     //----------
-    // needs optimisation!
-    std::vector<fields::FIELD> field_objects = {std::forward<Args>(args)...};
-    for (const fields::FIELD& field_object : field_objects) {
-        table_properties.push_back(field_object);
-        initial_sql_message += ",\n" + field_object.convert_to_sql();
-    }
+    (list_of_fields.push_back(args.copy()), ...);
 
+    for (const auto& field : list_of_fields) {
+        initial_sql_message += field->convert_to_sql();
+    }
 
     initial_sql_message += ");";
     std::cout << initial_sql_message << std::endl;
