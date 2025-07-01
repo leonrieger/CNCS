@@ -1,9 +1,9 @@
 #pragma once
 #include "fields/fields.hpp"
+#include <iostream>
 #include <sqlite3.h>
 #include <string>
 #include <vector>
-#include <iostream>
 
 namespace CNCS::database {
     class DATABASE_FILE {
@@ -23,7 +23,7 @@ namespace CNCS::database {
         template <typename... Args>
         DATABASE_TABLE(DATABASE_FILE& database, std::string table_name,
                        const Args&... args) {
-            static_assert((std::is_base_of<fields::FIELD, args>::value && ...),
+            static_assert((std::is_base_of<fields::FIELD, Args> && ...),
                           "DATABASE_TABLE init error: not all classes are "
                           "derived from FIELD!");
 
