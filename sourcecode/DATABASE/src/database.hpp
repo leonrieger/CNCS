@@ -23,7 +23,7 @@ namespace CNCS::database {
         template <typename... Args>
         DATABASE_TABLE(DATABASE_FILE& database, std::string table_name,
                        const Args&... args) {
-            static_assert((std::is_base_of<fields::FIELD, Args> && ...),
+            static_assert((std::is_base_of<fields::FIELD, Args>::value && ...),
                           "DATABASE_TABLE init error: not all classes are "
                           "derived from FIELD!");
 
