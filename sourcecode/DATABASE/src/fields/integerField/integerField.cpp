@@ -10,5 +10,5 @@ CNCS::database::fields::integerField::copy() const {
 }
 
 std::string CNCS::database::fields::integerField::convert_to_sql() const {
-    return std::format("");
+    return std::format(",\n {} INTEGER NOT NULL", field_name);
 }

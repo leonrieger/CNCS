@@ -20,6 +20,8 @@ CNCS::database::DATABASE_TABLE::DATABASE_TABLE(DATABASE_FILE& database,
         table_properties.push_back(field_object);
         initial_sql_message += ",\n" + field_object.convert_to_sql();
     }
+
+
     initial_sql_message += ");";
     std::cout << initial_sql_message << std::endl;
 }
