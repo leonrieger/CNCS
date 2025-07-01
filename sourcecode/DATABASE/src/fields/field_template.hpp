@@ -7,7 +7,7 @@ namespace CNCS::database::fields {
     class FIELD {
     public:
         virtual std::string convert_to_sql() { return ""; };
-        template <typename T> T interpret_sql_response(std::string input_text) {
+        virtual std::any interpret_sql_response(std::string input_text) {
             return "";
         };
 
