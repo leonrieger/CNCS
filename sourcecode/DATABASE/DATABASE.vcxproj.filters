@@ -39,6 +39,9 @@
     <ClCompile Include="src\fields\integerField\integerField.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\testx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\database.hpp">
