@@ -2,17 +2,17 @@
 #include <any>
 #include <map>
 #include <string>
+#include <variant>
 
 namespace CNCS::database::fields {
+    using DB_RETURN_ALLOWED_TYPES = std::variant<std::string>;
+
     class FIELD {
     public:
-        virtual std::string convert_to_sql() { return ""; };
-        virtual std::any interpret_sql_response(std::string input_text) {
+        virtual std::string convert_to_sql();
+        virtual DB_RETURN_ALLOWED_TYPES interpret_sql_response(std::string input_text) {
             return "";
         };
-
-    private:
-        std::map<std::string, std::string> properties;
-        virtual bool validate_response() { return true; };
+        virtual ~FIELD() = default;
     };
 } // namespace CNCS::database::fields
