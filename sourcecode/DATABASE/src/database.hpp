@@ -1,11 +1,10 @@
 #pragma once
 #include "fields/fields.hpp"
-#include <iostream>
+#include <format>
 #include <map>
 #include <sqlite3.h>
 #include <string>
 #include <vector>
-#include <format>
 
 namespace CNCS::database {
     class DATABASE_FILE {
@@ -19,7 +18,9 @@ namespace CNCS::database {
         sqlite3* db_file_pointer = nullptr;
         int8_t connected = 0;
     };
+
     //---------------------------------
+
     class DATABASE_CONTENT {
     public:
         DATABASE_CONTENT(
@@ -30,7 +31,9 @@ namespace CNCS::database {
     private:
         std::map<std::string, DB_RETURN_TYPES> database_params;
     };
+
     //---------------------------------
+
     class DATABASE_TABLE {
     public:
         template <typename... Args>
@@ -55,9 +58,8 @@ namespace CNCS::database {
             }
 
             initial_sql_message += ");";
-            std::cout << initial_sql_message << std::endl;
-            sqlite3_exec(db_file_pointer, initial_sql_message.c_str(), 0,
-                         nullptr, 0);
+            sqlite3_exec(db_file_pointer, initial_sql_message.c_str(), getter_callback,
+                         nullptr, &errorMessage);
         }
 
         DATABASE_CONTENT get_all_elements();
