@@ -66,9 +66,9 @@ namespace CNCS::database {
         DATABASE_CONTENT(
             std::string name,
             std::vector<std::unique_ptr<fields::FIELD>>& list_of_all_fields,
-            std::map<std::string, DB_RETURN_ALLOWED_TYPES> database_return);
+            std::map<std::string, DB_RETURN_TYPES> database_return);
 
     private:
-        std::map<std::string, DB_RETURN_ALLOWED_TYPES> database_params;
+        std::map<std::string, DB_RETURN_TYPES> database_params;
     };
 } // namespace CNCS::database
