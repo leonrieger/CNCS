@@ -5,6 +5,7 @@
 #include <sqlite3.h>
 #include <string>
 #include <vector>
+#include <format>
 
 namespace CNCS::database {
     class DATABASE_FILE {
@@ -45,8 +46,7 @@ namespace CNCS::database {
             db_table_name = table_name;
             //---------
             std::string initial_sql_message =
-                "CREATE TABLE IF NOT EXISTS " + table_name +
-                "(id INTEGER PRIMARY KEY AUTOINCREMENT";
+                std::format("CREATE TABLE IF NOT EXISTS {0} (", table_name);
             //----------
             (list_of_fields.push_back(args.copy()), ...);
 
