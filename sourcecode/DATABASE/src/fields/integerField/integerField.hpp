@@ -8,7 +8,7 @@ namespace CNCS::database::fields {
 
         std::string convert_to_sql() const override;
 
-        _DB_RETURN_ALLOWED_TYPES
+        DB_RETURN_TYPES
         interpret_sql_response(std::string input_text) override;
 
         std::unique_ptr<FIELD> copy() const override;

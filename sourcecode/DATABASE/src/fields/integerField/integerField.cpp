@@ -10,8 +10,7 @@ std::string CNCS::database::fields::integerField::convert_to_sql() const {
     return std::format(", {} INTEGER NOT NULL", field_name);
 }
 
-using db_return = DB_RETURN_ALLOWED_TYPES;
-db_return CNCS::database::fields::integerField::interpret_sql_response(
+DB_RETURN_TYPES CNCS::database::fields::integerField::interpret_sql_response(
     std::string input_text) {
     return 0;
 }
