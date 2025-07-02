@@ -9,7 +9,7 @@ CNCS::database::fields::integerField::copy() const {
     return std::make_unique<integerField>(*this);
 }
 */
-CREATE_COPY(CNCS::database::fields, integerField)
+CREATE_COPY_FUNCTION(CNCS::database::fields, integerField)
 
 std::string CNCS::database::fields::integerField::convert_to_sql() const {
     return std::format(", {} INTEGER NOT NULL", field_name);
