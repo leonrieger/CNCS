@@ -19,6 +19,17 @@ namespace CNCS::database {
         int8_t connected = 0;
     };
     //---------------------------------
+    class DATABASE_CONTENT {
+    public:
+        DATABASE_CONTENT(
+            std::string name,
+            std::vector<std::unique_ptr<fields::FIELD>>& list_of_all_fields,
+            std::map<std::string, DB_RETURN_TYPES> database_return);
+
+    private:
+        std::map<std::string, DB_RETURN_TYPES> database_params;
+    };
+    //---------------------------------
     class DATABASE_TABLE {
     public:
         template <typename... Args>
@@ -59,16 +70,5 @@ namespace CNCS::database {
         char* errorMessage = nullptr;
         void getter_callback(void* NotUsed, int argc, char** argv,
                              char** columnName);
-    };
-
-    class DATABASE_CONTENT {
-    public:
-        DATABASE_CONTENT(
-            std::string name,
-            std::vector<std::unique_ptr<fields::FIELD>>& list_of_all_fields,
-            std::map<std::string, DB_RETURN_TYPES> database_return);
-
-    private:
-        std::map<std::string, DB_RETURN_TYPES> database_params;
     };
 } // namespace CNCS::database
