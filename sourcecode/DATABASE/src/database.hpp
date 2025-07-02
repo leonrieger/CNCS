@@ -1,6 +1,7 @@
 #pragma once
 #include "fields/fields.hpp"
 #include <iostream>
+#include <map>
 #include <sqlite3.h>
 #include <string>
 #include <vector>
@@ -44,13 +45,31 @@ namespace CNCS::database {
 
             initial_sql_message += ");";
             std::cout << initial_sql_message << std::endl;
-            sqlite3_exec(db_file_pointer, initial_sql_message.c_str(), 0, 0, 0);
+            sqlite3_exec(db_file_pointer, initial_sql_message.c_str(), 0,
+                         nullptr, 0);
         }
+
+        DATABASE_CONTENT get_all_elements();
 
     private:
         sqlite3* db_file_pointer = nullptr;
         int8_t* is_db_connected = nullptr;
         std::vector<std::unique_ptr<fields::FIELD>> list_of_fields = {};
         std::string db_table_name = "";
+        char* errorMessage = nullptr;
+        void getter_callback(void* NotUsed, int argc, char** argv,
+                             char** columnName);
+    };
+
+    class DATABASE_CONTENT {
+    public:
+        using _DB_RETURN_ALLOWED_TYPES = DB_RETURN_ALLOWED_TYPES;
+        DATABASE_CONTENT(
+            std::string name,
+            std::vector<std::unique_ptr<fields::FIELD>>& list_of_all_fields,
+            std::map<std::string, _DB_RETURN_ALLOWED_TYPES> database_return);
+
+    private:
+        std::map<std::string, _DB_RETURN_ALLOWED_TYPES> database_params;
     };
 } // namespace CNCS::database
