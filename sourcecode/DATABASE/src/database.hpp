@@ -44,6 +44,7 @@ namespace CNCS::database {
 
             initial_sql_message += ");";
             std::cout << initial_sql_message << std::endl;
+            sqlite3_exec(db_file_pointer, initial_sql_message.c_str(), 0, 0, 0);
         }
 
     private:
