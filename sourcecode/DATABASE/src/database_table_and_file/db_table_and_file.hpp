@@ -24,7 +24,7 @@ namespace CNCS::database {
     class DATABASE_TABLE {
     public:
         template <typename... Args>
-        DATABASE_TABLE::DATABASE_TABLE(DATABASE_FILE& database,
+        DATABASE_TABLE(DATABASE_FILE& database,
                                        std::string table_name,
                                        const Args&... args) {
             static_assert((std::is_base_of<fields::FIELD, Args>::value && ...),
@@ -59,7 +59,7 @@ namespace CNCS::database {
         std::vector<std::unique_ptr<fields::FIELD>> list_of_fields = {};
         std::string db_table_name = "";
         char* sql_errorMessage = nullptr;
-        void getter_callback(void* NotUsed, int argc, char** argv,
+        static int getter_callback(void* NotUsed, int argc, char** argv,
                              char** columnName);
     };
 } // namespace CNCS::database
