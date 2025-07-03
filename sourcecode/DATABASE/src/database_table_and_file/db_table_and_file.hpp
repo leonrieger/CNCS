@@ -49,7 +49,7 @@ namespace CNCS::database {
                          getter_callback, nullptr, &sql_errorMessage);
         }
 
-        DATABASE_CONTENT get_all_elements();
+        DATABASE_CONTENT all_elements();
 
     private:
         std::vector<std::map<std::string, DB_RETURN_TYPES>> db_content = {};
