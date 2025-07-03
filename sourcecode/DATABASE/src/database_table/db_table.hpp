@@ -1,6 +1,13 @@
 #pragma once
 
+#include "../database_content/db_content.hpp"
+#include "../database_file/db_file.hpp"
+#include "../fields/fields.hpp"
 
+#include <sqlite3.h>
+#include <string>
+#include <type_traits>
+#include <vector>
 
 namespace CNCS::database {
     class DATABASE_TABLE {
