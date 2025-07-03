@@ -18,10 +18,10 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\db_table.cpp">
+    <ClCompile Include="src\database_table\db_table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\db_file.cpp">
+    <ClCompile Include="src\database_file\db_file.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\include\gitmodules\pugixml\src\pugixml.cpp">
@@ -39,7 +39,7 @@
     <ClCompile Include="src\fields\idField\idField.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\db_content.cpp">
+    <ClCompile Include="src\database_content\db_content.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,6 +60,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\fields\idField\idField.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\database_content\db_content.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\database_file\db_file.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\database_table\db_table.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,19 +1,22 @@
 #pragma once
 
 #include "../database_content/db_content.hpp"
-#include "../database_file/db_file.hpp"
+//#include "../database_file/db_file.hpp"
 #include "../fields/fields.hpp"
 
 #include <sqlite3.h>
 #include <string>
 #include <type_traits>
 #include <vector>
+#include <format>
 
 namespace CNCS::database {
+    class DATABASE_FILE;
+
     class DATABASE_TABLE {
     public:
         template <typename... Args>
-        DATABASE_TABLE(DATABASE_FILE& database, std::string table_name,
+        DATABASE_TABLE(CNCS::database::DATABASE_FILE& database, std::string table_name,
                        const Args&... args) {
             static_assert((std::is_base_of<fields::FIELD, Args>::value && ...),
                           "DATABASE_TABLE init error: not all classes are "
