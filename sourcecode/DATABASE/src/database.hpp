@@ -1,18 +1,6 @@
 #pragma once
+
 #include "fields/fields.hpp"
-#include <format>
-#include <map>
-#include <sqlite3.h>
-#include <string>
-#include <vector>
-
-
-
-    //---------------------------------
-
-
-
-    //---------------------------------
-
-
-} // namespace CNCS::database
+#include "database_content/db_content.hpp"
+#include "database_file/db_file.hpp"
+#include "database_table/db_table.hpp"
