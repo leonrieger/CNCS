@@ -24,9 +24,8 @@ namespace CNCS::database {
     class DATABASE_TABLE {
     public:
         template <typename... Args>
-        DATABASE_TABLE(DATABASE_FILE& database,
-                                       std::string table_name,
-                                       const Args&... args) {
+        DATABASE_TABLE(DATABASE_FILE& database, std::string table_name,
+                       const Args&... args) {
             static_assert((std::is_base_of<fields::FIELD, Args>::value && ...),
                           "DATABASE_TABLE init error: not all classes are "
                           "derived from FIELD!");
@@ -46,7 +45,7 @@ namespace CNCS::database {
 
             initial_sql_message += ");";
             sqlite3_exec(db_file_pointer, initial_sql_message.c_str(),
-                         getter_callback, nullptr, &sql_errorMessage);
+                         getter_callback, this, &sql_errorMessage);
         }
 
         DATABASE_CONTENT all_elements();
@@ -59,7 +58,7 @@ namespace CNCS::database {
         std::vector<std::unique_ptr<fields::FIELD>> list_of_fields = {};
         std::string db_table_name = "";
         char* sql_errorMessage = nullptr;
-        static int getter_callback(void* NotUsed, int argc, char** argv,
-                             char** columnName);
+        static int getter_callback(void* this_class_ptr, int argc, char** argv,
+                                   char** columnName);
     };
 } // namespace CNCS::database
