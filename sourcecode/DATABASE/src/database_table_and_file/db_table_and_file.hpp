@@ -58,6 +58,8 @@ namespace CNCS::database {
         std::vector<std::unique_ptr<fields::FIELD>> list_of_fields = {};
         std::string db_table_name = "";
         char* sql_errorMessage = nullptr;
+
+        int32_t callback_index;
         static int getter_callback(void* this_class_ptr, int argc, char** argv,
                                    char** columnName);
     };
