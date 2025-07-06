@@ -15,8 +15,10 @@ namespace CNCS::database::fields {
     class FIELD {
     public:
         virtual std::string convert_to_sql() const = 0;
-        virtual DB_RETURN_TYPES
-        interpret_sql_response(std::string input_text) = 0;
+
+        virtual DB_RETURN_TYPES create_data(std::string input_text) = 0;
+
+        virtual bool is_name_compatible(std::string input_name) = 0;
         //---
         virtual std::unique_ptr<FIELD> copy() const = 0;
 

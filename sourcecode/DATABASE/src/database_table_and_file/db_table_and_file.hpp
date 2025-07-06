@@ -14,6 +14,8 @@ namespace CNCS::database {
         bool connect(const std::string database_name);
         ~DATABASE_FILE();
 
+        sqlite3* get_raw_sqlite3_pointer();
+
         friend class DATABASE_TABLE;
 
     private:
@@ -24,7 +26,7 @@ namespace CNCS::database {
     class DATABASE_TABLE {
     public:
         template <typename... Args>
-        DATABASE_TABLE(DATABASE_FILE& database, std::string table_name,
+        constexpr DATABASE_TABLE(DATABASE_FILE& database, std::string table_name,
                        const Args&... args) {
             static_assert((std::is_base_of<fields::FIELD, Args>::value && ...),
                           "DATABASE_TABLE init error: not all classes are "
@@ -50,16 +52,18 @@ namespace CNCS::database {
 
         DATABASE_CONTENT all_elements();
 
+        void tmp();
+
     private:
         std::vector<std::map<std::string, DB_RETURN_TYPES>> db_content = {};
 
+        std::vector<std::unique_ptr<fields::FIELD>> list_of_fields = {};
+
         sqlite3* db_file_pointer = nullptr;
         int8_t* is_db_connected = nullptr;
-        std::vector<std::unique_ptr<fields::FIELD>> list_of_fields = {};
         std::string db_table_name = "";
         char* sql_errorMessage = nullptr;
 
-        int32_t callback_index;
         static int getter_callback(void* this_class_ptr, int argc, char** argv,
                                    char** columnName);
     };
