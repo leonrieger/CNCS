@@ -1,5 +1,7 @@
 #include "version.hpp"
 
+#include <array>
+#include <format>
 #include <sstream>
 
 CNCS::settings::VERSION
@@ -9,13 +11,19 @@ CNCS::settings::generate_version(std::string input_version_str) {
         input_version_str.erase(0, 1);
     }
 
-    int16_t v_major = 0;
-    int8_t v_minor = 0, v_patch = 0;
-    char ignored;
+    std::stringstream input_stream(input_version_str);
 
-    std::stringstream v_string(input_version_str);
+    std::string tmp;
+    std::array<std::string, 3> seglist;
 
-    v_string >> v_major >> ignored >> v_minor >> ignored >> v_patch;
+    for (int8_t i = 0; i < 3; ++i) {
+        std::getline(input_stream, tmp, '.');
+        seglist[i] = tmp;
+    }
+
+    uint16_t v_major = std::stoi(seglist[0]);
+    uint8_t v_minor = std::stoi(seglist[1]);
+    uint8_t v_patch = std::stoi(seglist[2]);
 
     return VERSION(v_major, v_minor, v_patch);
 }
@@ -39,16 +47,14 @@ uint32_t CNCS::settings::generate_version_int(VERSION& version) {
     return output;
 }
 
-std::string
-CNCS::settings::generate_version_str(VERSION& version,
-                                     bool output_with_v_prefix) {
-    std::stringstream output;
+std::string CNCS::settings::generate_version_str(VERSION& version,
+                                                 bool output_with_v_prefix) {
 
     if (output_with_v_prefix) {
-        output << "v";
+        return std::format("v{0}.{1}.{2}", version.major, version.minor,
+                           version.patch);
+    } else {
+        return std::format("{0}.{1}.{2}", version.major, version.minor,
+                           version.patch);
     }
-
-    output << version.major << "." << version.minor << "." << version.patch;
-
-    return output.str();
 }
