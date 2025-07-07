@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <string>
 
-namespace CNCS::settings {
+namespace CNCS::settings::version {
     struct SETTINGS_DLLMODE VERSION {
         VERSION(const uint16_t version_major, const uint8_t version_minor,
                 const uint8_t version_patch)

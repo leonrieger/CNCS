@@ -4,8 +4,8 @@
 #include <format>
 #include <sstream>
 
-CNCS::settings::VERSION
-CNCS::settings::generate_version(const std::string input_version_str) {
+CNCS::settings::version::VERSION
+CNCS::settings::version::generate_version(const std::string input_version_str) {
     std::string input_string = input_version_str;
 
     if (input_string.at(0) == 'v') {
@@ -29,8 +29,8 @@ CNCS::settings::generate_version(const std::string input_version_str) {
     return VERSION(v_major, v_minor, v_patch);
 }
 
-CNCS::settings::VERSION
-CNCS::settings::generate_version(const uint32_t input_version_id) {
+CNCS::settings::version::VERSION
+CNCS::settings::version::generate_version(const uint32_t input_version_id) {
     uint16_t v_major = (input_version_id >> 16) & 0xFFFF;
     uint8_t v_minor = (input_version_id >> 8) & 0xFF;
     uint8_t v_patch = input_version_id & 0xFF;
@@ -38,7 +38,7 @@ CNCS::settings::generate_version(const uint32_t input_version_id) {
     return VERSION(v_major, v_minor, v_patch);
 }
 
-uint32_t CNCS::settings::generate_version_int(const VERSION& version) {
+uint32_t CNCS::settings::version::generate_version_int(const VERSION& version) {
     uint32_t output = 0;
     output |= (static_cast<uint32_t>(version.major) << 16);
     // output |= (version.major << 16);
@@ -48,8 +48,9 @@ uint32_t CNCS::settings::generate_version_int(const VERSION& version) {
     return output;
 }
 
-std::string CNCS::settings::generate_version_str(const VERSION& version,
-                                                 bool output_with_v_prefix) {
+std::string
+CNCS::settings::version::generate_version_str(const VERSION& version,
+                                              bool output_with_v_prefix) {
 
     if (output_with_v_prefix) {
         return std::format("v{0}.{1}.{2}", version.major, version.minor,
