@@ -32,5 +32,8 @@
     <ClInclude Include="src\linux\v_selector_linux.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\win32\toolkit_selector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

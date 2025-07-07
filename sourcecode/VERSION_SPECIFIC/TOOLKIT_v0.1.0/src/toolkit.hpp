@@ -4,8 +4,5 @@
 #include <iostream>
 #include <string>
 
-extern "C" {
-void TOOLKIT_DLLMODE test(std::string& name) {
-    std::cout << "Hello, test sucess: " + name;
-}
-}
+extern "C" TOOLKIT_DLLMODE void test(const char* name);
+
