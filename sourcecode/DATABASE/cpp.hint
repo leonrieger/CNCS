@@ -1,0 +1,4 @@
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define CREATE_COPY_FUNCTION(namespace_name, class_name) std::unique_ptr<CNCS::database::fields::FIELD> namespace_name::class_name::copy() const { return std::make_unique<class_name>(*this); }

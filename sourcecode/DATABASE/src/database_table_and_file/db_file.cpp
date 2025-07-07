@@ -1,4 +1,4 @@
-#include "database.hpp"
+#include "db_table_and_file.hpp"
 
 #include <filesystem>
 
@@ -13,4 +13,8 @@ bool CNCS::database::DATABASE_FILE::connect(const std::string filename) {
     }
     connected = -1;
     return 0;
+}
+
+sqlite3* CNCS::database::DATABASE_FILE::get_raw_sqlite3_pointer() {
+    return db_file_pointer;
 }
