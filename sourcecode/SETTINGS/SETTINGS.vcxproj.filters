@@ -33,7 +33,7 @@
     <ClInclude Include="src\config\config.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\config\version.hpp">
+    <ClInclude Include="src\version\version.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -51,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\version\version.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

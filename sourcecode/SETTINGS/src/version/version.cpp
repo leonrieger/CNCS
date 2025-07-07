@@ -3,7 +3,22 @@
 #include <sstream>
 
 CNCS::settings::VERSION
-CNCS::settings::generate_version(std::string input_version_str) {}
+CNCS::settings::generate_version(std::string input_version_str) {
+
+    if (input_version_str.at(0) == 'v') {
+        input_version_str.erase(0, 1);
+    }
+
+    int16_t v_major = 0;
+    int8_t v_minor = 0, v_patch = 0;
+    char ignored;
+
+    std::stringstream v_string(input_version_str);
+
+    v_string >> v_major >> ignored >> v_minor >> ignored >> v_patch;
+
+    return VERSION(v_major, v_minor, v_patch);
+}
 
 CNCS::settings::VERSION
 CNCS::settings::generate_version(uint32_t input_version_id) {
@@ -26,7 +41,7 @@ uint32_t CNCS::settings::generate_version_int(VERSION& version) {
 
 std::string
 CNCS::settings::generate_version_str(VERSION& version,
-                                     bool output_with_v_prefix = false) {
+                                     bool output_with_v_prefix) {
     std::stringstream output;
 
     if (output_with_v_prefix) {
