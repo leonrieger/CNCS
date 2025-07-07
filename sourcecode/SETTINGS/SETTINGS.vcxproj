@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\config\config.hpp" />
+    <ClInclude Include="src\config\version.hpp" />
     <ClInclude Include="src\Core.hpp" />
     <ClInclude Include="src\interpreter\gcode_specifications.hpp" />
     <ClInclude Include="src\interpreter\settings.hpp" />
