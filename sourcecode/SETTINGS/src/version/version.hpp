@@ -17,11 +17,11 @@ namespace CNCS::settings {
         const uint8_t patch;
     };
 
-    VERSION SETTINGS_DLLMODE generate_version(std::string input_version_str);
-    VERSION SETTINGS_DLLMODE generate_version(uint32_t input_version_id);
-    uint32_t SETTINGS_DLLMODE generate_version_int(VERSION& version);
+    VERSION SETTINGS_DLLMODE generate_version(const std::string input_version_str);
+    VERSION SETTINGS_DLLMODE generate_version(const uint32_t input_version_id);
+    uint32_t SETTINGS_DLLMODE generate_version_int(const VERSION& version);
     std::string SETTINGS_DLLMODE
-    generate_version_str(VERSION& version, bool output_with_v_prefix = false);
+    generate_version_str(const VERSION& version, bool output_with_v_prefix = false);
 
     const static VERSION CURRENT_VERSION = VERSION(0, 1, 0);
 

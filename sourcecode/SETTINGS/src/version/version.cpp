@@ -5,13 +5,14 @@
 #include <sstream>
 
 CNCS::settings::VERSION
-CNCS::settings::generate_version(std::string input_version_str) {
+CNCS::settings::generate_version(const std::string input_version_str) {
+    std::string input_string = input_version_str;
 
-    if (input_version_str.at(0) == 'v') {
-        input_version_str.erase(0, 1);
+    if (input_string.at(0) == 'v') {
+        input_string.erase(0, 1);
     }
 
-    std::stringstream input_stream(input_version_str);
+    std::stringstream input_stream(input_string);
 
     std::string tmp;
     std::array<std::string, 3> seglist;
@@ -29,7 +30,7 @@ CNCS::settings::generate_version(std::string input_version_str) {
 }
 
 CNCS::settings::VERSION
-CNCS::settings::generate_version(uint32_t input_version_id) {
+CNCS::settings::generate_version(const uint32_t input_version_id) {
     uint16_t v_major = (input_version_id >> 16) & 0xFFFF;
     uint8_t v_minor = (input_version_id >> 8) & 0xFF;
     uint8_t v_patch = input_version_id & 0xFF;
@@ -37,7 +38,7 @@ CNCS::settings::generate_version(uint32_t input_version_id) {
     return VERSION(v_major, v_minor, v_patch);
 }
 
-uint32_t CNCS::settings::generate_version_int(VERSION& version) {
+uint32_t CNCS::settings::generate_version_int(const VERSION& version) {
     uint32_t output = 0;
     output |= (static_cast<uint32_t>(version.major) << 16);
     // output |= (version.major << 16);
@@ -47,7 +48,7 @@ uint32_t CNCS::settings::generate_version_int(VERSION& version) {
     return output;
 }
 
-std::string CNCS::settings::generate_version_str(VERSION& version,
+std::string CNCS::settings::generate_version_str(const VERSION& version,
                                                  bool output_with_v_prefix) {
 
     if (output_with_v_prefix) {
