@@ -1,5 +1,6 @@
 #pragma once
 
+#include <openssl/evp.h>
 #include <string>
 
 namespace CNCS::cryptography {
@@ -7,11 +8,13 @@ namespace CNCS::cryptography {
     public:
         SHA256();
 
-        //void encrypt(std::string& msg_to_encrypt, std::string& result);
+        bool encrypt(std::string& msg_to_encrypt, unsigned char* result,
+                     uint32_t result_len);
 
-        //~SHA256();
+        ~SHA256();
 
     private:
-        //static bool is_already_initialised;
+        EVP_MD_CTX* digest_context = nullptr;
+        bool initialised = 0;
     };
-}
+} // namespace CNCS::cryptography
