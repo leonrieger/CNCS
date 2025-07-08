@@ -160,11 +160,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\sha256\sha256.cpp" />
+    <ClCompile Include="src\sha256.cpp" />
+    <ClCompile Include="src\sha512.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\base64\base64.hpp" />
-    <ClInclude Include="src\sha256\sha256.hpp" />
+    <ClInclude Include="src\base64.hpp" />
+    <ClInclude Include="src\hex.hpp" />
+    <ClInclude Include="src\sha256.hpp" />
+    <ClInclude Include="src\sha512.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

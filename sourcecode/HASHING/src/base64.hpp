@@ -10,8 +10,8 @@ inline bool is_base64(unsigned char c) {
     return (isalnum(c) || (c == '+') || (c == '/'));
 }
 
-inline std::string base64_encode(const unsigned char* bytes_to_encode,
-                                 size_t in_len) {
+inline std::string base64_encode(unsigned char* bytes_to_encode,
+                                 uint32_t in_len) {
     std::string ret;
     int i = 0;
     int j = 0;
@@ -53,15 +53,4 @@ inline std::string base64_encode(const unsigned char* bytes_to_encode,
     }
 
     return ret;
-}
-
-#include <iomanip>
-#include <sstream>
-
-// Converts a byte array to a hex string (lowercase)
-inline std::string to_hex(const unsigned char* data, size_t len) {
-    std::ostringstream oss;
-    for (size_t i = 0; i < len; ++i)
-        oss << std::hex << std::setw(2) << std::setfill('0') << (int)data[i];
-    return oss.str();
 }
