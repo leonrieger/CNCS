@@ -30,13 +30,13 @@ namespace CNCS::settings {
                    minor == other_version.minor && patch == other_version.patch;
         }
 
-        bool operator==(const uint32_t comp_value) {
-            return generate_version_int(*this) == comp_value;
-        }
+        //bool operator==(const uint32_t comp_value) {
+        //    return generate_version_int(*this) == comp_value;
+        //}
 
-        bool operator!=(const uint32_t comp_value) const {
-            return generate_version_int(*this) != comp_value;
-        }
+        //bool operator!=(const uint32_t comp_value) const {
+        //    return generate_version_int(*this) != comp_value;
+        //}
 
         uint16_t major;
         uint8_t minor;

@@ -45,3 +45,6 @@ CNCS::toolkit::TOOLKIT_INTERFACE::~TOOLKIT_INTERFACE() {
         }
     }
 }
+
+std::unordered_map<std::string, HMODULE>
+    CNCS::toolkit::TOOLKIT_INTERFACE::loaded_toolkits;
