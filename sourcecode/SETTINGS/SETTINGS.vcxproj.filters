@@ -30,7 +30,7 @@
     <ClInclude Include="src\config\config.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\version\version.hpp">
+    <ClInclude Include="src\version.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\paths.hpp">

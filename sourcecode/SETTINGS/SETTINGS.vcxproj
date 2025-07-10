@@ -154,7 +154,7 @@
     <ClInclude Include="src\config\config.hpp" />
     <ClInclude Include="src\OS\linux\username.hpp" />
     <ClInclude Include="src\paths.hpp" />
-    <ClInclude Include="src\version\version.hpp" />
+    <ClInclude Include="src\version.hpp" />
     <ClInclude Include="src\Core.hpp" />
     <ClInclude Include="src\interpreter\gcode_specifications.hpp" />
     <ClInclude Include="src\interpreter\settings.hpp" />
