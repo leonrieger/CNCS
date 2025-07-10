@@ -8,12 +8,23 @@
 #include <Windows.h>
 
 namespace CNCS::toolkit {
-    class TOOLKIT_LOADER {
+    class TOOLKIT {
     public:
-        bool load(const CNCS::settings::version::VERSION& version);
+        bool set(const CNCS::settings::version::VERSION& version);
+        //bool set(std::string toolkit_name);
 
     private:
-        static std::unordered_map<CNCS::settings::version::VERSION, HMODULE>
-            dlls_loaded;
+        CNCS::settings::version::VERSION internal_toolkit_version;
+        // std::string user_toolkit; // user toolkits are currently not
+        // supported --- will be added in the future
+    };
+
+    class TOOLKIT_INTERFACE {
+    public:
+        bool load(TOOLKIT& toolkit);
+
+    private:
+        static std::unordered_map<TOOLKIT, HMODULE>
+            toolkits_loaded;
     };
 } // namespace CNCS::toolkit
