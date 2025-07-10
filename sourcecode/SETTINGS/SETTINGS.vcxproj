@@ -152,11 +152,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\config\config.hpp" />
+    <ClInclude Include="src\OS\linux\username.hpp" />
+    <ClInclude Include="src\paths.hpp" />
     <ClInclude Include="src\version\version.hpp" />
     <ClInclude Include="src\Core.hpp" />
     <ClInclude Include="src\interpreter\gcode_specifications.hpp" />
     <ClInclude Include="src\interpreter\settings.hpp" />
-    <ClInclude Include="src\OS.hpp" />
     <ClInclude Include="src\OS\win32\username.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +169,6 @@
     </ClCompile>
     <ClCompile Include="src\interpreter\load_settings.cpp" />
     <ClCompile Include="src\interpreter\save_settings.cpp" />
-    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\OS\win32\username.cpp" />
     <ClCompile Include="src\version\version.cpp" />
   </ItemGroup>

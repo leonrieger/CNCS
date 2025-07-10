@@ -2,6 +2,6 @@
 
 #include <string>
 
-namespace CNCS::settings::os {
+namespace CNCS::settings {
     std::string getCurrentUserName();
 }
