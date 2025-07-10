@@ -26,11 +26,12 @@ namespace CNCS::toolkit {
     public:
         bool load(const TOOLKIT& toolkit);
 
-        void get_functions(std::unordered_map<std::string, void*>);
+        void get_functions(std::unordered_map<std::string, void*>& function_list) const;
 
         ~TOOLKIT_INTERFACE();
 
     private:
-        static std::unordered_map<TOOLKIT, HMODULE> loaded_toolkits;
+        static std::unordered_map<std::string, HMODULE> loaded_toolkits;
+        std::string active_toolkit;
     };
 } // namespace CNCS::toolkit

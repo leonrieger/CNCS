@@ -12,6 +12,8 @@ namespace CNCS::settings {
             : major(version_major), minor(version_minor),
               patch(version_patch) {};
 
+        // sometimes I hate it...
+
         void operator=(const VERSION& other_version) {
             major = other_version.major;
             minor = other_version.minor;
@@ -30,6 +32,10 @@ namespace CNCS::settings {
 
         bool operator==(const uint32_t comp_value) {
             return generate_version_int(*this) == comp_value;
+        }
+
+        bool operator!=(const uint32_t comp_value) const {
+            return generate_version_int(*this) != comp_value;
         }
 
         uint16_t major;
