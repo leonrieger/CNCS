@@ -21,6 +21,9 @@
     <ClCompile Include="src\win32\v_selector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\win32\toolkit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\version_selector.hpp">
@@ -32,7 +35,7 @@
     <ClInclude Include="src\linux\v_selector_linux.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\win32\toolkit_selector.h">
+    <ClInclude Include="src\win32\toolkit_selector.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

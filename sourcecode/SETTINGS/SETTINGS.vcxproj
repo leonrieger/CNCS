@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\config\config.hpp" />
+    <ClInclude Include="src\names.hpp" />
     <ClInclude Include="src\OS\linux\username.hpp" />
     <ClInclude Include="src\paths.hpp" />
     <ClInclude Include="src\version.hpp" />

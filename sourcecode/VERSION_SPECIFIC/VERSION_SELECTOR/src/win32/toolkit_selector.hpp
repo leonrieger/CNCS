@@ -10,17 +10,14 @@
 namespace CNCS::toolkit {
     class TOOLKIT {
     public:
-        bool set(const CNCS::settings::VERSION& version) {
-            if (CNCS::settings::is_version_allowed(version)) {
-                internal_toolkit_version = version;
-                return true;
-            }
-            return false;
-        };
-        //bool set(std::string toolkit_name);
+        bool set(const CNCS::settings::VERSION& version);
+        // bool set(std::string toolkit_name);
+
+        std::string get();
 
     private:
-        CNCS::settings::VERSION internal_toolkit_version;
+        CNCS::settings::VERSION internal_toolkit_version =
+            CNCS::settings::VERSION(0, 0, 0);
         // std::string user_toolkit; // user toolkits are currently not
         // supported --- will be added in the future
     };
@@ -29,8 +26,9 @@ namespace CNCS::toolkit {
     public:
         bool load(const TOOLKIT& toolkit);
 
+        void get_function_pointers(std::unordered_map<std::string, void*>);
+
     private:
-        static std::unordered_map<TOOLKIT, HMODULE>
-            toolkits_loaded;
+        static std::unordered_map<TOOLKIT, HMODULE> toolkits_loaded;
     };
 } // namespace CNCS::toolkit
