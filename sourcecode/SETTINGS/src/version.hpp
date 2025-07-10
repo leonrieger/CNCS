@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Core.hpp"
+#include "Core.hpp"
 #include <array>
 #include <stdint.h>
 #include <string>
@@ -23,6 +23,11 @@ namespace CNCS::settings {
                    minor == other_version.minor && patch == other_version.patch;
         }
 
+        bool operator==(const VERSION other_version) const {
+            return major == other_version.major &&
+                   minor == other_version.minor && patch == other_version.patch;
+        }
+
         uint16_t major;
         uint8_t minor;
         uint8_t patch;
@@ -38,10 +43,11 @@ namespace CNCS::settings {
     std::string SETTINGS_DLLMODE generate_version_str(
         const VERSION& version, bool output_with_v_prefix = false);
 
-    bool SETTINGS_DLLMODE is_allowed_version();
+    bool SETTINGS_DLLMODE is_version_allowed(const VERSION& version_to_test);
 
     const static VERSION CURRENT_VERSION = VERSION(0, 1, 0);
 
+    // maybe as import from xml file?
     const static std::array<VERSION, 1> SUPPORTED_VERSIONS = {
         VERSION(0, 1, 0),
     };

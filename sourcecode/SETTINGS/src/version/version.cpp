@@ -48,9 +48,8 @@ uint32_t CNCS::settings::generate_version_int(const VERSION& version) {
     return output;
 }
 
-std::string
-CNCS::settings::generate_version_str(const VERSION& version,
-                                              bool output_with_v_prefix) {
+std::string CNCS::settings::generate_version_str(const VERSION& version,
+                                                 bool output_with_v_prefix) {
 
     if (output_with_v_prefix) {
         return std::format("v{0}.{1}.{2}", version.major, version.minor,
@@ -59,4 +58,14 @@ CNCS::settings::generate_version_str(const VERSION& version,
         return std::format("{0}.{1}.{2}", version.major, version.minor,
                            version.patch);
     }
+}
+
+bool CNCS::settings::is_version_allowed(const VERSION& version_to_test) {
+    bool is_allowed = false;
+    for (const VERSION& ver : SUPPORTED_VERSIONS) {
+        if (version_to_test == ver) {
+            is_allowed = true;
+        }
+    }
+    return is_allowed;
 }

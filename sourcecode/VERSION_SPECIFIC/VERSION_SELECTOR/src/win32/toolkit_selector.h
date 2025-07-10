@@ -11,8 +11,11 @@ namespace CNCS::toolkit {
     class TOOLKIT {
     public:
         bool set(const CNCS::settings::VERSION& version) {
-            internal_toolkit_version = version;
-            return true;
+            if (CNCS::settings::is_version_allowed(version)) {
+                internal_toolkit_version = version;
+                return true;
+            }
+            return false;
         };
         //bool set(std::string toolkit_name);
 
@@ -24,7 +27,7 @@ namespace CNCS::toolkit {
 
     class TOOLKIT_INTERFACE {
     public:
-        bool load(TOOLKIT& toolkit);
+        bool load(const TOOLKIT& toolkit);
 
     private:
         static std::unordered_map<TOOLKIT, HMODULE>
