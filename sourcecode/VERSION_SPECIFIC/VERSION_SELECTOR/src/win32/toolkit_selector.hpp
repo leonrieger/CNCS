@@ -13,7 +13,7 @@ namespace CNCS::toolkit {
         bool set(const CNCS::settings::VERSION& version);
         // bool set(std::string toolkit_name);
 
-        std::string get();
+        std::string get() const;
 
     private:
         CNCS::settings::VERSION internal_toolkit_version =
@@ -26,9 +26,11 @@ namespace CNCS::toolkit {
     public:
         bool load(const TOOLKIT& toolkit);
 
-        void get_function_pointers(std::unordered_map<std::string, void*>);
+        void get_functions(std::unordered_map<std::string, void*>);
+
+        ~TOOLKIT_INTERFACE();
 
     private:
-        static std::unordered_map<TOOLKIT, HMODULE> toolkits_loaded;
+        static std::unordered_map<TOOLKIT, HMODULE> loaded_toolkits;
     };
 } // namespace CNCS::toolkit

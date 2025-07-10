@@ -45,9 +45,4 @@ namespace CNCS::toolkit {
         }
     }
 
-    void TOOLKIT_ACCESS::test(std::string& temp) {
-        // Example test function
-        temp = "Toolkit test executed.";
-    }
-
 } // namespace CNCS::toolkit

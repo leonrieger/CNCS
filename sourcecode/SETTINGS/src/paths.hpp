@@ -16,14 +16,14 @@
 #        define USER_SETTINGS_PATH std::string("AppData\\Local\\")
 #        define GLOBAL_SETTINGS_PATH std::string("AppData\\Global\\")
 #        define TOOLKIT_PATH std::string("toolkits\\")
-#        define TOOLKIT_USER_PATH std::string("toolkits\\user\\")
+// #        define TOOLKIT_USER_PATH std::string("toolkits\\user\\")
 #    else
 #        define GLOBAL_SETTINGS_PATH std::string("")
 #        define USER_SETTINGS_PATH                                             \
             std::string("C:\\Users\\" + CNCS::settings::getCurrentUserName() + \
                         "\\AppData\\Local\\CNCS\\")
 #        define TOOLKIT_PATH std::string("C:\\CNCS\\toolkits\\")
-#        define TOOLKIT_USER_PATH std::string("C:\\CNCS\\toolkits\\user\\")
+// #        define TOOLKIT_USER_PATH std::string("C:\\CNCS\\toolkits\\user\\")
 #    endif
 #elif defined(__linux__)
 

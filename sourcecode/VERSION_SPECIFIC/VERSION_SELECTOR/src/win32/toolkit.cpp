@@ -10,7 +10,7 @@ bool CNCS::toolkit::TOOLKIT::set(const CNCS::settings::VERSION& version) {
     return false;
 }
 
-std::string CNCS::toolkit::TOOLKIT::get() {
+std::string CNCS::toolkit::TOOLKIT::get() const {
     if (internal_toolkit_version != NULL) {
         return TOOLKIT_STD_NAME + CNCS::settings::generate_version_str(
                                       internal_toolkit_version, true);
