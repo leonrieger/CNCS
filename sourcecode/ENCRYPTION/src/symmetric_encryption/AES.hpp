@@ -37,12 +37,14 @@ namespace CNCS::cryptography {
 
     private:
         EVP_CIPHER_CTX* context = nullptr;
+        const EVP_CIPHER* encryption_type = nullptr;
+
         const AES_TYPE aes_type;
         uint8_t key[32] = {};
         // used for randomizing encryption output
         uint8_t initialisation_vector[16] = {0};
         bool is_key_set = false;
-
+        bool is_iv_set = false;
         // 64bit + aes_type * 64 = key_len
     };
 } // namespace CNCS::cryptography
