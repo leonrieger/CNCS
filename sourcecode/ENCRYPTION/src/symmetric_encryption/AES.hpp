@@ -1,9 +1,10 @@
 #pragma once
 
+#include <array>
 #include <openssl/evp.h>
 #include <stdint.h>
 #include <string>
-#include <array>
+#include <vector>
 // #include <openssl/rand.h>
 
 namespace CNCS::cryptography {
@@ -19,9 +20,9 @@ namespace CNCS::cryptography {
         // uses CBC
         AES(const AES_TYPE& type);
 
-        bool set_key(std::array<uint8_t, 32> key_arr);
-        bool set_key(std::array<uint8_t, 24> key_arr);
-        bool set_key(std::array<uint8_t, 16> key_arr);
+        bool set_key(std::array<uint8_t, 32>& key_arr);
+        bool set_key(std::array<uint8_t, 24>& key_arr);
+        bool set_key(std::array<uint8_t, 16>& key_arr);
 
         bool set_iv(std::array<uint8_t, 16>& iv_array);
 
@@ -31,10 +32,10 @@ namespace CNCS::cryptography {
         bool get_key(char* key, size_t& key_len);
         bool get_iv(char* iv);
 
-        bool encrypt(std::string& msg_to_encrypt, uint8_t* encrypted_text,
-                     size_t& encypted_text_len);
+        bool encrypt(std::string& msg_to_encrypt,
+                     std::vector<uint8_t>& encrypted_msg);
 
-        bool decrypt(uint8_t* encrypted_text, size_t& encypted_text_len,
+        bool decrypt(std::vector<uint8_t>& encrypted_msg,
                      std::string& decrypted_msg);
 
         ~AES();
