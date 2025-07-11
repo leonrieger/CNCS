@@ -3,6 +3,7 @@
 #include <openssl/evp.h>
 #include <stdint.h>
 #include <string>
+#include <array>
 // #include <openssl/rand.h>
 
 namespace CNCS::cryptography {
@@ -18,8 +19,11 @@ namespace CNCS::cryptography {
         // uses CBC
         AES(const AES_TYPE& type);
 
-        bool set_key(const char* key, size_t key_len);
-        bool set_iv(const char* iv);
+        bool set_key(std::array<uint8_t, 32> key_arr);
+        bool set_key(std::array<uint8_t, 24> key_arr);
+        bool set_key(std::array<uint8_t, 16> key_arr);
+
+        bool set_iv(std::array<uint8_t, 16>& iv_array);
 
         bool generate_key();
         bool generate_iv();
@@ -31,7 +35,7 @@ namespace CNCS::cryptography {
                      size_t& encypted_text_len);
 
         bool decrypt(uint8_t* encrypted_text, size_t& encypted_text_len,
-                     std::string& msg_to_encrypt);
+                     std::string& decrypted_msg);
 
         ~AES();
 
@@ -40,11 +44,11 @@ namespace CNCS::cryptography {
         const EVP_CIPHER* encryption_type = nullptr;
 
         const AES_TYPE aes_type;
-        uint8_t key[32] = {};
+        std::array<uint8_t, 32> key_array = {0};
         // used for randomizing encryption output
-        uint8_t initialisation_vector[16] = {0};
+        std::array<uint8_t, 16> initialisation_vector = {0};
+
         bool is_key_set = false;
         bool is_iv_set = false;
-        // 64bit + aes_type * 64 = key_len
     };
 } // namespace CNCS::cryptography

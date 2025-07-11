@@ -1,5 +1,7 @@
 #include "AES.hpp"
 
+#include <algorithm>
+
 CNCS::cryptography::AES::AES(const AES_TYPE& type) : aes_type(type) {
     context = EVP_CIPHER_CTX_new();
 
@@ -16,8 +18,40 @@ CNCS::cryptography::AES::AES(const AES_TYPE& type) : aes_type(type) {
     }
 }
 
-bool CNCS::cryptography::AES::set_key(const char* key, size_t key_len) {
+bool CNCS::cryptography::AES::set_key(std::array<uint8_t, 32> key_arr) {
+    if (aes_type != AES256) {
+        return false;
+    }
 
+    is_key_set = true;
+
+    std::copy(key_arr.begin(), key_arr.end(), key_array.begin());
+
+    return true;
+}
+
+bool CNCS::cryptography::AES::set_key(std::array<uint8_t, 24> key_arr) {
+    if (aes_type != AES192) {
+        return false;
+    }
+
+    is_key_set = true;
+
+    std::copy(key_arr.begin(), key_arr.end(), key_array.begin());
+
+    return true;
+}
+
+bool CNCS::cryptography::AES::set_key(std::array<uint8_t, 16> key_arr) {
+    if (aes_type != AES128) {
+        return false;
+    }
+
+    is_key_set = true;
+
+    std::copy(key_arr.begin(), key_arr.end(), key_array.begin());
+
+    return true;
 }
 
 bool CNCS::cryptography::AES::encrypt(std::string& msg_to_encrypt,
