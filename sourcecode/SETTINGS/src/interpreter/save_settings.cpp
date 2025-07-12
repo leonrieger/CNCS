@@ -1,2 +1,2 @@
-#include "../OS.hpp" // for operating system specific properties
+#include "../paths.hpp"
 #include "settings.hpp"

@@ -1,8 +1,6 @@
-#include "../OS.hpp" // for operating system specific properties
+#include "../paths.hpp"
 #include "settings.hpp"
 
-// reqired for pugixml
-#include <pugiconfig.hpp>
 #include <pugixml.hpp>
 
 // definition for ease of creating properties

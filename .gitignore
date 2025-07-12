@@ -1,17 +1,11 @@
 *.temp
-*.db
-*.xml
-#exclude path configuration
-!sourcecode/DATABASE-CTRL/config.xml
+*.tmp
 
 sourcecode/.vs/
-sourcecode/.binaries/
-sourcecode/.binaries-int/
-
 sourcecode/.bin/
 sourcecode/.bin-int/
 
-#sourcecode/include/gitmodules/
-
 #Thanks VS2022
 *.user
+
+*.comment

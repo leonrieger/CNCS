@@ -1,18 +1,8 @@
 #include "database.hpp"
 #include <iostream>
 
-int cb(void* none, int argc, char** argv, char** columnName) {
-
-    for (int32_t i = 0; i < argc; ++i) {
-        std::cout << columnName[i] << " : " << argv[i] << std::endl;
-    }
-
-    std::cout << "\n----\n";
-
-    return SQLITE_OK;
-}
-
 int main() {
+    /*
     CNCS::database::DATABASE_FILE db_file;
     db_file.connect("test.db");
 
@@ -32,6 +22,9 @@ int main() {
         CNCS::database::fields::integerField("e"));
 
     test_table.tmp();
+    */
+
+    
 
     return 0;
 }
