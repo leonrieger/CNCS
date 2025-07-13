@@ -38,10 +38,10 @@
     <ClInclude Include="src\definitions.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\webclient.hpp">
+    <ClInclude Include="src\windows\webclient.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\webserver.hpp">
+    <ClInclude Include="src\windows\webserver.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\webstandartfunctions.hpp">

@@ -157,9 +157,9 @@
   <ItemGroup>
     <ClInclude Include="src\definitions.hpp" />
     <ClInclude Include="src\errors\errors.hpp" />
-    <ClInclude Include="src\webclient.hpp" />
+    <ClInclude Include="src\windows\webclient.hpp" />
     <ClInclude Include="src\webstandartfunctions.hpp" />
-    <ClInclude Include="src\webserver.hpp" />
+    <ClInclude Include="src\windows\webserver.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
