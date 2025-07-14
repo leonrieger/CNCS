@@ -73,22 +73,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\gitmodules\libcorrect\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\Reed-Solomon\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\gitmodules\libcorrect\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\Reed-Solomon\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\gitmodules\libcorrect\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\Reed-Solomon\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir).bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir).bin-int\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)include\gitmodules\libcorrect\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)include\gitmodules\Reed-Solomon\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -102,8 +102,9 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>correct.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\dev\CNCS-ecosystem\CNCS\sourcecode\include\gitmodules\libcorrect\build\lib\Debug;$(SolutionDir)include\gitmodules\libcorrect\build\x64\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,8 +121,9 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>correct.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\dev\CNCS-ecosystem\CNCS\sourcecode\include\gitmodules\libcorrect\build\lib\Debug;$(SolutionDir)include\gitmodules\libcorrect\build\x64\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -136,8 +138,9 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>correct.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\dev\CNCS-ecosystem\CNCS\sourcecode\include\gitmodules\libcorrect\build\lib\Debug;$(SolutionDir)include\gitmodules\libcorrect\build\x64\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -154,8 +157,9 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>correct.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\dev\CNCS-ecosystem\CNCS\sourcecode\include\gitmodules\libcorrect\build\lib\Debug;$(SolutionDir)include\gitmodules\libcorrect\build\x64\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
