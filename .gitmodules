@@ -14,6 +14,3 @@
 	path = sourcecode/include/gitmodules/openssl
 	url = https://github.com/openssl/openssl.git
 	branch = openssl-3.5
-[submodule "sourcecode/include/gitmodules/libfec"]
-	path = sourcecode/include/gitmodules/libfec
-	url = https://github.com/quiet/libfec.git
