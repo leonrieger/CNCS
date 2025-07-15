@@ -1,257 +1,61 @@
-#pragma once
+#include "string.hpp"
 
-class MyString {
-private:
-    char* data_;
-    unsigned int length_;
-    unsigned int capacity_;
+#include <iostream>
 
-    // Helper: compute strlen
-    static unsigned int strlen_(const char* str) {
-        unsigned int len = 0;
-        while (str[len] != '\0')
-            ++len;
-        return len;
-    }
+// Sample test program for MyString class
+int main() {
+    // Create strings
+    MyString s1;           // Default constructor
+    MyString s2("Hello");  // From C-string
+    MyString s3(5, 'a');   // 5 copies of 'a'
+    MyString s4(s2);       // Copy constructor
+    MyString s5(s2, 1, 2); // Substring constructor
 
-    // Helper: copy memory
-    static void memcpy_(char* dest, const char* src, unsigned int n) {
-        for (unsigned int i = 0; i < n; ++i)
-            dest[i] = src[i];
-    }
+    // Assignments
+    s1 = "World";
+    s1 = s2;
+    s1 = 'X';
 
-    // Helper: compare memory
-    static int memcmp_(const char* s1, const char* s2, unsigned int n) {
-        for (unsigned int i = 0; i < n; ++i)
-            if (s1[i] != s2[i])
-                return (unsigned char)s1[i] - (unsigned char)s2[i];
-        return 0;
-    }
+    // Element access
+    char c1 = s2[0];              // operator[]
+    char c2 = s2.at(1);           // at()
+    char c3 = s2.front();         // front()
+    char c4 = s2.back();          // back()
+    const char* ptr = s2.c_str(); // c_str()
 
-    // Helper: set memory
-    static void memset_(char* dest, char val, unsigned int n) {
-        for (unsigned int i = 0; i < n; ++i)
-            dest[i] = val;
-    }
+    // Modifiers
+    s1.clear(); // clear()
+    s1 = "Hello";
+    s1.insert(1, "abc");          // insert()
+    s1.erase(1, 3);               // erase()
+    s1.push_back('!');            // push_back()
+    s1.pop_back();                // pop_back()
+    s1.append(" World");          // append()
+    s1 += "!";                    // operator+=
+    s1.replace(6, 5, "Universe"); // replace()
+    s2.swap(s3);                  // swap()
+    s1.resize(20, '-');           // resize()
 
-    // Internal: ensure enough capacity
-    void ensure_capacity(unsigned int newcap) {
-        if (newcap > capacity_) {
-            unsigned int new_capacity =
-                (newcap > 2 * capacity_) ? newcap : 2 * capacity_ + 8;
-            char* newdata = new char[new_capacity + 1];
-            memcpy_(newdata, data_, length_);
-            newdata[length_] = '\0';
-            delete[] data_;
-            data_ = newdata;
-            capacity_ = new_capacity;
-        }
-    }
+    // String operations
+    MyString sub = s1.substr(0, 5); // substr()
+    char buffer[10];
+    s1.copy(buffer, 5, 0);                    // copy()
+    MyString::size_type pos1 = s1.find("lo"); // find()
+    MyString::size_type pos2 = s1.rfind('l'); // rfind()
 
-public:
-    // Default constructor
-    MyString() : data_(new char[1]), length_(0), capacity_(0) {
-        data_[0] = '\0';
-    }
+    // Comparison
+    bool eq = (s1 == s2);     // operator==
+    bool neq = (s1 != s2);    // operator!=
+    bool lt = (s1 < s2);      // operator<
+    bool gt = (s1 > s2);      // operator>
+    int cmp = s1.compare(s2); // compare()
 
-    // Constructor from C-string
-    MyString(const char* str) {
-        length_ = strlen_(str);
-        capacity_ = length_;
-        data_ = new char[capacity_ + 1];
-        memcpy_(data_, str, length_);
-        data_[length_] = '\0';
-    }
+    // Concatenation
+    MyString cat1 = s1 + s2; // operator+
+    MyString cat2 = s1 + "abc";
+    MyString cat3 = "abc" + s1;
+    MyString cat4 = s1 + '!';
+    MyString cat5 = '!' + s1;
 
-    // Constructor from char, n times
-    MyString(unsigned int n, char c) {
-        length_ = n;
-        capacity_ = n;
-        data_ = new char[capacity_ + 1];
-        for (unsigned int i = 0; i < n; ++i)
-            data_[i] = c;
-        data_[n] = '\0';
-    }
-
-    // Copy constructor
-    MyString(const MyString& other) {
-        length_ = other.length_;
-        capacity_ = length_;
-        data_ = new char[capacity_ + 1];
-        memcpy_(data_, other.data_, length_);
-        data_[length_] = '\0';
-    }
-
-    // Move constructor
-    MyString(MyString&& other) noexcept
-        : data_(other.data_), length_(other.length_),
-          capacity_(other.capacity_) {
-        other.data_ = nullptr;
-        other.length_ = 0;
-        other.capacity_ = 0;
-    }
-
-    // Destructor
-    ~MyString() { delete[] data_; }
-
-    // Copy assignment
-    MyString& operator=(const MyString& other) {
-        if (this != &other) {
-            delete[] data_;
-            length_ = other.length_;
-            capacity_ = length_;
-            data_ = new char[capacity_ + 1];
-            memcpy_(data_, other.data_, length_);
-            data_[length_] = '\0';
-        }
-        return *this;
-    }
-
-    // Move assignment
-    MyString& operator=(MyString&& other) noexcept {
-        if (this != &other) {
-            delete[] data_;
-            data_ = other.data_;
-            length_ = other.length_;
-            capacity_ = other.capacity_;
-            other.data_ = nullptr;
-            other.length_ = 0;
-            other.capacity_ = 0;
-        }
-        return *this;
-    }
-
-    // Assignment from C-string
-    MyString& operator=(const char* str) {
-        unsigned int len = strlen_(str);
-        ensure_capacity(len);
-        length_ = len;
-        memcpy_(data_, str, len);
-        data_[length_] = '\0';
-        return *this;
-    }
-
-    // Length & capacity
-    unsigned int size() const { return length_; }
-    unsigned int length() const { return length_; }
-    unsigned int capacity() const { return capacity_; }
-    bool empty() const { return length_ == 0; }
-
-    // C-string access
-    const char* c_str() const { return data_; }
-    char* data() { return data_; }
-    const char* data() const { return data_; }
-
-    // Clear
-    void clear() {
-        length_ = 0;
-        if (data_)
-            data_[0] = '\0';
-    }
-
-    // Reserve
-    void reserve(unsigned int n) { ensure_capacity(n); }
-
-    // Shrink to fit
-    void shrink_to_fit() {
-        if (capacity_ > length_) {
-            char* newdata = new char[length_ + 1];
-            memcpy_(newdata, data_, length_);
-            newdata[length_] = '\0';
-            delete[] data_;
-            data_ = newdata;
-            capacity_ = length_;
-        }
-    }
-
-    // Push back
-    void push_back(char c) {
-        ensure_capacity(length_ + 1);
-        data_[length_] = c;
-        ++length_;
-        data_[length_] = '\0';
-    }
-
-    // Pop back
-    void pop_back() {
-        if (length_ > 0) {
-            --length_;
-            data_[length_] = '\0';
-        }
-    }
-
-    // Append
-    MyString& append(const MyString& other) {
-        ensure_capacity(length_ + other.length_);
-        memcpy_(data_ + length_, other.data_, other.length_);
-        length_ += other.length_;
-        data_[length_] = '\0';
-        return *this;
-    }
-    MyString& append(const char* str) {
-        unsigned int len = strlen_(str);
-        ensure_capacity(length_ + len);
-        memcpy_(data_ + length_, str, len);
-        length_ += len;
-        data_[length_] = '\0';
-        return *this;
-    }
-    MyString& append(unsigned int n, char c) {
-        ensure_capacity(length_ + n);
-        for (unsigned int i = 0; i < n; ++i)
-            data_[length_ + i] = c;
-        length_ += n;
-        data_[length_] = '\0';
-        return *this;
-    }
-
-    // Operator +=
-    MyString& operator+=(const MyString& rhs) { return append(rhs); }
-    MyString& operator+=(const char* rhs) { return append(rhs); }
-    MyString& operator+=(char c) { return append(1, c); }
-
-    // Operator +
-    MyString operator+(const MyString& rhs) const {
-        MyString res(*this);
-        res.append(rhs);
-        return res;
-    }
-    MyString operator+(const char* rhs) const {
-        MyString res(*this);
-        res.append(rhs);
-        return res;
-    }
-    MyString operator+(char c) const {
-        MyString res(*this);
-        res.append(1, c);
-        return res;
-    }
-
-    // At (with bounds checking)
-    char& at(unsigned int pos) {
-        if (pos >= length_)
-            throw "out_of_range";
-        return data_[pos];
-    }
-    const char& at(unsigned int pos) const {
-        if (pos >= length_)
-            throw "out_of_range";
-        return data_[pos];
-    }
-
-    // Operator []
-    char& operator[](unsigned int idx) { return data_[idx]; }
-    const char& operator[](unsigned int idx) const { return data_[idx]; }
-
-    // Front/back
-    char& front() { return data_[0]; }
-    const char& front() const { return data_[0]; }
-    char& back() { return data_[length_ - 1]; }
-    const char& back() const { return data_[length_ - 1]; }
-
-    // Substring
-    MyString substr(unsigned int pos,
-                    unsigned int len = static_cast<unsigned int>(-1)) const {
-        if (pos > length_)
-            throw "out_of_range";
-        if (len == static_cast<unsigned int>(-1) ||
+    return 0;
+}
