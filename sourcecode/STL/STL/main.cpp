@@ -57,5 +57,11 @@ int main() {
     MyString cat4 = s1 + '!';
     MyString cat5 = '!' + s1;
 
+    std::cout << s1.c_str() << "\n"
+              << s2.c_str() << "\n"
+              << s3.c_str() << "\n"
+              << s4.c_str() << "\n"
+              << s5.c_str();
+
     return 0;
 }
