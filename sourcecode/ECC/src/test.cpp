@@ -1,4 +1,4 @@
-#include <rs.hpp>
+#include "reed_solomon.hpp"
 
 #include <iostream>
 
@@ -10,7 +10,7 @@ int main() {
     char repaired[msglen];
     char encoded[msglen + ecclen];
 
-    RS::ReedSolomon<msglen, ecclen> rs;
+    CNCS::ecc::ReedSolomon rs(msglen, ecclen);
 
     rs.Encode(message, encoded);
 

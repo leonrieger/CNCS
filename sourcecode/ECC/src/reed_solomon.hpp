@@ -51,11 +51,8 @@ namespace CNCS::ecc {
 
             const uint8_t enc_len = msg_length + ecc_length;
             const uint8_t poly_len = ecc_length * 2;
-            uint8_t** memptr = &memory;
+            uint8_t** memptr = nullptr;
             uint16_t offset = 0;
-
-            /* Initialize first six polys manually cause their amount depends on
-             * template parameters */
 
             polynoms[0].Init(ID_MSG_IN, offset, enc_len, memptr);
             offset += enc_len;
@@ -80,13 +77,9 @@ namespace CNCS::ecc {
         void EncodeBlock(const void* src, void* dst) {
             assert(msg_length + ecc_length < 256);
 
-            /* Generator cache, it dosn't change for one template parameters -> wtf? */
-            generator_cache.reserve(ecc_length + 1);
-
-            /* Allocating memory on stack for polynomials storage */
-            uint8_t
-                stack_memory[MSG_CNT * msg_length + POLY_CNT * ecc_length * 2];
-            memory = stack_memory;
+            if (!generator_cached) {
+                generator_cache.reserve(ecc_length + 1);
+            }
 
             const uint8_t* src_ptr = (const uint8_t*)src;
             uint8_t* dst_ptr = (uint8_t*)dst;
@@ -104,7 +97,7 @@ namespace CNCS::ecc {
                 gen->Set(generator_cache);
             } else {
                 GeneratorPoly();
-                memcpy(generator_cache, gen->ptr(), gen->length);
+                memcpy(generator_cache.data(), gen->ptr(), gen->length);
                 generator_cached = true;
             }
 
@@ -137,7 +130,7 @@ namespace CNCS::ecc {
             uint8_t* dst_ptr = (uint8_t*)dst;
 
             // Copying message to the output buffer
-            memcpy(dst_ptr, src, msg_length * sizeof(uint8_t));
+            memcpy(dst_ptr, src, msg_length);
 
             // Calling EncodeBlock to write ecc to out[ut buffer
             EncodeBlock(src, dst_ptr + msg_length);
@@ -163,11 +156,6 @@ namespace CNCS::ecc {
             const uint8_t dst_len = msg_length;
 
             bool ok;
-
-            /* Allocation memory on stack */
-            uint8_t
-                stack_memory[MSG_CNT * msg_length + POLY_CNT * ecc_length * 2];
-            memory = stack_memory;
 
             Poly* msg_in = &polynoms[ID_MSG_IN];
             Poly* msg_out = &polynoms[ID_MSG_OUT];
@@ -270,9 +258,9 @@ namespace CNCS::ecc {
 
         bool generator_cached = false;
         std::vector<uint8_t> generator_cache = {0};
-        
+
         // Pointer for polynomials memory on stack
-        uint8_t* memory;
+        //uint8_t* memory;
 
         Poly polynoms[MSG_CNT + POLY_CNT];
 
@@ -541,5 +529,4 @@ namespace CNCS::ecc {
             }
         }
     };
-
 } // namespace CNCS::ecc

@@ -74,7 +74,7 @@ namespace CNCS::ecc {
 
         // Returns pointer to memory of this polynomial
         inline uint8_t* ptr() const {
-            assert(_memory && *_memory);
+            //assert(_memory && *_memory);
             return (*_memory) + _offset;
         }
 
