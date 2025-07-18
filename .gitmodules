@@ -15,6 +15,3 @@
 	url = https://github.com/openssl/openssl.git
 	branch = openssl-3.5
 # Removed reed-solomon class due to project internal modification (https://github.com/mersinvald/Reed-Solomon.git)
-[submodule "sourcecode/include/gitmodules/Reed-Solomon"]
-	path = sourcecode/include/gitmodules/Reed-Solomon
-	url = https://github.com/mersinvald/Reed-Solomon.git
