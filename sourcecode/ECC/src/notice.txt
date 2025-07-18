@@ -1,4 +1,4 @@
-The files gf.hpp, poly.hpp, rs.hpp (original names: gf.hpp, poly.hpp, rs.hpp) were copied and adapted for use in CNCS
+The files galoisfields.hpp, polynomial.hpp, reed_solomon.hpp (original names: gf.hpp, poly.hpp, rs.hpp) were copied and adapted for use in CNCS
 
 These files are distributed by their original author Mike Lubinets (aka mersinvald) with the MIT-License
 
