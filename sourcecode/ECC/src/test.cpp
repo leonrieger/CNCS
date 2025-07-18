@@ -12,15 +12,22 @@ int main() {
 
     CNCS::ecc::ReedSolomon rs(msglen, ecclen);
 
+    std::cout << "Original:  " << std::string(message) << std::endl;
+
     rs.Encode(message, encoded);
+
+    std::cout << "we got far" << std::endl;
 
     for (uint32_t i = 0; i < ecclen / 2 +1; ++i) {
         encoded[i] = 'E';
     }
 
+    std::cout << "we got far x2" << std::endl;
+
     rs.Decode(encoded, repaired);
 
-    std::cout << "Original:  " << message << std::endl;
-    std::cout << "Corrupted: " << encoded << std::endl;
-    std::cout << "Repaired:  " << repaired << std::endl;
+    std::cout << "we got far x3" << std::endl;
+    
+    std::cout << "Corrupted: " << std::string(encoded) << std::endl;
+    std::cout << "Repaired:  " << std::string(repaired) << std::endl;
 }

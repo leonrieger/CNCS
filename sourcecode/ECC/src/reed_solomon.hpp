@@ -11,6 +11,7 @@
 #include "polynomial.hpp"
 
 #include <assert.h>
+#include <iostream>
 #include <stdint.h>
 #include <string.h>
 #include <vector>
@@ -91,16 +92,19 @@ namespace CNCS::ecc {
             // Weird shit, but without resetting msg_in it simply doesn't work
             // msg_in->Reset();
             // msg_out->Reset();
-
+            std::cout << "slightly intrusive x1" << std::endl;
             // Using cached generator or generating new one
             if (generator_cached) {
                 gen->Set(generator_cache);
             } else {
+                std::cout << "slightly intrusive x1.05" << std::endl;
                 GeneratorPoly();
+                std::cout << "slightly intrusive x1.1" << std::endl;
                 memcpy(generator_cache.data(), gen->ptr(), gen->length);
+                std::cout << "slightly intrusive x1.2" << std::endl;
                 generator_cached = true;
             }
-
+            std::cout << "slightly intrusive x2" << std::endl;
             // Copying input message to internal polynomial
             msg_in->Set(src_ptr, msg_length);
             msg_out->Set(src_ptr, msg_length);
@@ -131,7 +135,7 @@ namespace CNCS::ecc {
 
             // Copying message to the output buffer
             memcpy(dst_ptr, src, msg_length);
-
+            std::cout << "slightly intrusive x0" << std::endl;
             // Calling EncodeBlock to write ecc to out[ut buffer
             EncodeBlock(src, dst_ptr + msg_length);
         }
@@ -260,11 +264,12 @@ namespace CNCS::ecc {
         std::vector<uint8_t> generator_cache = {0};
 
         // Pointer for polynomials memory on stack
-        //uint8_t* memory;
+        // uint8_t* memory;
 
         Poly polynoms[MSG_CNT + POLY_CNT];
 
         void GeneratorPoly() {
+            /*
             Poly* gen = polynoms + ID_GENERATOR;
             gen->at(0) = 1;
             gen->length = 1;
@@ -272,6 +277,17 @@ namespace CNCS::ecc {
             Poly* mulp = polynoms + ID_TPOLY1;
             Poly* temp = polynoms + ID_TPOLY2;
             mulp->length = 2;
+            */
+            std::cout << "slightly intrusive x5" << std::endl;
+            Poly* gen = &polynoms[ID_GENERATOR];
+            gen->at(0) = 1;
+            gen->length = 1;
+            std::cout << "slightly intrusive x10" << std::endl;
+            Poly* mulp = &polynoms[ID_TPOLY1];
+            Poly* temp = &polynoms[ID_TPOLY2];
+            mulp->length = 2;
+
+            std::cout << "slightly intrusive x100" << std::endl;
 
             for (int8_t i = 0; i < ecc_length; i++) {
                 mulp->at(0) = 1;
