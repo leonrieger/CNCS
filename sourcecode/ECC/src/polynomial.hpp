@@ -8,11 +8,12 @@
 #include <assert.h>
 #include <stdint.h>
 #include <string.h>
+#include <vector>
+#include <assert.h>
 
 #define poly_max(a, b) ((a > b) ? (a) : (b))
 
 namespace CNCS::ecc {
-
     struct Poly {
         Poly() {};
 
@@ -51,6 +52,12 @@ namespace CNCS::ecc {
             length = len + offset;
         }
 
+        inline void Set(const std::vector<uint8_t>& src, uint8_t offset = 0) {
+            assert(src.data() && src.size() <= this->_size - offset);
+            memcpy(ptr() + offset, src.data(), src.size());
+            length = src.size() + offset;
+        }
+
         inline void Copy(const Poly* src) {
             length = poly_max(length, src->length);
             Set(src->ptr(), length);
@@ -73,7 +80,7 @@ namespace CNCS::ecc {
 
         uint8_t length = 0;
 
-    protected:
+    private:
         uint8_t _id = 0;
         uint8_t _size = 0;     // Size of reserved memory for this polynomial
         uint16_t _offset = 0;  // Offset in memory

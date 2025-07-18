@@ -1,11 +1,11 @@
 #pragma once
 
+#pragma once
+
 /* Author: Mike Lubinets (aka mersinvald)
  * Date: 29.12.15
  *
  * See LICENSE */
-
-// there is some weird s*** happening here
 
 #include "galoisfields.hpp"
 #include "polynomial.hpp"
@@ -13,7 +13,6 @@
 #include <assert.h>
 #include <stdint.h>
 #include <string.h>
-#include <vector>
 
 #define MSG_CNT 3   // message-length polynomials count
 #define POLY_CNT 14 // (ecc_length*2)-length polynomials count
@@ -54,9 +53,6 @@ namespace CNCS::ecc {
             uint8_t** memptr = &memory;
             uint16_t offset = 0;
 
-            /* Initialize first six polys manually cause their amount depends on
-             * template parameters */
-
             polynoms[0].Init(ID_MSG_IN, offset, enc_len, memptr);
             offset += enc_len;
 
@@ -77,16 +73,27 @@ namespace CNCS::ecc {
             }
         }
 
+        /*
+        ~ReedSolomon() {
+            // Dummy destructor, gcc-generated one crashes program
+            memory = nullptr;
+        }
+        */
+
+        /* @brief Message block encoding
+         * @param *src - input message buffer      (msg_length size)
+         * @param *dst - output buffer for ecc     (ecc_length size at least) */
         void EncodeBlock(const void* src, void* dst) {
             assert(msg_length + ecc_length < 256);
 
-            /* Generator cache, it dosn't change for one template parameters -> wtf? */
-            generator_cache.reserve(ecc_length + 1);
+            /* Generator cache, it dosn't change for one template parameters */
+            static uint8_t generator_cache[ecc_length + 1] = {0};
+            static bool generator_cached = false;
 
             /* Allocating memory on stack for polynomials storage */
             uint8_t
                 stack_memory[MSG_CNT * msg_length + POLY_CNT * ecc_length * 2];
-            memory = stack_memory;
+            this->memory = stack_memory;
 
             const uint8_t* src_ptr = (const uint8_t*)src;
             uint8_t* dst_ptr = (uint8_t*)dst;
@@ -96,12 +103,12 @@ namespace CNCS::ecc {
             Poly* gen = &polynoms[ID_GENERATOR];
 
             // Weird shit, but without resetting msg_in it simply doesn't work
-            // msg_in->Reset();
-            // msg_out->Reset();
+            msg_in->Reset();
+            msg_out->Reset();
 
             // Using cached generator or generating new one
             if (generator_cached) {
-                gen->Set(generator_cache);
+                gen->Set(generator_cache, sizeof(generator_cache));
             } else {
                 GeneratorPoly();
                 memcpy(generator_cache, gen->ptr(), gen->length);
@@ -268,9 +275,6 @@ namespace CNCS::ecc {
         const uint8_t msg_length;
         const uint8_t ecc_length;
 
-        bool generator_cached = false;
-        std::vector<uint8_t> generator_cache = {0};
-        
         // Pointer for polynomials memory on stack
         uint8_t* memory;
 
