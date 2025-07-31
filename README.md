@@ -7,7 +7,7 @@
 > The link for that "new" account is [here](https://github.com/cncs-org).
 >
 > This repository is now readonly and there will be no more development in this repository. For further questions you can contact me directly at [rieger.leon@protonmail.com](rieger.leon@protonmail.com).\
-> ~Leon Rieger
+> ~Leon
 
 <br>
 <br>
