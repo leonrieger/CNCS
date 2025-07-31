@@ -1,6 +1,23 @@
 <h1 align="center">CNCS</h1>
 <h3 align="center">a free, universal CNC control and management system </h3>
 
+
+> [!IMPORTANT]
+> Due to the need for multiple repositories for the best and most non-confusing layout, CNCS-development moved from my personal account to a dedicated organisation account.
+> The link for that "new" account is [here](https://github.com/cncs-org).
+>
+> This repository is now readonly and there will be no more development in this repository. For further questions you can contact me directly at [rieger.leon@protonmail.com](rieger.leon@protonmail.com).\
+> ~Leon Rieger
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 > [!CAUTION]
 > CNCS is currently **NOT** a working application!\
 > It is in an early development state.
